@@ -1,0 +1,139 @@
+.btn-group a{
+  display: flex;
+  align-items: center;
+  background-color:grey ;
+  color:white;
+  font-weight: normal;
+  margin: 8px 0;
+
+}
+.actionButtonGroup{
+  width: 100%;
+}
+.btn-group a:hover{
+  background-color: #FF7B08 ;
+}
+
+#pagination{
+  font-size: 12px;
+}
+
+#topButtonGroup{
+  display:flex;
+  justify-content: space-between;
+  padding-bottom: 10px;
+}
+
+#topButtonGroup button{
+  font-size: 14px;
+  font-weight: normal;
+  padding: 7px 15px;
+}
+#topButtonGroup i{
+
+  font-weight: 900;
+}
+#viewAll{
+  padding-right: 10px;
+}
+#viewSelected{
+  padding-right: 10px;
+}
+img{
+  max-height: 100px;
+  max-width: 100px;
+}
+#indexDataWithoutKeyword{
+  background-color: grey;
+  color: white;
+  padding:2px 6px;
+  line-height: 2;
+}
+#indexDataWithKeyword{
+  background-color: #f1c40f;
+  color: white;
+  padding:2px 6px;
+  line-height: 2;
+}
+#imagePreview{
+  display: flex;
+  justify-content: center;
+
+}
+#app-table{
+  padding-bottom: 0;
+}
+
+#gridTableItem{
+  width:172px;
+  display:flex;
+  flex-direction: column;
+  border-top: 1px solid #dddddd !important;
+}
+#gridTableItem input{
+  width: fit-content;
+  float: left;
+}
+#imagePreviewGridTable{
+  display: flex;
+  justify-content: center;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  justify-content: space-evenly;
+  gap: 10px;
+}
+
+.grid-item {
+  border: 1px solid #ddd;
+  padding: 10px;
+  color:#aeafb1;
+}
+#actionColumn{
+  width:150px;
+}
+#templateColumn{
+  width: 140px;
+}
+#imagePreviewColumn{
+  width: 100px;
+}
+#dateColumn{
+  width: 120px;
+  padding: 10px;
+}
+.animation {
+  display: block;
+  max-width: 300px;
+  max-height: 300px;
+  margin: 0 auto;
+}
+.jsonValueDiv{
+  width: 270px;
+  word-wrap: break-word;
+}
+.headerClass {
+  font-size: 14px;
+  font-weight: normal;
+}
+.no-data-available {
+  text-align: center;
+  column-span: all;
+}
+.light-red-row{
+  background-color: #e5baba !important;
+}
+.large-checkbox{
+  /*transform: scale(1.2);*/
+}
+
+.large-checkbox-column{
+  text-align: center;
+  /*display: flex;*/
+  /*justify-content: center;*/
+  /*border-bottom: none;*/
+  /*border-left: none;*/
+  /*border-right: none;*/
+}

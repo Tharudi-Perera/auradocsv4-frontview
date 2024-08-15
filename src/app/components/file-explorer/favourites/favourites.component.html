@@ -1,0 +1,24 @@
+<app-accordion
+  panelstyle="panel-orange"
+  [title]="title"
+  [collapsed]="!isActive"
+  [checkMark]="true"
+  [gray]="!isActive"
+>
+  <div class="panel-body" style="border-top:none">
+    <div class="col-md-12">
+      <div>
+        <select>
+          <option *ngFor="let opt of options">{{opt}}</option>
+        </select>
+        records per page
+      </div>
+      <app-table
+        [headings]="headings"
+        [isTableBoarded]="true"
+        [data]="tableData"
+        [headerClass]="'headerClass'"
+      ></app-table>
+    </div>
+  </div>
+</app-accordion>

@@ -1,0 +1,57 @@
+<app-accordion
+  panelstyle="panel-orange"
+  [title]="title"
+  [collapsed]="!isActive"
+  [checkMark]="true"
+  [gray]="!isActive"
+>
+  <div class="panel-body" style="border-top:none">
+    <div class="panel">
+      <div class="panel-body" style="border-top:1px solid #dddddd " >
+        <div class="col-md-12">
+          <div id="noOfRecordsAndSearchDiv">
+            <label>
+              <select>
+                <option *ngFor="let opt of options">{{opt}}</option>
+              </select>
+              records per page
+            </label>
+            <label>
+              <input type="text"  placeholder="Search here...">
+            </label>
+          </div>
+          <div>
+              <button class="btn btn-success btn-label "  id="newTemplateBtnId" (click)="toggleNewTemplate()">
+                <i class="fa fa-plus-circle"></i> New Template
+              </button>
+          </div>
+          <app-table
+            [headings]="headings"
+            [isTableBoarded]="true"
+            [isStriped]="false"
+            [data]="tableData"
+            [headerClass]="'headerClass sorting'"
+          >
+            <tr tabledata *ngFor="let row of tableData">
+              <td>{{row.templateId}}</td>
+              <td>{{row.templateName}}</td>
+              <td id="status">{{row.status}}</td>
+              <td id="editButtonColumn">
+                <div class="btn-group "  >
+                  <button type="button" class="btn btn-info btn-label " (click)="toggleEditTemplate()"><i class="fa fa-edit"></i>Edit Template</button>
+                </div>
+              </td>
+
+
+            </tr>
+          </app-table>
+          <div>
+            Showing 1 to 10 of 33 entries
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</app-accordion>

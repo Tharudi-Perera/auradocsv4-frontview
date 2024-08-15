@@ -1,0 +1,8 @@
+<app-modal [isVisible]="isOpen" (modal)="toggleView()" [modalHeaderVisible]="true" [title]="'File Metadata'"
+           [modalFooterVisible]="false" [modalTitleTextAlign]="'center'">
+  <div body>
+    <app-document-file-metadata-form  [id]="id"
+                                      [isViewSelectedOrViewAll]="isViewSelectedOrViewAll">
+    </app-document-file-metadata-form>
+  </div>
+</app-modal>

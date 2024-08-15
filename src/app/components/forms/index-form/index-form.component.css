@@ -1,0 +1,83 @@
+.form-horizontal .form-group {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.clickable-arrows {
+  cursor: pointer;
+}
+.hold-next {
+  cursor: pointer;
+}
+
+.textColor{
+  color: white;
+}
+.access-level-class{
+  padding-left: 0 !important;
+}
+#access-level{
+  display: flex;
+  gap: 5px;
+  padding-left: 0 !important;
+}
+
+.access-level-container{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+#access-level button{
+  background-color: #565e69;
+  color: white;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  padding: 5px 10px;
+}
+
+.applyColor {
+  background-color: #FF7B08 !important;
+}
+
+.checkbox-span{
+  border-right: 1px solid #d2d3d6;
+  border-radius: 5px!important;
+
+}
+.font-weight-bold{
+  font-weight: bold !important;
+}
+
+#app-checkbox{
+  margin-left: 20px;
+}
+.checkbox-div{
+  display: flex !important;
+  align-items: center !important;
+}
+
+#templateForm{
+  padding: 5px;
+
+}
+
+.input-group-class{
+  padding-right: 20px;
+}
+#form-group-input{
+  margin-bottom: 5px;
+}
+#from-group-buttons{
+  margin-top: 20px;
+}
+.disabled-group {
+  pointer-events: none; /* Disable pointer events on the entire group */
+  opacity: 0.5; /* Optionally reduce opacity to visually indicate disabled state */
+  /* Add any other styling you want for the disabled state */
+}
+#publicButton{
+  background-color: #FF7B08
+}

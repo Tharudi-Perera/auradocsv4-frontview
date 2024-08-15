@@ -1,0 +1,63 @@
+<app-accordion [checkMark]="false"
+               [collapsed]="!isActive"
+               [gray]="!isActive"
+               [innerHTML]="documentAddSignatureAccordion"
+               id="document-todo-List-accordion"
+               panelstyle="panel-orange"
+>
+  <div id="button-bar">
+    <div (click)="byHandButtonClicked();changeButtonColor($event.currentTarget)" class="buttonColor" id="byHand">By Hand</div>
+    <div (click)="assignButtonClicked();changeButtonColor($event.currentTarget)" class="buttonColor" id="assign">Assign</div>
+    <div (click)="autoButtonClicked();changeButtonColor($event.currentTarget)" class="buttonColor" id="auto">Auto</div>
+    <div (click)="digitalButtonClicked();changeButtonColor($event.currentTarget)" class="buttonColor" id="digital">Digital</div>
+  </div>
+  <div *ngIf="signByHand">
+    <div id="signByHandSliderDiv">
+      <div style="margin-right: 10px;">
+        <i class="fa fa-pencil"></i>&nbsp;Sign by Hand
+      </div>
+      <label class="switch">
+        <input (click)="activeDrawer();" id="toggleHandSign" type="checkbox">
+        <span class="slider round"> </span>
+      </label>
+    </div>
+    <div>
+      <div>
+        * Sign documents by hand, click "Sign," and seamlessly add your signature as a new version.
+        <br>
+        <br>
+        <b>Delete | Drag : </b> After clicking the "Esc" button, you can now conveniently
+        drag and drop your signature onto the document or simply press the delete button to remove the signature.
+      </div>
+    </div>
+  </div>
+  <div *ngIf="assignSignature">
+    <div id="assignSliderDiv">
+      <div style="margin-right: 10px;">
+        <i class="fa fa-pencil"></i>&nbsp;Active Assigner
+      </div>
+      <label class="switch">
+        <input (click)="activeDrawer();" type="checkbox">
+        <span class="slider round"> </span>
+      </label>
+    </div>
+    <div>
+      <div>
+        * Assign Signature feature allows you to effortlessly sign documents.
+        Simply assign the signature to a user, who can then click
+        "Sign" to add it as a new document version
+      </div>
+    </div>
+  </div>
+  <div *ngIf="autoSignature">
+    <div id="autoSignatureDiv">
+      Please add signature to your profile.
+    </div>
+  </div>
+  <div *ngIf="digitalSignature">
+    <div  id="digitalSignatureDiv">
+      <div id="signButton">Sign</div>
+    </div>
+  </div>
+
+</app-accordion>

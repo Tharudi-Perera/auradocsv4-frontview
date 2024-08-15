@@ -1,0 +1,42 @@
+<app-accordion
+  panelstyle="panel-orange"
+  [title]="title"
+  [collapsed]="!isActive"
+  [checkMark]="true"
+  [gray]="!isActive"
+>
+  <app-new-masking-form *ngIf="isNewMaskingFormVisible"  (newMaskingFormVisible)="closeNewMaskingForm($event)"></app-new-masking-form>
+  <div class="panel-body" >
+    <div class="panel">
+      <div class="panel-body" style="border-top:1px solid #dddddd " >
+        <div class="col-md-12">
+          <div>
+              <button class="btn btn-success btn-label "  id="newMaskingBtnId" (click)="toggleNewMasking()">
+                <i class="fa fa-plus-circle"></i> New Masking
+              </button>
+          </div>
+          <app-table
+            [headings]="headings"
+            [isTableBoarded]="true"
+            [isStriped]="false"
+            [data]="tableData"
+            [headerClass]="'headerClass sorting'"
+          >
+            <tr tabledata *ngFor="let row of tableData">
+              <td>{{row.nameOfTemplate}}</td>
+              <td>{{row.nameOfMaskingArea}}</td>
+              <td id="editButtonColumn">
+                <div class="btn-group "  >
+                  <button type="button" class="btn btn-danger btn-label " (click)="deleteTemplate()"><i class="fa fa-trash-o"></i>Delete</button>
+                </div>
+              </td>
+            </tr>
+          </app-table>
+          <div>
+            Showing 1 to 10 of 33 entries
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</app-accordion>

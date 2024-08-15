@@ -1,0 +1,44 @@
+.info-tiles.tiles-orange .tiles-body-alt {
+  background: #FF7B08;
+}
+.info-tiles.tiles-orange .tiles-heading {
+  background: #FF7B08;
+}
+.info-tiles.tiles-orange .tiles-footer {
+  background: #dc8911;
+}
+.info-tiles.tiles-success .tiles-body-alt {
+  background: #78ba38;
+}
+.info-tiles.tiles-success .tiles-heading {
+  background:#78ba38;
+}
+.info-tiles.tiles-success .tiles-footer {
+  background:#6ca632;
+}
+
+.info-tiles.tiles-toyo .tiles-body-alt {
+  background: #556b8d;
+}
+.info-tiles.tiles-toyo .tiles-heading {
+  background:#556b8d;
+}
+.info-tiles.tiles-toyo .tiles-footer {
+  background:#42536d;
+}
+
+
+.info-tiles.tiles-alizarin .tiles-body-alt {
+  background: #e43725;
+}
+.info-tiles.tiles-alizarin .tiles-heading {
+  background:#e43725;
+}
+.info-tiles.tiles-alizarin .tiles-footer {
+  background:#d62c1a;
+}
+
+.text-center{
+  line-height: 57px !important;
+
+}

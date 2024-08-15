@@ -1,0 +1,44 @@
+.nav.nav-tabs {
+  cursor: pointer;
+}
+
+.file-input {
+  display: none;
+}
+
+.file-input-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.imagePreview {
+  height: 50px;
+  width: 100px;
+  overflow: hidden;
+}
+
+#pendingDocsCard{
+  min-height: 728px !important;
+}
+.removeBorderTop{
+
+  border-top:1px solid #dddddd ;
+}
+.btn{
+  color:white;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+#buttonGroup{
+  margin: 10px 0 15px 0;
+}
+.orange{
+  background-color: #FF7B08;
+}
+.gray{
+  background-color: #595f69 ;
+}
+.panel-orange .panel-body{
+  border-top: none;
+}

@@ -1,0 +1,44 @@
+<form (submit)="onSubmit()" [formGroup]="newMaskingForm" class="form-horizontal">
+  <div class="panel">
+    <div class="panel-body">
+     <div class="panel">
+      <div class="panel-body">
+        <div class="col-sm-12 ">
+          <app-table [captionClass]="'captionClass'"
+                     [data]="['1']"
+                     [headerClass]="'headerClass'"
+                     [isTableBoarded]="true"
+                     id="table">
+            <tr tabledata>
+              <td class="firstColumn">Name of Area</td>
+              <td><app-input [control]="newMaskingForm.get('nameOfArea')"
+                             [inputGroupWidth]="'100%'"
+                             [isRequired]="false"
+                             [placeholder]="'Name of Area'"
+                             [type]="'text'"></app-input>
+              </td>
+            </tr>
+            <tr tabledata>
+              <td class="firstColumn">Select Template</td>
+              <td><app-select [control]="newMaskingForm.get('selectTemplate')" [options]="templates" (change)="selectedTemplateChange()"></app-select></td>
+            </tr>
+            <tr tabledata>
+              <td class="firstColumn">Select File</td>
+              <td><app-select [control]="newMaskingForm.get('selectFile')" [options]="files" (change)="selectedFileChange()"></app-select></td>
+            </tr>
+          </app-table>
+        </div>
+        <div class="col-sm-12">
+          <div class="">
+            <div class="btn-toolbar" id="cancelOkButtonGroup">
+              <button  (click)="closeForm()" class="btn-default btn" type="button" id="cancelButton">Cancel</button>
+              <button  class="btn-primary btn" id="okButton" type="submit">Submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  </div>
+</form>

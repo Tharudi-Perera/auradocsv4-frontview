@@ -1,0 +1,25 @@
+<app-accordion [checkMark]="false"
+               [collapsed]="!isActive"
+               [gray]="!isActive"
+               [innerHTML]="documentRequestAccordion"
+               id="document-request-accordion"
+               panelstyle="panel-orange"
+>
+  <form (ngSubmit)="onRequestSubmit()" [formGroup]="requestForm">
+
+    <div id="onlineButtonParentDiv">
+      <img  id="onlineButton" src="assets/images/onlineButton.png"><span>Document Available</span>
+    </div>
+    <app-textarea [placeholder]="'Enter Remark'" [control]="requestForm.get('enterRemark')" *ngIf="!requestSend"
+      [width]="'100%'" [height]="'70px'"></app-textarea>
+    <div id="successMessageDiv" *ngIf="showSuccessfulRequestSubmitMessage">
+      <div>Document {{id}} Request successful!</div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-12">
+        <button class=" btn" id="requestButton" type="submit">Request</button>
+      </div>
+    </div>
+  </form>
+
+</app-accordion>

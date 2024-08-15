@@ -1,0 +1,15 @@
+<div class="col-md-3 col-xs-12 col-sm-6">
+  <a class="{{ tilestyle }}" href="{{ link }}">
+    <div class="tiles-heading">{{ title }}</div>
+    <div class="tiles-body-alt">
+      <i class="fa {{ iconclass }}"></i>
+      <div class="text-center">
+        <span class="text-top">{{ toptext }}</span>
+        {{ text | number:'1.0-0'  }}
+        <span class="text-smallcaps">{{ smallcapsText }}</span>
+      </div>
+      <small>{{ description }}</small>
+    </div>
+    <div class="tiles-footer">{{ footer }}</div>
+  </a>
+</div>

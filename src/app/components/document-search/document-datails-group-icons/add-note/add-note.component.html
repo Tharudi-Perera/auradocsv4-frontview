@@ -1,0 +1,41 @@
+
+<div
+  class="modal fade in"
+  id="auradocs-modal"
+  [ngClass]="{ in: isVisible }"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="auradocsModalLabel"
+  aria-hidden="false"
+  [ngStyle]="{ display: isVisible ? 'block' : 'none' }" cdkDrag  #addNoteModal
+>
+  <form (ngSubmit)="addNoteFormSubmit($event)" [formGroup]="addNoteForm">
+    <div class="modal-dialog" [style.width]="'250px'">
+      <div class="modal-content" id="addNoteDiv">
+        <div>
+          <div id="titleDiv">
+            <h5>Title :</h5>
+            <app-input [height]="'AddNote'" [control]="addNoteForm.get('title')" [inputGroupWidth]="'100%'"></app-input>
+          </div>
+          <div id="textAreaDiv">
+            <app-textarea [control]="addNoteForm.get('content')" [height]="'100px'" [backgroundColor]="backgroundColor"
+                          [border]="'none'"></app-textarea>
+          </div>
+        </div>
+        <div>
+          <div id="colorPlate">
+            <div id="yellowDiv" (click)="changeBackgroundColor('#fdfbbc')"></div>
+            <div id="blueDiv" (click)="changeBackgroundColor('#A6E3FC')"></div>
+            <div id="greenDiv" (click)="changeBackgroundColor('#A5F88B')"></div>
+            <div id="redDiv" (click)="changeBackgroundColor('#ffa07a')"></div>
+          </div>
+          <div id="submitButtonBarDiv">
+            <button #submitButton cdkOverlayOrigin #trigger="cdkOverlayOrigin" class="btn" type="submit" id="saveButton" (click)="submitButtonClicked($event)">Save</button>
+            <button class="btn" (click)="closeModal()">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+

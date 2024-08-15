@@ -1,0 +1,492 @@
+<form
+  id="fileupload"
+  [formGroup]="fileForm"
+  (ngSubmit)="onSubmit()"
+  enctype="multipart/form-data"
+>
+  <!-- Redirect browsers with JavaScript disabled to the origin page -->
+  <noscript
+  ><input
+    type="hidden"
+    name="redirect"
+    value="https://blueimp.github.io/jQuery-File-Upload/"
+  /></noscript>
+  <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
+  <div class="row fileupload-buttonbar">
+    <div class="col-md-12 " id="buttonGroup">
+      <!-- The fileinput-button span is used to style the file input field as button -->
+      <span class="btn btn-primary fileinput-button">
+        <i class="fa-solid fa-plus"></i>
+        <span> Add files...</span>
+        <input
+          class="file-input"
+          type="file"
+          name="documents"
+          filecontrolname="file"
+          accept=".doc, .wav, .docx, .odt, .pdf, .png, .txt, .jpg, .jpeg, .tif, .tiff, .xlsx, .xls, .csv, .mp4, .ppt, .mp3, .gif, .pptx, .zip, .word, .excel, .tiff, .giff, .csv, .cad,.dwg"
+          id="documents"
+          (change)="onFileUpload($event)"
+          multiple
+          required
+        />
+      </span>
+      <button
+        type="submit"
+        class="btn btn-success start"
+        [disabled]="uploadedFiles.length < 1"
+        #submitButton
+      >
+        <i class="fa-solid fa-upload"></i>
+        <span>Upload</span>
+      </button>
+      <button
+        type="reset"
+        class="btn btn-default cancel"
+        (click)="removeAllFiles()"
+      >
+        <i class="fa-solid fa-ban"></i>
+        <span> Clear</span>
+      </button>
+      <!-- The global file processing state -->
+      <span class="fileupload-process"></span>
+    </div>
+  </div>
+  <div *ngIf="progressBarVisible" #fileUploadProgressBar>
+    <div class="progress" id="fileUploadProgressBar">
+      <div class="progress-bar progress-bar-success" [style.width.%]="progress"></div>
+    </div>
+    <div><span>{{uploadingSpeed}}Mb/s | {{progress}} % | {{uploadedFileSizeInMborKb}}/{{totalFileSizeInMborKb}} </span></div>
+  </div>
+  <table
+    *ngIf="filesPreview.length !== 0"
+    role="presentation"
+    class="table  datatables"
+    id="editable"
+  >
+    <tbody>
+    <tr *ngFor="let file of filesPreview; let i = index">
+      <td>
+           <span
+             *ngIf="(getFileExtension(file.name)=='png') || (getFileExtension(file.name)=='jpeg')|| (getFileExtension(file.name)=='jpg') ">
+            <a
+              href="{{ file }}"
+              title="{{ file.name }}"
+              download="{{ file.name }}"
+              data-gallery
+            >
+              <img *ngIf="!fileUploadAnimationVisible"
+                   [src]="file.url"
+                   alt="{{ file.name }}"
+                   [attr.load]="imageOnload(file.url)"
+                   class="imagePreview"
+              />
+              <span class="imagePreview" *ngIf="fileUploadAnimationVisible">
+               <img
+                    src="assets/images/loading.gif"
+                    class="animation"
+               />
+              </span>
+            </a>
+          </span>
+        <!--          cad -->
+        <span *ngIf="(getFileExtension(file.name)=='cad')">
+            <a
+              href="{{ file }}"
+              title="{{ file.name }}"
+              download="{{ file.name }}"
+              data-gallery
+            >
+              <img *ngIf="!fileUploadAnimationVisible"
+                   src="assets/filetypes/cad-file.png"
+                   class="imagePreview"
+              />
+              <span class="imagePreview" *ngIf="fileUploadAnimationVisible">
+               <img
+                    src="assets/images/loading.gif"
+                    class="animation"
+               />
+              </span>
+            </a>
+          </span>
+        <!--          csv-->
+        <span *ngIf="(getFileExtension(file.name)=='csv')">
+            <a
+              href="{{ file }}"
+              title="{{ file.name }}"
+              download="{{ file.name }}"
+              data-gallery
+            >
+              <img *ngIf="!fileUploadAnimationVisible"
+                   src="assets/filetypes/csv-file.png"
+                   class="imagePreview"
+              />
+              <span class="imagePreview" *ngIf="fileUploadAnimationVisible">
+               <img
+                    src="assets/images/loading.gif"
+                    class="animation"
+               />
+              </span>
+            </a>
+          </span>
+        <!--          doc-->
+        <span *ngIf="(getFileExtension(file.name)=='doc')">
+            <a
+              href="{{ file }}"
+              title="{{ file.name }}"
+              download="{{ file.name }}"
+              data-gallery
+            >
+              <img *ngIf="!fileUploadAnimationVisible"
+                   src="assets/filetypes/doc-file.png"
+                   class="imagePreview"
+              />
+              <span class="imagePreview" *ngIf="fileUploadAnimationVisible">
+               <img
+                    src="assets/images/loading.gif"
+                    class="animation"
+               />
+              </span>
+            </a>
+          </span>
+        <!--          docx-->
+        <span *ngIf="(getFileExtension(file.name)=='docx')">
+            <a
+              href="{{ file }}"
+              title="{{ file.name }}"
+              download="{{ file.name }}"
+              data-gallery
+            >
+              <img *ngIf="!fileUploadAnimationVisible"
+                   src="assets/filetypes/docx-file.png"
+                   class="imagePreview"
+              />
+              <span class="imagePreview" *ngIf="fileUploadAnimationVisible">
+               <img
+                    src="assets/images/loading.gif"
+                    class="animation"
+               />
+              </span>
+            </a>
+          </span>
+        <!--          dwg-->
+        <span *ngIf="(getFileExtension(file.name)=='dwg')">
+            <a
+              href="{{ file }}"
+              title="{{ file.name }}"
+              download="{{ file.name }}"
+              data-gallery
+            >
+              <img *ngIf="!fileUploadAnimationVisible"
+                   src="assets/filetypes/dwg-file.png"
+                   class="imagePreview"
+              />
+              <span class="imagePreview" *ngIf="fileUploadAnimationVisible">
+               <img
+                    src="assets/images/loading.gif"
+                    class="animation"
+               />
+              </span>
+            </a>
+          </span>
+        <!--          excel-->
+        <span *ngIf="(getFileExtension(file.name)=='excel')">
+            <a
+              href="{{ file }}"
+              title="{{ file.name }}"
+              download="{{ file.name }}"
+              data-gallery
+            >
+              <img *ngIf="!fileUploadAnimationVisible"
+                   src="assets/filetypes/excel.png"
+                   class="imagePreview"
+              />
+              <span class="imagePreview" *ngIf="fileUploadAnimationVisible">
+               <img
+                    src="assets/images/loading.gif"
+                    class="animation"
+               />
+                </span>
+            </a>
+          </span>
+        <!--          gif-->
+        <span *ngIf="(getFileExtension(file.name)=='gif')">
+            <a
+              href="{{ file }}"
+              title="{{ file.name }}"
+              download="{{ file.name }}"
+              data-gallery
+            >
+              <img *ngIf="!fileUploadAnimationVisible"
+                   src="assets/filetypes/gif-file.png"
+                   class="imagePreview"
+              />
+              <span class="imagePreview" *ngIf="fileUploadAnimationVisible">
+               <img
+                    src="assets/images/loading.gif"
+                    class="animation"
+               />
+                </span>
+            </a>
+          </span>
+        <!--          mp4-->
+        <span *ngIf="(getFileExtension(file.name)=='mp4')">
+              <video controls class="videoPreview"  *ngIf="!fileUploadAnimationVisible" >
+                  <source  [src]="file.url" type="video/mp4">
+              </video>
+              <span class="imagePreview" *ngIf="fileUploadAnimationVisible">
+               <img
+                    src="assets/images/loading.gif"
+                    class="animation"
+               />
+                </span>
+          </span>
+        <!--          odt-->
+        <span *ngIf="(getFileExtension(file.name)=='odt')">
+            <a
+              href="{{ file }}"
+              title="{{ file.name }}"
+              download="{{ file.name }}"
+              data-gallery
+            >
+              <img *ngIf="!fileUploadAnimationVisible"
+                   src="assets/filetypes/odt-file%20.png"
+                   class="imagePreview"
+              />
+              <span class="imagePreview" *ngIf="fileUploadAnimationVisible">
+               <img
+                    src="assets/images/loading.gif"
+                    class="animation"
+               />
+                </span>
+            </a>
+          </span>
+        <!--          pdf-->
+        <span *ngIf="(getFileExtension(file.name)=='pdf')">
+            <a
+              href="{{ file }}"
+              title="{{ file.name }}"
+              download="{{ file.name }}"
+              data-gallery
+            >
+              <img *ngIf="!fileUploadAnimationVisible"
+                   src="assets/filetypes/pdf-file.png"
+                   class="imagePreview"
+              />
+              <span class="imagePreview" *ngIf="fileUploadAnimationVisible">
+               <img
+                    src="assets/images/loading.gif"
+                    class="animation"
+               />
+                </span>
+            </a>
+          </span>
+        <!--          ppt-->
+        <span *ngIf="(getFileExtension(file.name)=='ppt')">
+            <a
+              href="{{ file }}"
+              title="{{ file.name }}"
+              download="{{ file.name }}"
+              data-gallery
+            >
+              <img *ngIf="!fileUploadAnimationVisible"
+                   src="assets/filetypes/ppt-file.png"
+                   class="imagePreview"
+              />
+               <span class="imagePreview" *ngIf="fileUploadAnimationVisible">
+               <img
+                    src="assets/images/loading.gif"
+                    class="animation"
+               />
+               </span>
+            </a>
+          </span>
+        <!--          pptx-->
+        <span *ngIf="(getFileExtension(file.name)=='pptx')">
+            <a
+              href="{{ file }}"
+              title="{{ file.name }}"
+              download="{{ file.name }}"
+              data-gallery
+            >
+              <img *ngIf="!fileUploadAnimationVisible"
+                   src="assets/filetypes/pptx.png"
+                   class="imagePreview"
+              />
+               <span class="imagePreview" *ngIf="fileUploadAnimationVisible">
+               <img
+                    src="assets/images/loading.gif"
+                    class="animation"
+               />
+               </span>
+            </a>
+          </span>
+        <!--          rar-->
+        <span *ngIf="(getFileExtension(file.name)=='rar')">
+            <a
+              href="{{ file }}"
+              title="{{ file.name }}"
+              download="{{ file.name }}"
+              data-gallery
+            >
+              <img *ngIf="!fileUploadAnimationVisible"
+                   src="assets/filetypes/rar-file.png"
+                   class="imagePreview"
+              />
+              <span class="imagePreview"  *ngIf="fileUploadAnimationVisible">
+               <img
+                    src="assets/images/loading.gif"
+                    class="animation"
+               />
+              </span>
+            </a>
+          </span>
+        <!--          tif-->
+        <span *ngIf="(getFileExtension(file.name)=='tif')">
+            <a
+              href="{{ file }}"
+              title="{{ file.name }}"
+              download="{{ file.name }}"
+              data-gallery
+            >
+              <img *ngIf="!fileUploadAnimationVisible"
+                   src="assets/filetypes/tif.png"
+                   class="imagePreview"
+              />
+              <span class="imagePreview" *ngIf="fileUploadAnimationVisible">
+               <img
+                    src="assets/images/loading.gif"
+                    class="animation"
+               />
+              </span>
+            </a>
+          </span>
+        <!--          txt-->
+        <span *ngIf="(getFileExtension(file.name)=='txt')">
+            <a
+              href="{{ file }}"
+              title="{{ file.name }}"
+              download="{{ file.name }}"
+              data-gallery
+            >
+              <img *ngIf="!fileUploadAnimationVisible"
+                   src="assets/filetypes/txt-file%20.png"
+                   class="imagePreview"
+              />
+              <span class="imagePreview" *ngIf="fileUploadAnimationVisible">
+               <img
+                    src="assets/images/loading.gif"
+                    class="animation"
+               />
+                </span>
+            </a>
+          </span>
+        <!--          wav-->
+        <span *ngIf="(getFileExtension(file.name)=='wav')">
+            <a
+              href="{{ file }}"
+              title="{{ file.name }}"
+              download="{{ file.name }}"
+              data-gallery
+            >
+              <img *ngIf="!fileUploadAnimationVisible"
+                   src="assets/filetypes/wav-file.png"
+                   class="imagePreview"
+              />
+              <span class="imagePreview" *ngIf="fileUploadAnimationVisible">
+               <img
+                    src="assets/images/loading.gif"
+                    class="animation"
+               />
+                </span>
+            </a>
+          </span>
+        <!--          word-->
+        <span *ngIf="(getFileExtension(file.name)=='word')">
+            <a
+              href="{{ file }}"
+              title="{{ file.name }}"
+              download="{{ file.name }}"
+              data-gallery
+            >
+              <img *ngIf="!fileUploadAnimationVisible"
+                   src="assets/filetypes/word.png"
+                   class="imagePreview"
+              />
+              <span class="imagePreview" *ngIf="fileUploadAnimationVisible">
+               <img
+                    src="assets/images/loading.gif"
+                    class="animation"
+               />
+                </span>
+            </a>
+          </span>
+        <!--          xlsx-->
+        <span *ngIf="(getFileExtension(file.name)=='xlsx')">
+            <a
+              href="{{ file }}"
+              title="{{ file.name }}"
+              download="{{ file.name }}"
+              data-gallery
+            >
+              <img *ngIf="!fileUploadAnimationVisible"
+                   src="assets/filetypes/xlsx-file.png"
+                   class="imagePreview"
+              />
+              <span class="imagePreview" *ngIf="fileUploadAnimationVisible">
+               <img
+                    src="assets/images/loading.gif"
+                    class="animation"
+               />
+                </span>
+            </a>
+          </span>
+        <!--          zip-->
+        <span *ngIf="(getFileExtension(file.name)=='zip')">
+            <a
+              href="{{ file }}"
+              title="{{ file.name }}"
+              download="{{ file.name }}"
+              data-gallery
+            >
+              <img *ngIf="!fileUploadAnimationVisible"
+                   src="assets/filetypes/zip-file.png"
+                   class="imagePreview"
+              />
+              <span class="imagePreview" *ngIf="fileUploadAnimationVisible">
+               <img
+                    src="assets/images/loading.gif"
+                    class="animation"
+               />
+                </span>
+            </a>
+          </span>
+
+      </td>
+      <td>
+        <p>
+          {{ file.name }}
+        </p>
+      </td>
+      <td>
+        <p>
+          {{ file.size }}
+        </p>
+        <div class="progress">
+          <div class="progress-bar progress-bar-success" style="width:100%;"></div>
+        </div>
+      </td>
+      <td>
+        <button
+          id="cancelButton"
+          class="btn btn-warning"
+          type="button"
+          (click)="removeFromFiles(i)"
+        >
+          <i class="fa-solid fa-ban" id="cancelButtonIcon"></i>
+          <span>Cancel</span>
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</form>

@@ -1,0 +1,45 @@
+<app-accordion
+  panelstyle="panel-orange"
+  [title]="title"
+  [collapsed]="!isActive"
+  [checkMark]="true"
+  [gray]="!isActive"
+>
+  <div class="panel-body" style="border-top:none">
+<!--        <app-inline-tab>-->
+<!--          <app-tab-item title="File Browser">-->
+<!--            <div class="tab-pane">-->
+<!--              <app-file-explorer-tree></app-file-explorer-tree>-->
+<!--            </div>-->
+<!--          </app-tab-item>-->
+<!--          <app-tab-item title="My Documents">-->
+<!--            <div class="tab-pane">-->
+<!--              <my-documents-tree></my-documents-tree>-->
+<!--            </div>-->
+<!--          </app-tab-item>-->
+<!--        </app-inline-tab>-->
+
+
+
+
+
+
+      <div class="btn-group" id="buttonGroup" >
+        <button id="localButton" type="button" class="btn btn-sm" (click)="selectTab('fileBrowser')"  [ngClass]="{'orange' : toggle, 'gray': !toggle}">File Browser</button>
+        <button id="scanButton" type="button" class="btn   btn-sm" (click)="selectTab('myDocuments')"  [ngClass]="{'orange' : !toggle, 'gray': toggle}">My Documents</button>
+      </div>
+
+      <div *ngIf="tabs==='fileBrowser'" id="fileBrowser" >
+          <app-file-explorer-tree></app-file-explorer-tree>
+        </div>
+        <div *ngIf="tabs==='myDocuments'" id="myDocuments">
+          My documents
+          <my-documents-tree></my-documents-tree>
+      </div>
+
+
+    </div>
+
+
+</app-accordion>
+

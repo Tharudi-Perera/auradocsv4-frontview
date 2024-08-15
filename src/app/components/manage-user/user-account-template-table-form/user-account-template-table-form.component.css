@@ -1,0 +1,23 @@
+#cancelSaveButtonGroup{
+  width: fit-content;
+  float: right;
+}
+#cancelButton{
+  margin-right: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+  color: black;
+  font-weight: 400;
+}
+#saveButton{
+  font-weight: 400;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+td{
+  text-align: center;
+}
+#titleDiv{
+  padding-top: 10px;
+  padding-bottom: 10px;
+}

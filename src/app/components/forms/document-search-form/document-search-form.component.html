@@ -1,0 +1,190 @@
+<form class="form-horizontal" [formGroup]="docSearchForm" (submit)="onSubmit()">
+  <div class="form-group">
+    <label class="col-sm-3 control-label ">Any of these words: </label>
+    <div class="col-sm-8">
+      <app-input
+        [type]="'text'"
+        [isRequired]="false"
+        [control]="docSearchForm.get('anyword')"
+        [placeholder]="'Type the important words: Ex tri-color rat terrier'"
+        [inputGroupWidth]="'100%'"
+        [centerPlaceholder]="'centerPlaceholder'"
+      >
+      </app-input>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-3 control-label ">All of these words: </label>
+    <div class="col-sm-8">
+      <app-input
+        [type]="'text'"
+        [isRequired]="false"
+        [control]="docSearchForm.get('allwords')"
+        [placeholder]="'Type the important words: Ex miniature standard'"
+        [inputGroupWidth]="'100%'"
+        [centerPlaceholder]="'centerPlaceholder'"
+      >
+      </app-input>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-3 control-label ">Document Id: </label>
+    <div class="col-sm-8">
+      <div class="input-group">
+        <app-input
+          [type]="'text'"
+          [isRequired]="false"
+          [control]="docSearchForm.get('documentStart')"
+          [placeholder]="'From (1574)'"
+          [inputGroupWidth]="'100%'"
+          [textAlign]="'center'"
+        >
+        </app-input>
+        <!-- <input type="text" class="form-control" /> -->
+        <span class="input-group-addon">to</span>
+        <app-input
+          [type]="'text'"
+          [isRequired]="false"
+          [control]="docSearchForm.get('documentEnd')"
+          [placeholder]="'To (3651)'"
+          [inputGroupWidth]="'100%'"
+          [textAlign]="'center'"
+        >
+        </app-input>
+        <!-- <input type="text" class="form-control" /> -->
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-3 control-label ">Date Range: </label>
+    <div class="col-sm-8">
+      <div class=" input-group" id="datepicker">
+
+        <app-date-input
+          [control]="docSearchForm.get('dateStart')"
+          [class]="'input-small'"
+          [placeholder]="'From (YYYY/MM/DD)'"
+        >
+        </app-date-input>
+        <span class="input-group-addon">to</span>
+        <app-date-input
+          [control]="docSearchForm.get('dateEnd')"
+          [class]="'input-small'"
+          [placeholder]="'From (YYYY/MM/DD)'"
+        >
+        </app-date-input>
+        <!-- <input type="date" class="input-small form-control" name="end" /> -->
+      </div>
+    </div>
+  </div>
+  <hr/>
+  <h5>Then narrow your results by...</h5>
+  <div class="form-group">
+    <label for="selector1" class="col-sm-3 control-label ">Search within</label>
+    <div class="col-sm-8">
+      <select
+        (change)="onTemplateChange($event)"
+        class="form-control"
+        [formControl]="docSearchForm.get('template')"
+        [(ngModel)]="optionValueOfTemplates"
+      >
+        <option disabled selected>
+          -Select Template Option-
+        </option>
+        <option *ngFor="let option of templates" [value]="getKey(option)" [title]="getValue(option)">
+          {{ getValue(option) }}
+        </option>
+      </select>
+
+      <!--        <app-select-->
+      <!--            [isRequired]="true"-->
+      <!--            [control]="docSearchForm.get('template')"-->
+      <!--            [options]="templates"-->
+      <!--          ></app-select>-->
+    </div>
+  </div>
+
+  <div *ngFor="let field of formAttributes" class="form-group" id="form-group-input">
+    <label class="col-sm-3 control-label" for="{{ field.indexFieldName }}">
+      {{ field.indexFieldDisplayAs }}
+    </label>
+    <div class="col-sm-7">
+      <app-input
+        *ngIf="
+          field.indexFieldType !== 'Check-Box' &&
+          field.indexFieldType !== 'Select' &&
+          field.indexFieldType !== 'Text-Area' &&
+          field.indexFieldType !== 'Date'
+        "
+        [control]="docSearchForm.get('templateForm').get([field.indexFieldName])"
+        [id]="field.indexFieldName"
+        [name]="field.indexFieldDisplayAs"
+        [type]="'text'"
+        [value]="field.indexFieldDefaultValue"
+        [inputGroupWidth]="'100%'"
+      ></app-input>
+    </div>
+
+    <div *ngIf="field.indexFieldType === 'Check-Box'" class="checkbox-div col-sm-7" style="display: flex; justify-content: center">
+      <app-checkbox [control]="docSearchForm.get('templateForm').get([field.indexFieldName])"
+                    id="app-checkbox" [class]="form-control"
+      ></app-checkbox>
+    </div>
+
+    <div *ngIf="field.indexFieldType === 'Select'" class="col-sm-7">
+      <app-select
+        [showPredefinedDataAsValue]="true"
+        [control]="docSearchForm.get('templateForm').get([field.indexFieldName])"
+        [options]="field.pd_data"
+      ></app-select>
+    </div>
+    <div *ngIf="field.indexFieldType === 'Text-Area'" class=" col-sm-7">
+      <app-textarea
+        [control]="docSearchForm.get('templateForm').get([field.indexFieldName])"
+      ></app-textarea>
+    </div>
+
+    <div *ngIf="field.indexFieldType === 'Date'" class=" col-sm-7" >
+      <app-date-input
+        [placeholder]="'mm/dd/yyyy'"
+        [control]="docSearchForm.get('templateForm').get([field.indexFieldName])"
+      ></app-date-input>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="checkbox" class="col-sm-3 control-label ">Only within</label>
+    <div class="col-sm-8" >
+      <div class="checkbox block ">
+        <label>
+          <app-checkbox
+            id="isPrivateDocument"
+            [isRequired]="false"
+            [control]="docSearchForm.get('isPrivateDocument')"
+          ></app-checkbox>
+          <!-- <input type="checkbox" />  -->
+          Private Documents
+        </label>
+      </div>
+      <div class="checkbox block">
+        <label>
+          <app-checkbox
+            id="isInTrash"
+            [isRequired]="false"
+            [control]="docSearchForm.get('isInTrash')"
+          ></app-checkbox>
+          <!-- <input type="checkbox" />  -->
+          Only in trash (Deleted Documents)
+        </label>
+      </div>
+    </div>
+  </div>
+  <hr/>
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-8">
+      <div class="btn-toolbar">
+        <button class="btn-default btn" type="reset">RESET</button>
+        <button class="btn-primary btn" type="submit">SEARCH</button>
+      </div>
+    </div>
+  </div>
+</form>

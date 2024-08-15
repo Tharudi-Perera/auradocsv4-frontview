@@ -1,0 +1,18 @@
+<app-admin-panel-buttons></app-admin-panel-buttons>
+<div class="panel">
+  <div class="panel-body">
+    <app-user-account
+      [isActive]="activeElement === 'user-account'"
+      (click)="changesActiveAccordion('user-account')">
+    </app-user-account>
+    <app-security-group
+      [isActive]="activeElement === 'security-group'"
+      (click)="changesActiveAccordion('security-group')">
+    </app-security-group>
+    <app-user-group
+      [isActive]="activeElement === 'user-group'"
+      (click)="changesActiveAccordion('user-group')">
+    </app-user-group>
+  </div>
+</div>
+

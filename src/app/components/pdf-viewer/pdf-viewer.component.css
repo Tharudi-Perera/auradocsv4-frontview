@@ -1,0 +1,17 @@
+.pdf-iframe {
+  border: 1px black;
+}
+.wrapper {
+  background-color: blanchedalmond;
+  border: 1px darkkhaki;
+  position: relative;
+  right: auto;
+  top: auto;
+  height: 500px;
+}
+.content {
+  text-align: center;
+  padding: 100px;
+}
+
+

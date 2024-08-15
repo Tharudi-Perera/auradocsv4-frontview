@@ -1,0 +1,18 @@
+#emptyDiv{
+  height: 210px;
+  overflow: scroll;
+}
+
+#submitButton i{
+  color: white;
+  font-size: 15px;
+  padding-left:5px !important;
+  padding-right: 5px !important;
+
+}
+#comments-div{
+  display: flex;
+}
+#commentInputDiv{
+  width: 100%;
+}

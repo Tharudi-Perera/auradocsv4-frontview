@@ -1,0 +1,42 @@
+<form class="form-horizontal">
+  <div class="form-group" [style.margin-bottom]="'0px'" [style.margin-top]="'0px'">
+    <div class="col-sm-12">
+      <app-table [data]="fileMetaData" [captionClass]="'captionClass'"
+                 [isTableBoarded]="false" [isStriped]="false">
+        <tr tabledata>
+          <td [style.border-top]="'none'">Title</td>
+          <td [style.border-top]="'none'">{{ fileMetaData[0].title}}</td>
+        </tr>
+        <tr tabledata>
+          <td>Author</td>
+          <td>{{fileMetaData[0].author}}</td>
+        </tr>
+        <tr tabledata>
+          <td>Creator</td>
+          <td>{{fileMetaData[0].creator}}</td>
+        </tr>
+        <tr tabledata>
+          <td>Producer</td>
+          <td>{{fileMetaData[0].producer}}</td>
+        </tr>
+        <tr tabledata>
+          <td>Created Date</td>
+          <td>{{fileMetaData[0].createdDate}}</td>
+        </tr>
+        <tr tabledata>
+          <td>Modified Date</td>
+          <td>{{fileMetaData[0].modifiedDate}}</td>
+        </tr>
+        <tr tabledata>
+          <td>Size</td>
+          <td>{{fileMetaData[0].size}}</td>
+        </tr>
+      </app-table>
+    </div>
+    <div class="col-sm-12">
+      <div class="">
+        <button class="btn btn-default" id="cancelButton" (click)="closeModal()">Cancel</button>
+      </div>
+    </div>
+  </div>
+</form>

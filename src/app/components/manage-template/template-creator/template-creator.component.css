@@ -1,0 +1,27 @@
+#noOfRecordsAndSearchDiv select{
+  width: 80px;
+  margin-right: 10px;
+}
+#noOfRecordsAndSearchDiv{
+  display:flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+#noOfRecordsAndSearchDiv select,
+#noOfRecordsAndSearchDiv input {
+  height: 30px;
+}
+#status{
+  color: rgb(0,128,0);
+  width: 70px;
+}
+
+#editButtonColumn > .btn-group{
+  float: right;
+}
+#editButtonColumn > .btn-group > button{
+  font-weight:400;
+}
+#newTemplateBtnId{
+  font-weight:400;
+}

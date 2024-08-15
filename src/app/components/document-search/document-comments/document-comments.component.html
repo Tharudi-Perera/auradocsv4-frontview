@@ -1,0 +1,18 @@
+<app-accordion panelstyle="panel-orange"
+               [innerHTML]="documentCommentsAccordion"
+               [collapsed]="!isActive"
+               [checkMark]="false"
+               [gray]="!isActive"
+               id="document-comments-accordion"
+>
+<form (ngSubmit)="onCommentsFormSubmit()" [formGroup]="commentsForm" action="">
+  <div id="emptyDiv"></div>
+  <div id="comments-div">
+    <app-input [control]="commentsForm.get('comments')" [inputGroupWidth]="'100%'" id="commentInputDiv"
+               [placeholder]="'Enter your message here'" [isRequired]="false"></app-input>
+    <span class="btn btn-primary" type="submit" id="submitButton">
+        <i class="fa fa-comments"></i>
+    </span>
+  </div>
+</form>
+</app-accordion>

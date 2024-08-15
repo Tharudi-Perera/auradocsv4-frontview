@@ -1,0 +1,40 @@
+<div class="table-responsive" [style.max-height]="maximumHeight" >
+  <table id="table"
+    class="table"
+    [ngClass]="{
+      'table-bordered': isTableBoarded,
+      'table-striped': isStriped,
+      'table-hover': hoverEnabled,
+      'table-condensed': tableCondensed
+    }"
+    [style.margin-bottom]="marginBottomOfTable"
+  >
+    <thead>
+      <tr>
+        <th class="{{headerClass}}"   *ngFor="let heading of headings">{{ heading }}</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="data.length > 0 ; else notabledata">
+      <ng-content select="[tabledata]"></ng-content>
+    </tbody>
+    <ng-template #notabledata>
+      <tbody>
+        <tr *ngIf="!accessRequest">
+          <td [colSpan]="headings.length" class="no-data-available">
+            No data available in table
+          </td>
+        </tr>
+        <tr *ngIf="accessRequest">
+          <td [colSpan]="headings.length" class="no-data-available">
+            No Request for Document Rights!
+          </td>
+        </tr>
+      </tbody>
+    </ng-template>
+    <caption class="{{captionClass}}">
+      {{
+        caption
+      }}
+    </caption>
+  </table>
+</div>

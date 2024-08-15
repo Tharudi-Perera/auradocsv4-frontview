@@ -1,0 +1,105 @@
+<form (submit)="onSubmit()" [formGroup]="documentSearchViewForm" class="form-horizontal">
+  <div class="">
+    <div class="">
+      <div id="selectDocumentDiv">
+        <app-select [control]="documentSearchViewForm.get('selectDocument')" [isRequired]="false"
+                    [options]="document"></app-select>
+        <span id="backwardArrowParent" (click)="onClickArrow(-1)"><i class="fa fa-step-backward fa-lg" id="backwardArrow"></i></span>
+        <select
+          (change)="onDocumentNoChange($event)"
+          [formControl]="documentSearchViewForm.get('documentNo')"
+          [attr.title]="optionValueOfDocumentNo"
+        >
+          <option disabled >
+            -Select Option-
+          </option>
+          <option *ngFor="let val of documentNo" [value]="val" [title]="val"  [selected]="val==id">
+            {{ val }}
+          </option>
+        </select>
+        <span id="forwardArrowParent"(click)="onClickArrow(+1)"><i class="fa fa-step-forward fa-lg" id="forwardArrow"></i></span>
+      </div>
+      <app-edit-details
+        *ngIf="editDocumentDetailsButtonClicked"
+        [documentName]="fileName"
+        (closeEditDetailsAccordion)="getStatusOfShowEditDetailsAccordion($event)"
+        [templateId]="templateId"
+      >
+      </app-edit-details>
+      <div *ngIf="!editDocumentDetailsButtonClicked">
+        <app-document-details-groups
+          (sendTemplateName)="getTemplateName($event)"
+          (sendFileName)="getFileName($event)"
+          (click)="changesActiveAccordion('document-details-groups')"
+          [isActive]="activeElement === 'document-details-groups'"
+          [id]="id"
+          [isViewSelectedOrViewAll]="isViewSelectedOrViewAll"
+          (showEditDetailsAccordion)="getStatusOfShowEditDetailsAccordion($event)"
+          [base64Src]="base64Src"
+          (sendTemplateId)="getTemplateId($event)"
+        >
+        </app-document-details-groups>
+        <app-document-versions
+          (click)="changesActiveAccordion('document-versions')"
+          [isActive]="activeElement === 'document-versions'">
+        </app-document-versions>
+        <app-document-share
+          (click)="changesActiveAccordion('document-share')"
+          [isActive]="activeElement === 'document-share'"
+          [templateName]="templateName"
+          [id]="id"
+          [isViewSelectedOrViewAll]="isViewSelectedOrViewAll"
+        >
+        </app-document-share>
+        <app-document-comments
+          (click)="changesActiveAccordion('document-comments')"
+          [isActive]="activeElement === 'document-comments'">
+        </app-document-comments>
+        <app-document-tags
+          (click)="changesActiveAccordion('document-tags')"
+          [isActive]="activeElement === 'document-tags'">
+        </app-document-tags>
+        <app-document-file-metadata
+          (click)="changesActiveAccordion('document-file-metadata')"
+          [isActive]="activeElement === 'document-file-metadata'"
+          [id]="id"
+          [isViewSelectedOrViewAll]="isViewSelectedOrViewAll"
+        >
+        </app-document-file-metadata>
+        <app-document-audit-trail
+          (click)="changesActiveAccordion('document-audit-trail')"
+          [isActive]="activeElement === 'document-audit-trail'"
+          [id]="id"
+          [isViewSelectedOrViewAll]="isViewSelectedOrViewAll">
+        </app-document-audit-trail>
+        <app-document-workflow
+          (click)="changesActiveAccordion('document-workflow')"
+          [isActive]="activeElement === 'document-workflow'">
+        </app-document-workflow>
+        <app-document-request
+          (click)="changesActiveAccordion('document-request')"
+          [isActive]="activeElement === 'document-request'"
+          [id]="id"
+        >
+        </app-document-request>
+        <app-document-blockchain
+          (click)="changesActiveAccordion('document-blockchain')"
+          [isActive]="activeElement === 'document-blockchain'">
+        </app-document-blockchain>
+        <app-document-private-folder-tree
+          (click)="changesActiveAccordion('document-private-folder-tree')"
+          [isActive]="activeElement === 'document-private-folder-tree'"
+        >
+        </app-document-private-folder-tree>
+        <app-document-todo-list
+          (click)="changesActiveAccordion('document-todo-list')"
+          [isActive]="activeElement === 'document-todo-list'">
+        </app-document-todo-list>
+        <app-document-add-signature
+          (click)="changesActiveAccordion('document-add-signature')"
+          [isActive]="activeElement === 'document-add-signature'">
+        </app-document-add-signature>
+      </div>
+    </div>
+  </div>
+</form>

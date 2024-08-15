@@ -1,0 +1,19 @@
+#cancelOkButtonGroup{
+  width: fit-content;
+  float: right;
+}
+#cancelButton{
+  margin-right: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+  color: black;
+  font-weight: 400;
+}
+#okButton{
+  font-weight: 400;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.firstColumn{
+  width: 30%;
+}

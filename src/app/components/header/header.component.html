@@ -1,0 +1,275 @@
+<header class="navbar navbar-inverse navbar-fixed-top" role="banner" >
+  <div>
+  <a
+    id="leftmenu-trigger"
+    class="tooltips "
+    data-toggle="tooltip"
+    data-placement="right"
+    title="Toggle Sidebar"
+    (click)="toggleSideBar()"
+  >
+    <i class="fa-solid fa-bars-staggered"></i>
+  </a>
+
+  <div class="navbar-header pull-left" (click)="auraDocsLogoClicked()">
+    <a class="navbar-brand" routerLink="/home" >Auradocs V4</a>
+  </div>
+  <div class="search-area">
+    <input type="text" class="search-input" id="searchInput" #searchInput (keydown)="onKeydown($event)"/>
+    <div class="{{ searchclass }}" style="padding-right: 4px">
+      <a routerLink="/search" id="searchButton" class="btn " (click)="onSearch()" >Search</a>
+      <a
+        class="btn btn-info dropdown-toggle"
+        data-toggle="dropdown"
+        (click)="toggleSearch()"
+      >
+        <i class="icon-2x fa fa-caret-down" style="font-size: 9px; color: white"> </i>
+      </a>
+    </div>
+    <a routerLink="/upload">
+      <button class="btn btn-success btn-label">
+        <i class="fa fa-upload" style="color: white"></i> Upload
+      </button>
+    </a>
+    <a routerLink="/file-explorer">
+      <button class="btn btn-primary btn-label" style="margin-left: 4px">
+        <i class="fa-solid fa-folder" style="color: white"></i> File Explorer
+      </button>
+    </a>
+
+  </div>
+  <ul class="nav navbar-nav pull-right toolbar  " style="display: flex ; justify-content: center;align-items: center" >
+
+    <!--     Notification-->
+    <li class="{{ notifKlass }}" (click)="toggleNotificationView()">
+      <a class="hasnotifications dropdown-toggle hand-cursor" title="Notification ">
+        <i class="fa-solid fa-bell" ></i><span class="badge">0</span></a
+      >
+      <ul class="dropdown-menu notifications arrow">
+        <li class="dd-header">
+          <span >You have 0 new notification(s)</span>
+          <span (click)="markAllSeen()" *ngIf="notificationsVisible"><a class="hand-cursor">Mark all Seen</a></span>
+        </li>
+<!--        <div class="scrollthis" *ngIf="notificationsVisible">-->
+<!--          <li>-->
+<!--            <a href="#" class="notification-user active">-->
+<!--              <span class="time">4 mins</span>-->
+<!--              <i class="fa fa-user"></i>-->
+<!--              <span class="msg">New user Registered. </span>-->
+<!--            </a>-->
+<!--          </li>-->
+<!--          <li>-->
+<!--            <a href="#" class="notification-danger active">-->
+<!--              <span class="time">20 mins</span>-->
+<!--              <i class="fa fa-bolt"></i>-->
+<!--              <span class="msg">CPU at 92% on server#3! </span>-->
+<!--            </a>-->
+<!--          </li>-->
+<!--          <li>-->
+<!--            <a href="#" class="notification-success active">-->
+<!--              <span class="time">1 hr</span>-->
+<!--              <i class="fa fa-check"></i>-->
+<!--              <span class="msg">Server#1 is live. </span>-->
+<!--            </a>-->
+<!--          </li>-->
+<!--          <li>-->
+<!--            <a href="#" class="notification-warning">-->
+<!--              <span class="time">2 hrs</span>-->
+<!--              <i class="fa fa-exclamation-triangle"></i>-->
+<!--              <span class="msg">Database overloaded. </span>-->
+<!--            </a>-->
+<!--          </li>-->
+<!--          <li>-->
+<!--            <a href="#" class="notification-order">-->
+<!--              <span class="time">10 hrs</span>-->
+<!--              <i class="fa fa-shopping-cart"></i>-->
+<!--              <span class="msg">New order received. </span>-->
+<!--            </a>-->
+<!--          </li>-->
+<!--          <li>-->
+<!--            <a href="#" class="notification-failure">-->
+<!--              <span class="time">12 hrs</span>-->
+<!--              <i class="fa fa-times-circle"></i>-->
+<!--              <span class="msg">Application error!</span>-->
+<!--            </a>-->
+<!--          </li>-->
+<!--          <li>-->
+<!--            <a href="#" class="notification-fix">-->
+<!--              <span class="time">12 hrs</span>-->
+<!--              <i class="fa fa-wrench"></i>-->
+<!--              <span class="msg">Installation Succeeded.</span>-->
+<!--            </a>-->
+<!--          </li>-->
+<!--          <li>-->
+<!--            <a href="#" class="notification-success">-->
+<!--              <span class="time">18 hrs</span>-->
+<!--              <i class="fa fa-check"></i>-->
+<!--              <span class="msg">Account Created. </span>-->
+<!--            </a>-->
+<!--          </li>-->
+<!--        </div>-->
+        <li class="dd-footer" (click)="viewAllNotifications()"><a class="hand-cursor">View All Notifications</a></li>
+      </ul>
+    </li>
+    <!--    messages-->
+    <li class="{{ messageKlass }}" (click)="toggleMessageView()">
+      <a class="hasnotifications dropdown-toggle hand-cursor" title="Messages">
+        <i class="fa-solid fa-envelope"></i>
+        <span class="badge">0</span></a
+      >
+      <ul class="dropdown-menu messages arrow">
+        <li class="dd-header">
+          <span >You have 0 new message(s)</span>
+          <span (click)="markAllRead()" *ngIf="messagesVisibility"><a class="hand-cursor">Mark all Read</a></span>
+        </li>
+<!--        <div class="scrollthis" *ngIf="messagesVisibility">-->
+<!--          <li>-->
+<!--            <a href="#" class="active">-->
+<!--              <span class="time">6 mins</span>-->
+<!--              <img src="assets/demo/avatar/doyle.png" alt="avatar"/>-->
+<!--              <div>-->
+<!--                <span class="name">Alan Doyle</span-->
+<!--                ><span class="msg">Please mail me the files by tonight.</span>-->
+<!--              </div>-->
+<!--            </a>-->
+<!--          </li>-->
+<!--          <li>-->
+<!--            <a href="#">-->
+<!--              <span class="time">12 mins</span>-->
+<!--              <img src="assets/demo/avatar/paton.png" alt="avatar"/>-->
+<!--              <div>-->
+<!--                <span class="name">Polly Paton</span-->
+<!--                ><span class="msg"-->
+<!--              >Uploaded all the files to server. Take a look.</span-->
+<!--              >-->
+<!--              </div>-->
+<!--            </a>-->
+<!--          </li>-->
+<!--          <li>-->
+<!--            <a href="#">-->
+<!--              <span class="time">9 hrs</span>-->
+<!--              <img src="assets/demo/avatar/corbett.png" alt="avatar"/>-->
+<!--              <div>-->
+<!--                <span class="name">Simon Corbett</span-->
+<!--                ><span class="msg">I am signing off for today.</span>-->
+<!--              </div>-->
+<!--            </a>-->
+<!--          </li>-->
+<!--          <li>-->
+<!--            <a href="#">-->
+<!--              <span class="time">2 days</span>-->
+<!--              <img src="assets/demo/avatar/tennant.png" alt="avatar"/>-->
+<!--              <div>-->
+<!--                <span class="name">David Tennant</span-->
+<!--                ><span class="msg">How are you doing?</span>-->
+<!--              </div>-->
+<!--            </a>-->
+<!--          </li>-->
+<!--          <li>-->
+<!--            <a href="#">-->
+<!--              <span class="time">6 mins</span>-->
+<!--              <img src="assets/demo/avatar/doyle.png" alt="avatar"/>-->
+<!--              <div>-->
+<!--                <span class="name">Alan Doyle</span-->
+<!--                ><span class="msg">Please mail me the files by tonight.</span>-->
+<!--              </div>-->
+<!--            </a>-->
+<!--          </li>-->
+<!--          <li>-->
+<!--            <a href="#">-->
+<!--              <span class="time">12 mins</span>-->
+<!--              <img src="assets/demo/avatar/paton.png" alt="avatar"/>-->
+<!--              <div>-->
+<!--                <span class="name">Polly Paton</span-->
+<!--                ><span class="msg"-->
+<!--              >Uploaded all the files to server. Take a look.</span-->
+<!--              >-->
+<!--              </div>-->
+<!--            </a>-->
+<!--          </li>-->
+<!--        </div>-->
+        <li class="dd-footer" (click)="viewAllMessages()"><a class="hand-cursor">View All Messages</a></li>
+      </ul>
+    </li>
+    <!--    star-->
+    <li>
+      <a class="hand-cursor" title="Favourite">
+        <i class="fa  fa-star icon-large gray_font"></i>
+      </a>
+    </li>
+    <!--    cart-->
+    <li>
+      <a class="hand-cursor" title="Document Cart">
+        <i class="fa fa-shopping-cart gray_font"><span class="badge" id="cartCountId" style="display: none;">0</span></i>
+      </a>
+    </li>
+    <!--     profile-->
+    <li class="{{ klass }}" (click)="toggleProfileView()">
+      <a class="dropdown-toggle username hand-cursor" data-toggle="dropdown" title="{{name}}" >
+        <i class="fa-solid fa-user"></i>
+      </a>
+      <ul class="dropdown-menu userinfo arrow">
+        <li class="username">
+          <a>
+            <div class="pull-left"><i class="fa-solid fa-user fa-2xl"></i></div>
+            <div class="pull-right">
+              Logged in as <span>{{ username }}</span>
+            </div>
+          </a>
+        </li>
+        <li class="userlinks">
+          <ul class="dropdown-menu">
+            <li (click)="moveToProfilePage()">
+              <a class="profile" >Edit Profile <i class="fa-sharp fa-solid fa-pen"></i></a>
+            </li>
+            <li>
+              <a class="profile">Help <i class="fa-sharp fa-solid fa-question-circle"></i></a>
+            </li>
+            <li class="divider"></li>
+            <li>
+              <a class="text-right logout" (click)="logout()">Sign Out</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <!--    language icon-->
+    <li class="{{ languageKlass }}" (click)="toggleLanguageView()">
+      <a class="dropdown-toggle username hand-cursor" data-toggle="dropdown" title="Language">
+        <i class="fa  fa-language fa-lg icon-large gray_font"></i>
+      </a>
+
+      <ul class="dropdown-menu arrow">
+        <li class="language">
+          <a  onclick="">
+            සිංහල
+            <i class="pull-right">
+              <img src="../../../assets/language/sinhala.svg" style="width: 20px; height: 15px;">
+            </i>
+          </a>
+        </li>
+        <li class="language">
+          <a  onclick="">
+            தமிழ்
+            <i class="pull-right">
+              <img src="../../../assets/language/tamil.svg" style="width: 20px; height: 15px;">
+            </i>
+          </a>
+        </li>
+        <li class="language">
+          <a  onclick="">
+            English
+            <i class="pull-right">
+              <img src="../../../assets/language/english.svg" style="width: 20px; height: 15px;">
+            </i>
+          </a>
+        </li>
+
+      </ul>
+
+    </li>
+
+
+  </ul>
+  </div>
+</header>

@@ -1,0 +1,61 @@
+#addNoteDiv{
+  background-color: #fdfbbc;
+}
+
+#titleDiv{
+  padding-left: 3px;
+  padding-right: 3px;
+}
+#textAreaDiv{
+  padding: 3px;
+}
+#colorPlate{
+  display: flex;
+  gap: 5px;
+  height: 30px;
+  padding: 5px;
+}
+
+#colorPlate div{
+  height: 10px;
+  width: 10px;
+}
+#yellowDiv{
+  background-color: #fdfbbc;
+  border: 1px solid #DEDC65;
+}
+#blueDiv{
+  background-color:#A6E3FC;
+  border: 1px solid #75C5E7;;
+}
+#greenDiv{
+  background-color: #A5F88B;
+  border: 1px solid #98E775;
+}
+#redDiv{
+  background-color: #ffa07a;
+  border: 1px solid red;
+}
+#submitButtonBarDiv{
+  padding: 3px;
+}
+#submitButtonBarDiv button{
+  font-size: 12px;
+  font-weight: normal;
+}
+
+#saveButton{
+  margin-right: 5px;
+}
+.btn{
+  padding: 0px 20px !important;
+}
+h5{
+  margin-top: 8px !important;
+  margin-bottom: 5px !important;
+}
+#addSign img{
+  height: 50px;
+  padding-right: 25px;
+  padding-right: 5px;
+}

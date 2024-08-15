@@ -1,0 +1,44 @@
+<ngx-extended-pdf-viewer
+  #pdfViewer
+  *ngIf="pdfLoaded === true; else pdfLoadFail"
+  [base64Src]="base64"
+  [useBrowserLocale]="true"
+  [textLayer]="true"
+  [showHandToolButton]="true"
+  [showPresentationModeButton]="true"
+  [showDownloadButton]="false"
+  backgroundColor="#4d4d4d"
+  [showFindButton]="true"
+  [height]="'90vh'"
+  [useBrowserLocale]="true"
+  [handTool]="true"
+  [showHandToolButton]="true"
+  (pageRendered)="onPageRendered()"
+  [(page)]="page"
+  (pdfLoadingFailed)="onPdfLoadFail($event)"
+  (pdfLoaded)="onPdfLoaded()"
+  [enablePrint]="false"
+  [showOpenFileButton]="false"
+  [showTextEditor]="false"
+  [showDrawEditor]="false"
+  [theme]="'dark'"
+
+  [showPagingButtons]="true"
+>
+</ngx-extended-pdf-viewer>
+
+<ng-template class="pdf-iframe" #pdfLoadFail>
+  <div class="wrapper">
+    <div class="content">
+      <h4>Invalid PDF Structure</h4>
+      <img src="images/loading copy.gif" alt="No preview Available" />
+      <p>
+        <a href="https://auradot.auradocs.com" target="_blank">
+          Please click here to open the document in its' associated application
+          locally.
+        </a>
+      </p>
+    </div>
+  </div>
+</ng-template>
+

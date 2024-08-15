@@ -1,0 +1,10 @@
+<div class="{{cardclass}}" >
+  <div class="panel-heading"  [class.headerGray]="gray" [style.height]="headerHeight" ><h4>{{title}}</h4><span id="innerHTMlSpan" [innerHTML]="innerHTML"></span></div>
+  <div class="panel-body"
+       [style.min-height]="minHeight"
+       [ngClass]="carousalPanelBodyClass"
+
+  >
+    <ng-content></ng-content>
+  </div>
+</div>

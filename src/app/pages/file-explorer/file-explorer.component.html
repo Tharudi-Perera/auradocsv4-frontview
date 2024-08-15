@@ -1,0 +1,16 @@
+<app-document-cart
+  [isActive]="activeElement === 'doc-cart'"
+  (click)="changesActiveAccordion('doc-cart')"
+></app-document-cart>
+<app-favourites
+  [isActive]="activeElement === 'fav'"
+  (click)="changesActiveAccordion('fav')"
+></app-favourites>
+<app-file
+  [isActive]="activeElement === 'file'"
+  (click)="changesActiveAccordion('file')"
+></app-file>
+<app-view
+  [isActive]="activeElement === 'view'"
+  (click)="changesActiveAccordion('view')"
+></app-view>

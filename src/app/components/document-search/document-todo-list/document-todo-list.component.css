@@ -1,0 +1,24 @@
+#parentDiv{
+  height: 200px;
+}
+
+button{
+  font-weight: 400;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: #595f69;
+  color: white !important;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+#addTaskButton{
+  float: left;
+}
+#seeAllTasksButton{
+  float: right;
+}
+#addTaskButton i,
+#seeAllTasksButton i{
+  font-size: 15px;
+  color: white;
+}

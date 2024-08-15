@@ -1,0 +1,138 @@
+<form (submit)="onSubmit()" [formGroup]="docAddUserForm" class="form-horizontal">
+  <div class="form-group">
+    <div class="col-sm-12 ">
+      <div class="input-group inputGroupClass">
+        <span class="col-sm-6" style="padding-left: 0px">
+          <app-input
+            [control]="docAddUserForm.get('emailAddress')"
+            [inputGroupWidth]="'100%'"
+            [isRequired]="false"
+            [placeholder]="'Email Address'"
+            [type]="'text'"
+          >
+          </app-input>
+        </span>
+        <span class="col-sm-6" style="padding-right: 0px">
+          <app-input
+            [control]="docAddUserForm.get('fullName')"
+            [inputGroupWidth]="'100%'"
+            [isRequired]="false"
+            [placeholder]="'Full Name'"
+            [type]="'text'"
+          >
+          </app-input>
+        </span>
+      </div>
+
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-12 ">
+      <div class="input-group inputGroupClass">
+        <span class="col-sm-6" style="padding-left: 0px">
+          <app-input
+            [control]="docAddUserForm.get('userId')"
+            [inputGroupWidth]="'100%'"
+            [isRequired]="false"
+            [placeholder]="'User Id'"
+            [type]="'text'"
+          >
+          </app-input>
+        </span>
+        <span class="col-sm-6" style="padding-right: 0px">
+          <app-input
+            [control]="docAddUserForm.get('mobileNo')"
+            [inputGroupWidth]="'100%'"
+            [isRequired]="false"
+            [placeholder]="'Mobile Number'"
+            [type]="'text'"
+          >
+          </app-input>
+        </span>
+      </div>
+
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-12 ">
+      <div class="input-group inputGroupClass">
+        <span class="col-sm-6" style="padding-left: 0px">
+
+          <app-input
+            [control]="docAddUserForm.get('password')"
+            [inputGroupWidth]="'100%'"
+            [isRequired]="false"
+            [placeholder]="'Password'"
+            [type]="'text'"
+          >
+          </app-input>
+        </span>
+        <span class="col-sm-6" style="padding-right: 0px">
+          <app-input
+            [control]="docAddUserForm.get('rePassword')"
+            [inputGroupWidth]="'100%'"
+            [isRequired]="false"
+            [placeholder]="'RePassword'"
+            [type]="'text'"
+          >
+          </app-input>
+        </span>
+      </div>
+
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-12 ">
+      <div class="input-group inputGroupClass">
+        <span>
+          <app-select
+            [control]="docAddUserForm.get('template')"
+            [isRequired]="true"
+            [options]="templates"
+          ></app-select>
+          </span>
+      </div>
+
+    </div>
+  </div>
+  <div [style.margin-bottom]="'0px'" class="form-group">
+    <div class="col-sm-12 ">
+      <div class="input-group inputGroupClass">
+        <app-accordion
+                       [collapsed]="collapsedValFirstAccordion" [gray]="collapsedValFirstAccordion" (collapsedVal)="collapseValueFirstAccordion($event)"
+                       [title]="firstAccordionTitle">
+          <app-table [data]="firstAccordionData" [isTableBoarded]="true" [maximumHeight]="'250px'" [marginBottomOfTable]="'0px'">
+            <tr *ngFor="let data of firstAccordionData" tabledata>
+              <td class="firstColumn">{{data}}</td>
+              <td>
+                <app-checkbox [control]="docAddUserForm.get([data])" [isRequired]="false"></app-checkbox>
+              </td>
+            </tr>
+          </app-table>
+        </app-accordion>
+        <app-accordion  (collapsedVal)="collapseValueSecondAccordion($event)"
+                       [collapsed]="collapsedValSecondAccordion" [gray]="collapsedValSecondAccordion"
+                       [title]="secondAccordionTitle">
+          <app-table [data]="secondAccordionData" [isTableBoarded]="true" [maximumHeight]="'250px'" [marginBottomOfTable]="'0px'">
+            <tr *ngFor="let data of secondAccordionData" tabledata>
+              <td class="firstColumn">{{data}}</td>
+              <td>
+                <app-checkbox [control]="docAddUserForm.get([data])"
+                              [isRequired]="false"></app-checkbox>
+              </td>
+            </tr>
+          </app-table>
+        </app-accordion>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-6">
+      <div class="btn-toolbar" id="buttonGroup">
+        <button (click)="closeModal()" class="btn-default btn" id="cancelButton">Cancel</button>
+        <button class="btn-primary btn" id="saveButton" type="submit">Save Changes</button>
+      </div>
+    </div>
+  </div>
+</form>

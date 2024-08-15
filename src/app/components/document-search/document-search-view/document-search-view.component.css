@@ -1,0 +1,98 @@
+
+.new-panel-body{
+  margin-top: 10px;
+}
+#fullViewButton{
+  position: absolute;
+  right: 30px;
+  height: 34px;
+  background-color: #ff7b08;
+  border: 1px solid black;
+  border-radius: 5px;
+  color: white;
+}
+.viewFormSideBarButton{
+  height: 34px;
+  width: 34px;
+  margin-bottom: 5px;
+  background-color: #595f69;
+  border: 1px solid black;
+  border-radius: 5px;
+  color: white;
+}
+#sideBarButtonBar{
+  position: absolute;
+  right: 23px;
+  top: 189px;
+}
+#sideBarButtonBar>button{
+  display: block;
+}
+#sideBarButtonBar>button:hover{
+  background-color: #ff7b08 !important;
+}
+#pdf-viewer{
+  padding-left: 0;
+}
+#askAccessRequestDiv{
+  border: 1px solid black;
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#fileRightsRequestDiv{
+  border: 1px solid black;
+  height: 70vh;
+  display: flex;
+  justify-content: center;
+}
+#askAccessRequestDiv img{
+  width: 100px;
+  height:100px;
+}
+#redErrorMessage{
+  color:red;
+  font-size: 24px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+#cancelButton {
+  margin-right: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+  color: white;
+  background-color: #595f69;
+  font-weight: 400;
+}
+#cancelSendButtonGroup {
+  margin-top: 10px;
+  width: fit-content;
+  float: right;
+}
+#sendButton{
+  font-weight: 400;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: blue;
+  color: white;
+}
+#fileRightsRequestDiv>div{
+  width: fit-content;
+  margin-top: 40px;
+}
+#fileRightsRequestTitle{
+  font-size: 20px;
+  font-weight: bold;
+}
+#originalFileName{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+#message-body{
+  width: 400px;
+}
+#document-search-view-form{
+  padding-right: 0px;
+}

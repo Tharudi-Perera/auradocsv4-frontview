@@ -1,0 +1,96 @@
+<form [formGroup]="userProfileDetailForm" class="form-horizontal row-border" style="border-radius: 0px">
+
+  <div class="form-group">
+    <label class="col-sm-3 control-label">Name</label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" formControlName="userName" [disabled]="true" />
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-3 control-label">Mobile number</label>
+    <div class="col-sm-6">
+      <input type="text" inputmode="number" class="form-control" value="+94" placeholder="Enter your mobile number"
+      formControlName="mobileNo"
+             [ngClass]="{ 'invalid': !validatePhoneNumber() }"
+      />
+
+
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-3 control-label">Email Address</label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control"
+             formControlName="email"
+                   [ngClass]="{ 'invalid': !validateEmail() }"
+      />
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-3 control-label">Upload Image</label>
+    <div class="col-sm-6">
+      <input type="file" accept=".png,.jpg,.jpeg" name="signatureImg" class="form-control" id="signatureImg" placeholder="Click here to upload">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-3 control-label">Gender</label>
+    <div class="col-sm-6">
+      <select class="form-control" id="source" (change)="selectGender(gender.value)" formControlName="gender" #gender id="gender" [(ngModel)]="selectedOption">
+        <option value="Select" disabled>Select</option>
+        <option value="MALE">Male</option>
+        <option value="FEMALE">Female</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-3 control-label">Change password</label>
+    <div class="col-sm-4">
+
+        <input type="checkbox" id="checkbox" value="true" formControlName="checkbox"
+        (change)="passwordView()"
+        />
+    </div>
+  </div>
+
+  <div  *ngIf="isCheckedBoxSelected" >
+    <div class="form-group">
+      <label class="col-sm-3 control-label">Old Password</label>
+      <div class="col-sm-6">
+        <input type="password" class="form-control"  formControlName="oldPassword"/>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-3 control-label">New Password</label>
+      <div class="col-sm-6">
+        <input type="password" class="form-control" formControlName="newPassword"
+               [ngClass]="{ 'invalid': !validatePassword() }"
+               (input)="passwordStrengthMeter()"
+        />
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-3 control-label">Re enter New Password</label>
+      <div class="col-sm-6">
+        <input type="password" class="form-control" formControlName="reEnteredPassword"
+               [ngClass]="{ 'invalid': !comparePasswords() }"
+        />
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-3 control-label">Password Strength</label>
+      <div class="col-sm-6">
+        <div id="statusOfPasswordStrength" #statusOfPasswordStrength></div>
+        <input  #strength id="strength" class="form-control" formControlName="PasswordStrength"  />
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="password-info"> 1) Your password must be between 8 and 30 characters.</div>
+      <div class="password-info"> 2) Your password must contain at least one uppercase, or capital, letter</div>
+      <div class="password-info"> 3) Your password must contain at least one lowercase letter.</div>
+      <div class="password-info"> 4) Your password must contain at least one number digit</div>
+      <div class="password-info"> 5) Your password must contain at least one special character. example: $, #, @, !,%,^,&,*,(,)</div>
+    </div>
+
+  </div>
+
+</form>

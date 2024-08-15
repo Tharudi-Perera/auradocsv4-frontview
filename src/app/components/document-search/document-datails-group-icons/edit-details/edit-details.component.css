@@ -1,0 +1,91 @@
+.form-horizontal .form-group {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+#access-level{
+  display: flex;
+  gap: 5px;
+  padding-left: 0 !important;
+}
+
+.access-level-container{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 5px;
+}
+#access-level button{
+  background-color: #565e69;
+  color: white;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  padding: 5px 10px;
+}
+.applyColor {
+  background-color: #FF7B08 !important;
+}
+.checkbox-span{
+  border-right: 1px solid #d2d3d6;
+  border-radius: 5px!important;
+
+}
+.font-weight-bold{
+  font-weight: bold !important;
+}
+
+#app-checkbox{
+  margin-left: 20px;
+}
+.checkbox-div{
+  display: flex !important;
+  align-items: center !important;
+}
+
+.input-group-class{
+  padding-right: 20px;
+}
+#form-group-input{
+  margin-bottom: 5px;
+}
+#from-group-buttons{
+  margin-top: 20px;
+  display: flex;
+  justify-content: end;
+  gap: 5px;
+}
+
+#publicButton{
+  background-color: #FF7B08;
+}
+#submitButton{
+  background-color: #595f69;
+  color: white;
+  font-weight: normal;
+}
+#cancelButton{
+  background-color: #e6e7e8;
+  color: #333333;
+  font-weight: normal;
+}
+tr{
+  border: 1px solid #EBEAE7;
+}
+tr label,
+tr .input-group{
+  padding: 5px;
+}
+.input-group{
+  width: 100%;
+}
+#document-name{
+  margin-bottom: 0px !important;
+}
+#documentNameDiv{
+  padding: 5px;
+}
+/*#privateButton{*/
+/*  padding-left: 5px;*/
+/*  padding-right: 5px;*/
+/*}*/

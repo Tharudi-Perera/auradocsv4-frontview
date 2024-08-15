@@ -1,0 +1,28 @@
+<div class="col-md-12">
+  <!-- The fileinput-button span is used to style the file input field as button -->
+  <span class="btn btn-success fileinput-button">
+    <i class="fa-solid fa-plus"></i>
+    <span> Add files...</span>
+    <input
+      class="file-input"
+      type="file"
+      name="documents"
+      filecontrolname="file"
+      accept=".doc,.wav,.docx,.odt,.pdf,.png,.txt,.jpg,.jpeg,.tif,.tiff,.xlsx,.xls,.csv,.mp4,.ppt,.mp3,.gif,.pptx,.zip"
+      id="documents"
+      (change)="onFileChange($event)"
+      multiple
+      required
+    />
+  </span>
+  <button type="submit" class="btn btn-primary start">
+    <i class="fa-solid fa-upload"></i>
+    <span> Start upload</span>
+  </button>
+  <button type="reset" class="btn btn-warning cancel" (click)="removeFiles()">
+    <i class="fa-solid fa-ban"></i>
+    <span> Cancel upload</span>
+  </button>
+  <!-- The global file processing state -->
+  <span class="fileupload-process"></span>
+</div>

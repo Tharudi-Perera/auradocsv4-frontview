@@ -1,0 +1,10 @@
+#okButtonGroup{
+  width: fit-content;
+  float: right;
+}
+#cancelButton{
+  font-weight: 400;
+  padding-left: 15px;
+  padding-right: 15px;
+  float: right;
+}

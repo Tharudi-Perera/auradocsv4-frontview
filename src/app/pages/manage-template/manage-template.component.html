@@ -1,0 +1,15 @@
+<app-admin-panel-buttons></app-admin-panel-buttons>
+<div class="panel">
+  <div class="panel-body">
+    <app-template-creator
+      [isActive]="activeElement === 'template-creator'"
+      (click)="changesActiveAccordion('template-creator')">
+    </app-template-creator>
+    <app-add-masking
+      [isActive]="activeElement === 'add-masking'"
+      (click)="changesActiveAccordion('add-masking')">
+    </app-add-masking>
+
+  </div>
+</div>
+

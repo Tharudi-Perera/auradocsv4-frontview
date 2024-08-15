@@ -1,0 +1,132 @@
+<!--<app-accordion [checkMark]="false"-->
+<!--               [collapsed]="!isActive"-->
+<!--               [gray]="!isActive"-->
+<!--               [innerHTML]="editDetailsAccordion"-->
+<!--               id="edit-document-details-accordion"-->
+<!--               panelstyle="panel-orange"-->
+<!--&gt;-->
+  <app-carousel [innerHTML]="editDetailsAccordion" [carousalPanelBodyClass]="'edit-document-class'">
+  <form (submit)="onSubmit()" [formGroup]="indexForm" class="form-horizontal">
+    <div id="templateForm">
+      <table style="width: 100%">
+        <tr>
+          <label class="col-sm-4 " for="documentName" id=" document-name">
+            Document Name :
+          </label>
+          <div id="documentNameDiv">
+            {{documentName}}
+          </div>
+        </tr>
+        <tr>
+          <div class="access-level-container" id="access-level-container">
+
+            <label class="access-level-class" for="access-level">
+              Access Level :
+            </label>
+            <div>
+              <div class="btn-group d-flex justify-content-center align-items-center" id="access-level">
+                <button
+                  id="publicButton" #publicButton
+                  (click)="onAccessLevelClick('P')"
+                  [ngClass]="clickedButton=='P'? 'applyColor':'btn-default'"
+                  class="btn btn-default"
+                  type="button"
+                >
+                  Public
+                </button>
+                <button
+                  id="privateButton"
+                  (click)="onAccessLevelClick('R')"
+                  [ngClass]="clickedButton=='R'? 'applyColor':'btn-default'"
+                  class="btn btn-default"
+                  type="button"
+                >
+                  Private
+                </button>
+                <button
+                  (click)="onAccessLevelClick('G')"
+                  [ngClass]="clickedButton=='G'? 'applyColor':'btn-default'"
+                  class="btn btn-default"
+                  type="button"
+                >
+                  Group
+                </button>
+              </div>
+            </div>
+          </div>
+        </tr>
+
+
+        <tr id="indexField" *ngFor="let field of formAttributes">
+          <label class="control-label" for="{{ field.indexFieldName }}">
+            {{ field.indexFieldDisplayAs }} :
+          </label>
+          <div>
+            <app-input class="input-group"
+                       *ngIf="
+          field.indexFieldType !== 'Check-Box' &&
+          field.indexFieldType !== 'Select' &&
+          field.indexFieldType !== 'Text-Area' &&
+          field.indexFieldType !== 'ImageArea' &&
+          field.indexFieldType !== 'Date'
+        "
+                       [control]="indexForm.get([field.indexFieldName])"
+                       [id]="field.indexFieldName"
+                       [indexFieldType]="field.indexFieldType.toUpperCase()=='OCR'?'OCR': field.indexFieldType.charAt(0).toUpperCase()"
+                       [isRequired]="field.indexFieldRequiredYN === 'Y'"
+                       [name]="field.indexFieldDisplayAs"
+                       [placeholder]="field.indexFieldDisplayAs"
+                       [type]="'text'"
+                       [value]="field.indexFieldDefaultValue"
+            ></app-input>
+          </div>
+
+          <div *ngIf="field.indexFieldType === 'Check-Box'" class="input-group checkbox-div  ">
+          <span
+            class="input-group-addon border-end rounded-end  checkbox-span font-weight-bold">{{field.indexFieldType.charAt(0).toUpperCase()}}</span>
+            <app-checkbox [control]="indexForm.get([field.indexFieldName])"
+                          [isRequired]="field.indexFieldRequiredYN === 'Y'"
+                          id="app-checkbox"
+            ></app-checkbox>
+          </div>
+
+          <div *ngIf="field.indexFieldType === 'Select'" class="input-group ">
+            <span class="input-group-addon font-weight-bold">{{field.indexFieldType.charAt(0).toUpperCase()}}</span>
+            <app-select
+              [showPredefinedDataAsValue]="true"
+              [control]="indexForm.get([field.indexFieldName])"
+              [isRequired]="field.indexFieldRequiredYN === 'Y'"
+              [options]="field.pd_data"
+            ></app-select>
+          </div>
+          <div *ngIf="field.indexFieldType === 'Text-Area'" class="input-group ">
+            <span class="input-group-addon font-weight-bold">{{field.indexFieldType.charAt(0).toUpperCase()}}</span>
+            <app-textarea
+              [control]="indexForm.get([field.indexFieldName])"
+            ></app-textarea>
+          </div>
+
+          <div *ngIf="field.indexFieldType === 'Date'" class="input-group ">
+            <span class="input-group-addon font-weight-bold">{{field.indexFieldType.charAt(0).toUpperCase()}}</span>
+            <app-date-input
+              [control]="indexForm.get([field.indexFieldName])"
+            ></app-date-input>
+          </div>
+          <div *ngIf="field.indexFieldType === 'ImageArea'" class="input-group ">
+            <span class="input-group-addon font-weight-bold">{{field.indexFieldType.charAt(0).toUpperCase()}}</span>
+            <input (click)="onImageAreaClick($event)" class="form-control" type="button" value="View Image Preview">
+          </div>
+        </tr>
+        <tr>
+          <div class="form-group" id="from-group-buttons">
+            <!--      col-sm-offset-1-->
+            <button id=cancelButton class="btn" (click)="cancel()">Cancel</button>
+            <button id="submitButton" type="submit" class="btn">Save</button>
+          </div>
+        </tr>
+      </table>
+
+    </div>
+  </form>
+  </app-carousel>
+<!--</app-accordion>-->

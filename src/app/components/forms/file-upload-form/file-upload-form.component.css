@@ -1,0 +1,49 @@
+#buttonGroup :nth-child(2){
+  margin-left:5px;
+  margin-right:5px;
+}
+#buttonGroup >span,
+#buttonGroup >button{
+  padding: 7px 15px;
+}
+.imagePreview {
+  display: block;
+  max-width: 80px;
+  max-height: 80px;
+  margin: 0 auto;
+
+}
+.animation {
+  display: block;
+  max-width: 20px;
+  max-height: 20px;
+  margin: 0 auto;
+}
+.videoPreview{
+  display: block;
+  max-width: 220px;
+  max-height: 120px;
+  margin: 0 auto;
+}
+#documentArchiveUpperProgressBar{
+  height: 10px;
+}
+#cancelButtonIcon{
+  padding-right:10px;
+}
+#cancelButton{
+  padding:7px 15px;
+}
+#fileUploadProgressBar{
+  width:220px;
+  margin-bottom:8px;
+}
+.progress-bar{
+  background-color: #FF7B08;
+}
+tr{
+  height: 100px;
+}
+tbody> tr>td:nth-child(3){
+  width:100px
+}

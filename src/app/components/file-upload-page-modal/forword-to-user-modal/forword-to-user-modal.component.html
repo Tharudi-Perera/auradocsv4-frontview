@@ -1,0 +1,6 @@
+<app-modal [isVisible]="isOpen" (modal)="toggleView()" [modalHeaderVisible]="true" [title]="'Warning: File / folder can not be accessed from source account after moved.'"
+           [modalFooterVisible]="false" [noBorderClass]="true" [modalTitleTextAlign]="'left'" [modalTitleTextClass]="'orangeColor'">
+  <div body>
+      <app-forword-to-user-form></app-forword-to-user-form>
+  </div>
+</app-modal>

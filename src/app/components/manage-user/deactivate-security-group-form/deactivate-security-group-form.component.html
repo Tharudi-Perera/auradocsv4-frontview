@@ -1,0 +1,12 @@
+<form class="form-horizontal"  (submit)="onSubmit()">
+  <div class="form-group" [style.margin-bottom]="'0px'">
+    <div class="col-sm-12">
+      <div class="">
+        <div class="btn-toolbar" id="cancelOkButtonGroup">
+          <button class="btn-default btn" id="cancelButton"  (click)="closeModal()">Cancel</button>
+          <button class="btn-primary btn" type="submit" id="okButton">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,148 @@
+<app-accordion panelstyle="panel-orange"
+               [innerHTML]="documentShareAccordion"
+               [collapsed]="!isActive"
+               [checkMark]="false"
+               [gray]="!isActive"
+               id="document-share-accordion"
+>
+  <div id="document-share-group">
+    <div id="button-bar">
+      <div id="email" #email (click)="emailButtonClicked();changeButtonColor($event.currentTarget)">
+        <i class="fa fa-envelope"></i> Email
+      </div>
+      <div id="sms" #sms (click)="smsButtonClicked();changeButtonColor($event.currentTarget)">
+        <i class="fa fa-comments"></i> SMS
+      </div>
+      <div id="share" (click)="sharingButtonClicked();changeButtonColor($event.currentTarget)"><img
+        src="assets/images/add-user-icon.png">Share ...
+      </div>
+      <div id="getLink" (click)="getLinkButtonClicked();changeButtonColor($event.currentTarget)"><i
+        class="fa fa-link"></i> Get Link
+      </div>
+    </div>
+    <form (ngSubmit)="onEmailSharingFormSubmit()" [formGroup]="emailSharingForm" *ngIf="showEmailForm">
+      <div class="input-group" id="email-address">
+      <span class="input-group-addon">
+        <i class="fa fa-envelope"></i>
+      </span>
+        <app-input [control]="emailSharingForm.get('emailAddress')" [inputGroupWidth]="'100%'"
+                   [placeholder]="'Email/s'" [isRequired]="false"></app-input>
+      </div>
+      <div class="input-group" id="message-body">
+      <span class="input-group-addon" data-toggle="tooltip" title="Text-Area">
+        <i class="fa fa-paper-plane"></i>
+      </span>
+        <app-textarea [control]="emailSharingForm.get('messageBody')" [height]="'150px'"
+                      [value]="messageBody" [placeholder]="'Message Body'" [width]="'100%'"
+                      [isRequired]="false"></app-textarea>
+      </div>
+      <div class="input-group" id="attachment-check-box">
+        <app-checkbox [control]="emailSharingForm.get('sendAsAttachment')" [isRequired]="false"
+                      id="check-box"></app-checkbox>
+        Send As an attachment
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-12">
+          <div class="btn-toolbar" id="cancelSendButtonGroup">
+            <button type="reset" class="btn-default btn" id="cancelButton">Cancel</button>
+            <button class=" btn" id="sendButton" type="submit" [disabled]="!emailSharingForm.valid">Send Email</button>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <form (ngSubmit)="onSMSSharingFormSubmit()" [formGroup]="smsSharingForm" *ngIf="showSMSForm">
+      <div class="input-group" id="sms-tel-no">
+      <span class="input-group-addon">
+        <i class="fa fa-envelope"></i>
+      </span>
+        <app-input [control]="smsSharingForm.get('smsTelNo')" [inputGroupWidth]="'100%'"
+                   [placeholder]="'Mobile No'" [isRequired]="false"></app-input>
+      </div>
+      <div class="input-group" id="message-sms-body">
+      <span class="input-group-addon" data-toggle="tooltip" title="Text-Area">
+        <i class="fa fa-paper-plane"></i>
+      </span>
+        <app-textarea [control]="smsSharingForm.get('SMSmessageBody')" [height]="'150px'"
+                      [value]="messageBody" [placeholder]="'Message Body'" [width]="'100%'"
+                      [isRequired]="false"></app-textarea>
+      </div>
+
+
+      <div class="form-group">
+        <div class="col-sm-12">
+          <div class="btn-toolbar" id="cancelSendSMSButtonGroup">
+            <button type="reset" class="btn-default btn" id="cancelSMSButton">Cancel</button>
+            <button class=" btn" id="sendSMSButton" type="submit" [disabled]="!smsSharingForm.valid">Send SMS</button>
+          </div>
+        </div>
+      </div>
+    </form>
+    <form (ngSubmit)="onDocumentShareFormSubmit()" [formGroup]="documentShareForm" *ngIf="showSharingForm">
+      <div>Select a user to share the document</div>
+      <app-select id="select-a-user" [control]="documentShareForm.get('selectAUser')" [options]="users"
+                  [showPredefinedDataAsValue]="true"
+                  [marginTop]="'5px'" [marginBottom]="'10px'" [selectedOption]="'Select User'"></app-select>
+      <div class="form-group">
+        <div class="col-sm-12">
+          <button class=" btn" id="shareButton" type="submit" [disabled]="!documentShareForm.valid">Share</button>
+        </div>
+      </div>
+    </form>
+
+    <form (ngSubmit)="onGettingLinkFormSubmit()" [formGroup]="getDocumentLinkForm" *ngIf="showGetLinkForm">
+      <div class="form-group" id="otpDiv" [style.margin-bottom]="'0px'">
+        <div class="col-sm-6">Share with an OTP <input type="radio" id="shareWithAnOTPCheckbox" name="otp"
+                                                       [formControl]="getDocumentLinkForm.get('shareWithOTP')"
+                                                       value="true"></div>
+        <div class="col-sm-6">Without an OTP <input type="radio" id="shareWithoutAnOTPCheckbox" name="otp"
+                                                    [formControl]="getDocumentLinkForm.get('withoutOTP')" value="false">
+        </div>
+      </div>
+      <div class="input-group">
+        <app-table [data]="['1']">
+          <tr tabledata>
+            <td style="width: 33%;padding-top: 13px;">Valid period</td>
+            <td style="width: 33%;">
+              <app-input [type]="'number'" [value]="10" [control]="getDocumentLinkForm.get('validPeriod')"
+                         [isRequiredMessageVisible]="false"></app-input>
+            </td>
+            <td style="padding-top: 9px;padding: 13px 0 0;">min/s</td>
+          </tr>
+        </app-table>
+      </div>
+      <div class="input-group" id="telephone-number" *ngIf="showTelephoneNumber">
+      <span class="input-group-addon">
+        <i class="fa fa-phone"></i>
+      </span>
+        <app-input [control]="getDocumentLinkForm.get('phoneNumber')" [inputGroupWidth]="'100%'"
+                   [placeholder]="'Tel: 0716797753'" [isRequiredMessageVisible]="false"></app-input>
+      </div>
+      <div class="input-group" id="generatedLink" *ngIf="linkReceived">
+      <span class="input-group-addon">
+        <i class="fa fa-link"></i>
+        <br>
+        <br>
+        <a id="copyLink" (click)="copyShareLInk()" style="margin:5px">Copy</a>
+        <br>
+        <br>
+      </span>
+        <app-textarea [control]="getDocumentLinkForm.get('linkReceived')" [width]="'100%'"
+                      [isRequired]="false" [value]="linkReceivedValue" [height]="'100px'"></app-textarea>
+
+      </div>
+      <div id="generatedLinkButtonGroup" *ngIf="linkReceived">
+        <button class="btn" type="button" (click)="sendLinkThroughEmailButtonClicked()">Email</button>
+        <button class="btn" type="button" (click)="sendLinkThroughSMSButtonClicked()">SMS</button>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-12">
+          <button class=" btn" id="generateLinkButton" type="submit" [disabled]="!getDocumentLinkForm.valid">Generate
+            Link
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</app-accordion>

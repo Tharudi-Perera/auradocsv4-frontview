@@ -1,0 +1,92 @@
+<app-accordion [title]="'Pending Documents'"
+               [checkMark]="true"
+               [collapsed]="collapse"
+               [gray]="collapse"
+               (collapsedVal)="pendingDocumentAccordionClicked($event)"
+               [panelstyle]="'newPanelStyle'">
+  <div class="panel-body" style="border-top:none" id="pendingDocBody">
+    <div>
+      <!--      Darshana code-->
+      <!--      *ngIf="-->
+      <!--      ((prevParent === '/In Folder/' ||-->
+      <!--      folderFiles[0]?.parent !== '/In Folder/') &&-->
+      <!--      prevParent !== folderFiles[0]?.parent)-->
+
+      <!--      Janitha code-->
+      <!--      *ngIf="((prevParent !== '/In Folder/' || (folderFiles[0]?.parent !=='/In Folder/'))) && prevParent !='/' "-->
+      <div
+        *ngIf="showBackFolder"
+        class="col-md-1"
+        [title]="'back'"
+      >
+        <div class="index-image" (click)="getSubFileFromPending(prevParent,true)">
+          <img src="assets/images/folder-with-arrow-icon.png"/>
+        </div>
+        <div class="truncate">
+          <p class="disp-text">Back</p>
+        </div>
+      </div>
+      <div *ngFor="let item of folderFiles" class="col-md-1" [title]="item.id">
+        <div
+          class="index-image"
+          (click)="getSubFileFromPending(item.parent + item.id + '/',false)"
+        >
+          <img
+            *ngIf="item.icon === 'jstree-icon jstree-file'"
+            src="assets/images/noimage.png"
+          />
+          <img
+            *ngIf="item.icon !== 'jstree-icon jstree-file'"
+            src="assets/images/folder-icon.png"
+          />
+        </div>
+        <div class="truncate">
+          <p class="disp-text">{{ item.text }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</app-accordion>
+
+<app-accordion
+  [collapsed]="!collapse "
+  [title]="'Index Document'"
+  [checkMark]="true"
+  [gray]="!collapse "
+  (collapsedVal)="indexDocumentAccordionClicked($event)"
+  [panelstyle]="'newPanelStyle'">
+  <div *ngIf="loadingIconVisible">
+    <img
+      class="animation"
+      src="../../../../assets/images/loding_v2.gif"
+    />
+  </div>
+  <div id="loadingImage" *ngIf="showLoadingImage"><img src="../../../assets/images/loading.gif" alt=""></div>
+  <div id="indexDocumentPanelBody" #indexDocumentPanelBody class="panel-body" style="border-top:none"
+       *ngIf="collapse && filepathExists">
+    <div id="pdf-viewer" [class.col-md-8]="!hidden" [class.col-md-12]="hidden"
+         [style.padding-right]="hidden? '40px':''">
+      <div>
+        <app-pdf-viewer [base64]="base64Src" [filepath]="filepath"
+                        (pdfRendered)="getBase64Value($event)"></app-pdf-viewer>
+      </div>
+
+    </div>
+    <div id="index-form" class="col-md-4" [style.display]="hidden ? 'none' : 'block'">
+      <div>
+        <app-index-form
+          (refreshPendingDocs)="refreshPendingDocs($event)"
+          [filepath]="filepath"
+          [base64]="newBase64Value"
+          (showLoadingImageEvent)="showLoadingImageMethod($event)"
+        ></app-index-form>
+      </div>
+    </div>
+    <button id="fullViewButton" class="position-absolute" (click)="hideIndexDataForm()">
+      <i class="fa fa-bars" id="context-menu-toggle"></i>
+    </button>
+  </div>
+</app-accordion>
+
+

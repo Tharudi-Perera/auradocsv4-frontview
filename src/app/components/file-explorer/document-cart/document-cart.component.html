@@ -1,0 +1,21 @@
+<app-accordion
+  panelstyle="panel-orange"
+  [title]="title"
+  [collapsed]="!isActive"
+  [checkMark]="true"
+  [gray]="!isActive"
+>
+  <div class="panel-body" style="border-top:none">
+    <div
+      *ngIf="documentCart.length > 0; else noDocuments"
+      class="col-md-12"
+    ></div>
+    <ng-template #noDocuments>
+      <div class="col-md-12" id="no-document-parent-div">
+        <div class="no-documents">
+          <p>No Files Found!! The cart is empty !!!</p>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</app-accordion>

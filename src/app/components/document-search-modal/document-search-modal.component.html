@@ -1,0 +1,7 @@
+<app-modal title="Advance Search..." [isVisible]="isOpen" (modal)="toggleView()" id="advancedSearch" [modalFooterVisible]="false" [modalHeaderVisible]="true">
+  <div body>
+    <h5>Find Documents with..</h5>
+    <app-document-search-form (closeModal)="toggleView()"></app-document-search-form>
+  </div>
+
+</app-modal>

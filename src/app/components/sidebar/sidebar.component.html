@@ -1,0 +1,125 @@
+<nav id="page-leftbar" role="navigation">
+  <!-- BEGIN SIDEBAR MENU -->
+  <ul class="acc-menu" id="sidebar" style="padding-top: 7px">
+    <li
+      [ngClass]="activeElement==='dashboard'?'active open':'' "
+      (click)="changeActiveElement('dashboard')">
+      <a routerLink="/home">
+        <i class="fa fa-house-chimney fa-sm"></i><span> Dashboard</span>
+      </a>
+    </li>
+    <li
+      (click)="changeActiveElement('documents')"
+      (mouseover)="decideVisibilityOfnoOfDocs()"
+      [ngClass]="activeElement==='documents'?'active open':''"
+    >
+      <a>
+        <i class="fa fa-suitcase"></i> <span> Documents</span>
+        <span class="badge badge-danger" #noOfDocsElement>{{noOfDocs|async}}</span>
+      </a>
+      <ul id="documents-sub-menu"
+          class="acc-menu"
+          [style]="activeElement === 'documents' && !togglewarningVal ? { display: 'block' } : null"
+      >
+        <li routerLinkActive="active" (click)="changeListItemColor($event.currentTarget)">
+          <a routerLink="/search"><span>- Search</span></a>
+        </li>
+        <li routerLinkActive="active" (click)="changeListItemColor($event.currentTarget)">
+          <a routerLink="/upload">
+            <span>- Upload</span>
+          </a>
+        </li>
+        <li routerLinkActive="active" (click)="changeListItemColor($event.currentTarget)">
+          <a routerLink="/index">
+            <span>- Index</span>
+            <span class="badge badge-danger">{{noOfDocs|async}}</span>
+          </a>
+        </li>
+        <li routerLinkActive="active" (click)="changeListItemColor($event.currentTarget)">
+          <a routerLink="/file-explorer"><span>- File Explorer</span></a>
+        </li>
+      </ul>
+    </li>
+    <li
+      (click)="changeActiveElement('user')"
+      [ngClass]="activeElement==='user'?'active open':''">
+      <a><i class="fa fa-user"></i> <span>User</span></a>
+      <ul
+        class="acc-menu"
+        [style]="activeElement === 'user' && !togglewarningVal ? { display: 'block' } : null">
+        <li routerLinkActive="active" (click)="changeListItemColor($event.currentTarget)">
+          <a routerLink="/profile">
+            <span>- Profile</span>
+          </a>
+        </li>
+        <li (click)="changeListItemColor($event.currentTarget)">
+          <a>- Preference</a>
+        </li>
+      </ul>
+    </li>
+    <li
+      (click)="changeActiveElement('admin')"
+      [ngClass]="activeElement==='admin'?'active open':''"
+    >
+      <a><i class="fa  fa-cog"></i> <span> Administration</span></a>
+      <ul
+        class="acc-menu"
+        [style]="activeElement === 'admin' && !togglewarningVal ? { display: 'block' } : null"
+      >
+        <li (click)="changeListItemColor($event.currentTarget)" routerLinkActive="active"><a
+          routerLink="/summary"><span>- Summary</span></a></li>
+        <li (click)="changeListItemColor($event.currentTarget)" routerLinkActive="active"><a routerLink="/manage-user">-
+          Manage User</a></li>
+        <li (click)="changeListItemColor($event.currentTarget)" routerLinkActive="active"><a
+          routerLink="/manage-template">- Manage Template</a></li>
+        <li (click)="changeListItemColor($event.currentTarget)" routerLinkActive="active"><a>- Re-Index</a></li>
+        <li (click)="changeListItemColor($event.currentTarget)" routerLinkActive="active"><a>- Departments</a></li>
+        <li (click)="changeListItemColor($event.currentTarget)" routerLinkActive="active"><a>- Tracking</a></li>
+        <li (click)="changeListItemColor($event.currentTarget)" routerLinkActive="active"><a>- Renew License</a></li>
+      </ul>
+    </li>
+    <li
+      (click)="changeActiveElement('reports')"
+      [ngClass]="activeElement==='reports'?'active open':''"
+    >
+      <a><i class="fa fa-pencil-square"></i> <span> Reports </span></a>
+      <ul class="acc-menu">
+        <li><a href="tables-data.htm">Data Tables</a></li>
+        <li><a href="tables-responsive.htm">Responsive Tables</a></li>
+        <li><a href="tables-editable.htm">Editable Tables</a></li>
+      </ul>
+    </li>
+    <li
+
+      (click)="changeActiveElement('help')"
+      [ngClass]="activeElement==='help'?'active open':''"
+    >
+      <a><i class="fa fa-question-circle"></i> <span> Help</span></a>
+      <ul
+        class="acc-menu"
+        [style]="activeElement === 'help' && !togglewarningVal? { display: 'block' } : null"
+      >
+        <li><a>- Tour</a></li>
+        <li><a>- User Guide</a></li>
+      </ul>
+    </li>
+    <div id="warningIconDiv" *ngIf="togglewarningVal">
+      <i class="fa fa-warning " id="warningIcon"></i>
+    </div>
+
+    <!--    warning-->
+    <li>
+      <div class="alert alert-dismissable alert-danger show-warning"
+           style="padding: 10px; text-align: center;text-align: justify;" id="demo-warning" *ngIf="!togglewarningVal">
+        <strong
+          style="text-align: center;display: block;">Warning !</strong> <br> This is a demo site. We make no
+        representations
+        or warranties of any kind, express or implied, about the completeness, accuracy, reliability, suitability or
+        availability with respect to the website or the information, products, services, or related graphics contained
+        on
+        the website for any purpose. Any reliance you place on such information is therefore strictly at your own risk.
+      </div>
+    </li>
+  </ul>
+  <!-- END SIDEBAR MENU -->
+</nav>

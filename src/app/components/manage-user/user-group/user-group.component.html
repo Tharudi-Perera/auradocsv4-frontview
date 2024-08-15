@@ -1,0 +1,55 @@
+<app-accordion
+  panelstyle="panel-orange"
+  [title]="title"
+  [collapsed]="!isActive"
+  [checkMark]="true"
+  [gray]="!isActive"
+>
+  <div class="panel-body" style="border-top:none">
+    <div class="panel">
+      <div class="panel-body" style="border-top:1px solid #dddddd " >
+        <app-user-group-add-user-form *ngIf="addUsers" (addUsers)="showAddUserForm($event)"></app-user-group-add-user-form>
+        <div class="col-md-12">
+          <div id="noOfRecordsAndSearchDiv">
+            <label>
+              <select>
+                <option *ngFor="let opt of options">{{opt}}</option>
+              </select>
+              records per page
+            </label>
+            <label>
+              <input type="text"  placeholder="Search here...">
+            </label>
+          </div>
+          <app-table
+            [headings]="headings"
+            [isTableBoarded]="true"
+            [isStriped]="false"
+            [data]="tableData"
+            [headerClass]="'headerClass sorting'"
+          >
+            <tr tabledata *ngFor="let row of tableData">
+              <td>{{row.groupId}}</td>
+              <td>{{row.groupName}}</td>
+              <td>{{row.status}}</td>
+              <td id="buttonGroupColumn">
+                <div class="btn-group "  >
+                  <button class="btn btn-success btn-label "  id="addNewUserBtnId" (click)="addUsersInUserGroup()">
+                    <i class="fa fa-plus-circle"></i> Add Users
+                  </button>
+                </div>
+              </td>
+
+
+            </tr>
+          </app-table>
+          <div>
+            Showing 1 to 10 of 33 entries
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</app-accordion>

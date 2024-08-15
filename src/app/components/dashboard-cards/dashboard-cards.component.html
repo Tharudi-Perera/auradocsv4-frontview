@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="row">
+      <app-tile
+        tilestyle="info-tiles tiles-toyo"
+        title="Total Indexed Documents"
+        text="{{totalIndexedDocuments}}"
+        description="{{weeklyAddedIndexedDocuments}} Added this week"
+      >
+      </app-tile>
+      <app-tile
+        tilestyle="info-tiles tiles-success"
+        title="Total Viewed documents"
+        text="{{totalViewedDocuments}}"
+        description="{{lastWeekViewedDocuments}} Viewed Last Week"
+
+      >
+      </app-tile>
+      <app-tile
+        tilestyle="info-tiles tiles-orange"
+        title="My indexed count"
+        text="{{selfIndexedCount}}"
+        description="{{selfIndexedCountLastWeek}} Indexed Last Week"
+        iconclass="fa-group"
+      >
+      </app-tile>
+      <app-tile
+        tilestyle="info-tiles tiles-alizarin"
+        title="Pending documents"
+        text="{{pendingDocuments}}"
+        description="In {{pendingDocumentsNoOfFolders}} Folder/s"
+        iconclass="fa-file"
+
+      >
+      </app-tile>
+    </div>
+  </div>
+</div>

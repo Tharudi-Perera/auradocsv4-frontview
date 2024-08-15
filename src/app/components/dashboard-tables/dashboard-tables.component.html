@@ -1,0 +1,261 @@
+<div class="row">
+  <div class="col-md-6">
+    <div class="panel panel-gray">
+
+      <h5 class="tableHeader">Account History</h5>
+      <div class="panel-body">
+        <app-table
+          [headings]="['ID','Template','Operation','Last Access','View']"
+          [data]="accountHistoryData"
+          [isStriped]="true"
+          [captionClass]="'captionClass'"
+          [headerClass]="'headerClass'"
+          [hoverEnabled]="true"
+        >
+          <tr tabledata *ngFor="let row of accountHistoryData" (click)="rawInAccountHistoryTableClicked(row.fileId)">
+            <td>{{ row.fileId }}</td>
+            <td>{{ row.templateName }}</td>
+            <td>
+              <span class="operation-data"
+                    [ngStyle]="{'background-color': (row.operation == 'VIEW') ? '#85C744' : (row.operation == 'FAILED') ? '#e73c3c' : '#aeafb1'}">
+                {{ row.operation | uppercase }}
+              </span>
+            </td>
+            <td id="accessTimeHistoryDataTable">{{ row.accessTime |  date:'MMM d, y h:mm:ss a'}}</td>
+            <td>
+              <div><i  class="fa fa-desktop" id="accountHistoryViewIcon"></i></div>
+            </td>
+          </tr>
+        </app-table>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="panel panel-gray">
+
+      <h5 class="tableHeader">Index History</h5>
+      <div class="panel-body">
+        <app-table
+          [headings]="['ID','Operation','Access By','Last Access','View']"
+          [data]="indexHistoryData"
+          [isStriped]="true"
+          [captionClass]="'captionClass'"
+          [headerClass]="'headerClass'"
+          [hoverEnabled]="true"
+        >
+          <tr tabledata *ngFor="let row of indexHistoryData" (click)="rawInAccountHistoryTableClicked(row.fileId)">
+            <td>{{ row.fileId }}</td>
+            <td>
+              <span class="operation-data"
+                    [ngStyle]="{'background-color': (row.operation == 'INDEX') ?'#aeafb1':''}">
+                {{ row.operation | uppercase }}
+              </span>
+            </td>
+            <td>{{ row.userId }}</td>
+            <td id="accessTimeIndexHistoryDataTable">{{ row.accessTime |  date:'MMM d, y h:mm:ss a'}}</td>
+            <td>
+              <div><i  class="fa fa-desktop" id="indexHistoryViewIcon"></i></div>
+            </td>
+          </tr>
+        </app-table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- To do table-->
+<div class="row">
+  <div class="col-md-6">
+    <div class="panel panel-gray">
+      <h5 class="tableHeader">To-Do List</h5>
+      <div class="panel-body" >
+        <div *ngIf="toDoListData.length>0 ; else notabledata1">
+          <div *ngFor="let row of toDoListData" class="toDoListTableItem">
+            <div >
+                <table class="table table-striped" id="toDoList">
+                  <tbody>
+                    <tr tabledata>
+                      <td id="toDoListItem" >{{ row.toDoItem }}</td>
+                      <td id="toDoListNoOfDays"><span> {{ row.noOfDays }} day(s) ago</span></td>
+                      <td id="toDoListByRow">{{ row.by }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              <div id="toDoListEyeDiv"> <button class="btn btn-default btn-xs"><i class="fa fa-eye" style="float: right"></i></button></div>
+            </div>
+          </div>
+        </div>
+        <ng-template #notabledata1>
+          <div style="display:flex; justify-content: center" >
+            No data available in table
+          </div>
+        </ng-template>
+
+      </div>
+
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="panel panel-gray">
+
+      <h5 class="tableHeader">To-Do History</h5>
+      <div class="panel-body" >
+        <div *ngIf="toDoHistoryData.length>0 ; else notabledata2">
+          <div *ngFor="let row of toDoHistoryData" class="toDoHistoryTableItem">
+            <div >
+              <table class="table table-striped" id="toDoHistory">
+                <tbody>
+                <tr tabledata>
+                  <td id="toDoHistoryItem" >{{ row.toDoItem }}</td>
+                  <td id="toDoHistoryNoOfDays"><span> {{ row.noOfDays }} day(s) ago</span></td>
+                  <td id="toDoHistoryByRow">{{ row.by }}</td>
+                  <td id="toDoHistoryStatus">
+                      <span  style=" background-color:{{ row.status === 'pending' ? '#f1c40f' : row.status==='accepted'? '#85c744':row.status==='rejected'? 'red':'' }}">{{ row.status }}</span>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+              <div id="toDoHistoryEyeDiv"><button class="btn btn-default btn-xs"><i class="fa fa-eye" style="float: right"></i></button> </div>
+            </div>
+          </div>
+        </div>
+        <ng-template #notabledata2>
+          <div style="display:flex; justify-content: center" >
+            No data available in table
+          </div>
+        </ng-template>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <!--  shared with me-->
+  <div class="col-md-6">
+    <div class="panel panel-gray">
+      <h5 class="tableHeader">Shared with me</h5>
+      <div class="panel-body">
+        <div id="sharedWithMeInput" style="padding-bottom: 20px">
+          <div>
+            <label for="records" style="margin-bottom: 0">
+              <select name="records" style="width: 75px;height:33px">
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+              </select>
+              Records per page
+            </label>
+          </div>
+          <input placeholder="Search..." style="border: 1px solid #d2d3d6; padding-left: 17px">
+        </div>
+        <app-table
+          [headings]="['ID','Shared By','Shared With','Date']"
+          [data]="sharedWithMe"
+          [isStriped]="true"
+          [captionClass]="'captionClass'"
+          [headerClass]="'headerClass'"
+        >
+          <tr tabledata *ngFor="let row of sharedWithMe">
+            <td>{{ row.id }}</td>
+            <td>{{ row.sharedBy }}</td>
+            <td>{{ row.sharedWith }}</td>
+            <td>{{ row.date }}</td>
+          </tr>
+        </app-table>
+      </div>
+    </div>
+  </div>
+  <!--  Download History-->
+  <div class="col-md-6">
+    <div class="panel panel-gray">
+      <h5 class="tableHeader">Download History</h5>
+      <div class="panel-body">
+        <div id="downloadHistoryInput" style="padding-bottom: 20px">
+          <div>
+            <label for="records" style="margin-bottom: 0">
+              <select name="records" style="width: 75px;height:33px" [(ngModel)]="pageSize" required>
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+              </select>
+              Records per page
+            </label>
+          </div>
+          <input placeholder="Search..." style="border: 1px solid #d2d3d6; padding-left: 17px">
+        </div>
+        <app-table
+          [headings]="['Date','File Name','Download','Delete']"
+          [data]="downloadHistoryData"
+          [isStriped]="true"
+          [captionClass]="'captionClass'"
+          [headerClass]="'headerClass'"
+        >
+          <tr tabledata *ngFor="let row of downloadHistoryData">
+            <td>{{ row.date }}</td>
+            <td>{{ row.fileName }}</td>
+            <td><i class="fa-solid fa-download"></i></td>
+            <td><i class="fa-solid fa-trash-can"></i></td>
+          </tr>
+        </app-table>
+
+
+        <div class="row" style="display: flex;align-items: center">
+          <div class="col-sm-6">
+            <div class="pagination  " id="downloadHistoryTbleId_info">Showing 0 to 0 of 0 entries</div>
+          </div>
+          <app-pagination  [totalPages]="2" [currentPage]="1" [pageSize]="3" [show]="false" [maxPages]="1"></app-pagination>
+
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="panel panel-gray">
+      <h5 class="tableHeader">Access Request</h5>
+      <div class="panel-body">
+        <div id="accessRequestInput" style="padding-bottom: 20px">
+          <div>
+            <label for="records" style="margin-bottom: 0">
+              <select name="records" style="width: 75px;height:33px" [(ngModel)]="pageSize" required >
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+              </select>
+              Records per page
+            </label>
+          </div>
+          <input placeholder="Search..." style="border: 1px solid #d2d3d6; padding-left: 17px">
+        </div>
+        <app-table
+          [headings]="['Doc Id','Requested By','Requested Date','Request Message','']"
+          [data]="accessRequestData"
+          [isStriped]="true"
+          [captionClass]="'captionClass'"
+          [headerClass]="'headerClass'"
+          [accessRequest]="true"
+        >
+          <tr tabledata *ngFor="let row of accessRequestData">
+            <td>{{ row.id }}</td>
+            <td>{{ row.requestedBy }}</td>
+            <td>{{row.requestedDate}}</td>
+            <td>{{row.message}}</td>
+            <td><img src="assets/images/folder.png"></td>
+          </tr>
+        </app-table>
+      </div>
+    </div>
+  </div>
+</div>
+

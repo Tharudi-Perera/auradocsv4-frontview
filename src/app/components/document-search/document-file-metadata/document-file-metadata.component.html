@@ -1,0 +1,33 @@
+<app-accordion [checkMark]="false"
+               [collapsed]="!isActive"
+               [gray]="!isActive"
+               [innerHTML]="documentFileMetadataAccordion"
+               id="document-fileMetadata-accordion"
+               panelstyle="panel-orange"
+>
+<app-table [data]="['1']" [isTableBoarded]="false" [isStriped]="true" [captionClass]="'captionClass'">
+  <tr tabledata >
+    <td class="textColor">File Name</td>
+    <td>{{metaData.fileName}}</td>
+  </tr>
+  <tr tabledata >
+    <td class="textColor">Indexed Data</td>
+    <td>{{metaData.indexedDate}}</td>
+  </tr>
+  <tr tabledata >
+    <td class="textColor">Indexed By</td>
+    <td>{{metaData.indexedBy}}</td>
+  </tr>
+  <tr tabledata >
+    <td class="textColor">Last Modified Date</td>
+    <td>{{metaData.lastModifiedDate}}</td>
+  </tr>
+  <tr tabledata >
+    <td class="textColor">Last Modified By</td>
+    <td>{{metaData.lastModifiedBy}}</td>
+  </tr>
+  <tr tabledata >
+    <td colspan="2"><div id="moreMetadataFormButton" (click)="moreMetadataButtonClicked()"><a>More</a></div></td>
+  </tr>
+</app-table>
+</app-accordion>

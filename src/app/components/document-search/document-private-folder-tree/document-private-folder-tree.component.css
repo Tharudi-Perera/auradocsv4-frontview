@@ -1,0 +1,26 @@
+#tree .jstree-icon {
+  color: #888;
+  font-size: 14px;
+  margin-right: 5px;
+}
+
+#tree .jstree-anchor {
+  font-size: 14px;
+  color: #333;
+  text-decoration: none;
+}
+
+#tree .jstree-node:hover .jstree-anchor {
+  background-color: #f5f5f5;
+}
+
+#jstree {
+  width: 100%;
+  overflow-x: scroll;
+@media screen and (max-width: 1180px) {
+  width: 175px;
+}
+@media screen and (max-width: 780px) {
+  width: 100%;
+}
+}

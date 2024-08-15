@@ -1,0 +1,37 @@
+<div
+  class="modal fade in"
+  [ngClass]="{ in: isVisible }"
+  id="auradocs-modal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="auradocsModalLabel"
+  aria-hidden="true"
+  [ngStyle]="{ display: isVisible ? 'block' : 'none' }"
+>
+  <div class="modal-dialog" [class.modalDialogClass]="modalDialogClass" [style.width]="modalWidth">
+    <div class="modal-content">
+      <div [ngClass]="{'borderClass': !noBorderClass}" class="">
+        <div class="modal-header" [ngClass]="headerClass" *ngIf="modalHeaderVisible">
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-hidden="true"
+            (click)="closeModal()"
+          >
+            &times;
+          </button>
+          <div [innerHTML]="innerHTML"></div>
+          <h4 class="modal-title" [class]="modalTitleTextClass" [style.text-align]="modalTitleTextAlign">{{ title }}</h4>
+          <h4 class="modal-title" id="subtitle">{{ subtitle }}</h4>
+        </div>
+        <div class="modal-body">
+          <ng-content select="[body]"></ng-content>
+        </div>
+        <div class="modal-footer" *ngIf="modalFooterVisible">
+          <ng-content select="[footer]"></ng-content>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

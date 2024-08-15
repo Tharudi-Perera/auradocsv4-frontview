@@ -1,0 +1,12 @@
+<div>
+  <!--  class="col-sm-6"-->
+
+  <input type="checkbox" [class]="class" [required]="isRequired" [formControl]="control"/>
+
+  <div
+    class="help-block list-unstyled parsley-error-list"
+    *ngIf="control.hasError('required') && (control.dirty || control.touched)"
+  >
+    This field is required.
+  </div>
+</div>

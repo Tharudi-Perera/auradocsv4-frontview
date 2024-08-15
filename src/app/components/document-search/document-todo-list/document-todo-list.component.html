@@ -1,0 +1,23 @@
+<app-accordion [checkMark]="false"
+               [collapsed]="!isActive"
+               [gray]="!isActive"
+               [innerHTML]="documentTodoListAccordion"
+               id="document-todo-List-accordion"
+               panelstyle="panel-orange"
+>
+  <div id="parentDiv">
+
+  </div>
+  <div class="form-group">
+    <div class="col-sm-12">
+      <div class="btn-toolbar" id="ButtonGroup">
+        <button (click)="addTasks()" class="btn-default btn buttonColor" id="addTaskButton"><i class="fa fa-plus-circle"></i>&nbsp;Add Tasks
+        </button>
+        <button (click)="seeAllTasks()" class=" btn buttonColor" id="seeAllTasksButton">
+          <i class="fa fa-plus"></i>&nbsp;See All Tasks
+        </button>
+      </div>
+
+    </div>
+  </div>
+</app-accordion>

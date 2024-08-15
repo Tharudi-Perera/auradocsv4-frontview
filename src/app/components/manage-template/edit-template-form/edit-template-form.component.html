@@ -1,0 +1,224 @@
+<form (submit)="onSubmit()" [formGroup]="newTemplateForm" class="form-horizontal">
+
+  <div class="form-group">
+    <div class="col-sm-12 ">
+
+      <app-table [captionClass]="'captionClass'"
+                 [data]="[' 1']"
+                 [headerClass]="'headerClass'"
+                 [isTableBoarded]="true"
+                 id="table"
+      >
+        <tr tabledata>
+          <td>
+            <app-input [control]="newTemplateForm.get('templateName')"
+                       [inputGroupWidth]="'100%'"
+                       [isRequired]="false"
+                       [placeholder]="'Template Name'"
+                       [type]="'text'">
+            </app-input>
+          </td>
+          <td colspan="3"></td>
+        </tr>
+        <tr tabledata>
+          <td><a><i class="fa fa-level-up template-create-icon"></i></a>Access Level</td>
+          <td>
+            <app-checkbox [control]="newTemplateForm.get('accessLevel')" [isRequired]="false"></app-checkbox>
+          </td>
+          <td><a><i class="fa  fa-align-left template-create-icon"></i></a>Auto Indexing</td>
+          <td>
+            <app-checkbox [control]="newTemplateForm.get('autoIndexing')" [isRequired]="false"></app-checkbox>
+          </td>
+        </tr>
+        <tr tabledata>
+          <td><a><i class="fa fa-envelope template-create-icon"></i></a>E-mail</td>
+          <td>
+            <app-checkbox [control]="newTemplateForm.get('email')" [isRequired]="false"></app-checkbox>
+          </td>
+          <td><a><i class="fa  fa-folder-o template-create-icon"></i></a>Folder Path</td>
+          <td>
+            <app-checkbox [control]="newTemplateForm.get('folderPath')" [isRequired]="false"></app-checkbox>
+          </td>
+        </tr>
+        <tr tabledata>
+          <td><a><i class="fa fa-download template-create-icon"></i></a>Download</td>
+          <td>
+            <app-checkbox [control]="newTemplateForm.get('download')" [isRequired]="false"></app-checkbox>
+          </td>
+          <td><a><i class="fa  fa-folder template-create-icon"></i></a>Default Folder Path</td>
+          <td>
+            <div id="defaultFolderPathDiv">
+              <app-input [control]="newTemplateForm.get('defaultFolderPath')"
+                         [inputGroupWidth]="'100%'"
+                         [isRequired]="false"
+                         [type]="'text'"
+                         id="defaultFolderPathInputBox"
+              ></app-input>
+              <i class="fa fa-minus-circle" id="minusCircle"></i></div>
+          </td>
+        </tr>
+        <tr tabledata>
+          <td><a><i class="fa fa-eye template-create-icon"></i></a>OCR</td>
+          <td>
+            <app-checkbox [control]="newTemplateForm.get('ocr')" [isRequired]="false"></app-checkbox>
+          </td>
+          <td><a><i class="fa  fa-envelope template-create-icon"></i></a>Email Alert</td>
+          <td>
+            <app-checkbox [control]="newTemplateForm.get('emailAlert')" [isRequired]="false"></app-checkbox>
+          </td>
+        </tr>
+        <tr tabledata>
+          <td><a><i class="fa fa-code template-create-icon"></i></a>Encrypt</td>
+          <td>
+            <app-checkbox [control]="newTemplateForm.get('encrypt')" [isRequired]="false"></app-checkbox>
+          </td>
+          <td><a><i class="fa  fa-mobile template-create-icon"></i></a>OTP</td>
+          <td>
+            <app-checkbox [control]="newTemplateForm.get('otp')" [isRequired]="false"></app-checkbox>
+          </td>
+        </tr>
+        <tr tabledata>
+          <td><a><i class="fa fa-print template-create-icon"></i></a>Print</td>
+          <td>
+            <app-checkbox [control]="newTemplateForm.get('print')" [isRequired]="false"></app-checkbox>
+          </td>
+          <td><a><i class="fa  fa-folder-open template-create-icon"></i></a>Folder Index</td>
+          <td>
+            <app-checkbox [control]="newTemplateForm.get('folderIndex')" [isRequired]="false"></app-checkbox>
+          </td>
+        </tr>
+        <tr tabledata>
+          <td><a><i class="fa fa-chain-broken template-create-icon"></i></a>BlockChain</td>
+          <td>
+            <app-checkbox [control]="newTemplateForm.get('blockChain')" [isRequired]="false"></app-checkbox>
+          </td>
+          <td><a><i class="fa  fa-pencil template-create-icon"></i></a>Annotation</td>
+          <td>
+            <app-checkbox [control]="newTemplateForm.get('annotation')" [isRequired]="false"></app-checkbox>
+          </td>
+        </tr>
+        <tr tabledata>
+          <td><a><i class="fa fa-clock-o template-create-icon"></i></a>Document Retention Period</td>
+          <td>
+            <app-checkbox [control]="newTemplateForm.get('documentRetentionPeriod')"
+                          [isRequired]="false" (change)="onDocumentRetentionPeriodChange()"></app-checkbox>
+          </td>
+          <!--              <td ><a><i class="fa  fa-pencil template-create-icon"></i></a>Annotation</td>-->
+          <!--              <td><app-checkbox [control]="newTemplateFeaturesForm.get('annotation')" [isRequired]="false"></app-checkbox></td>-->
+        </tr>
+      </app-table>
+
+      <div class="form-group" *ngIf="isDocumentRetentionPeriodChecked">
+        <div class="col-sm-12 ">
+          <div class="panel">
+            <div class="panel-body">
+              <div class="alert alert-primary" role="alert" style="background-color: #e1f5ff;">
+                <div class="text-center"><i class="fa  fa-chain-broken template-create-icon"></i> &nbsp; Document Retention Details</div>
+              </div>
+              Retention Period in Days
+              <app-input [control]="newTemplateForm.get('retentionPeriodInDays')"
+                         [inputGroupWidth]="'50%'"
+                         [isRequired]="false"
+                         [type]="'text'"
+                         id="retentionPeriodInputBox"
+              ></app-input>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+      <div>Template Details</div>
+      <app-table [captionClass]="'captionClass'"
+                 [data]="templateDetails"
+                 [headerClass]="'headerClass'"
+                 [isTableBoarded]="true"
+      >
+        <tr tabledata>
+          <td colspan="7"></td>
+          <td colspan="7">Crop Value</td>
+        </tr>
+        <tr tabledata>
+          <td>Field Id</td>
+          <td>Field Name</td>
+          <td>Text Type</td>
+          <td>Default Value</td>
+          <td>Max Length</td>
+          <td>Text Format</td>
+          <td>Required YN</td>
+          <td>No Duplicate</td>
+          <td>X</td>
+          <td>Y</td>
+          <td>W</td>
+          <td>H</td>
+          <td>Page</td>
+          <td></td>
+        </tr>
+        <tr *ngFor=" let data of templateDetails" tabledata>
+          <td>
+            <app-input [control]="newTemplateForm.get([data.fieldId])" [isReadOnly]="true" [inputGroupWidth]="'100%'">{{data.fieldId}}</app-input>
+          </td>
+          <td>
+            <app-input [control]="newTemplateForm.get([data.fieldName])" [type]="'text'" [inputGroupWidth]="'100%'" [isRequired]="false"></app-input>
+          </td>
+          <td>
+            <app-select [control]="newTemplateForm.get([data.textType])" [options]="textTypes" [isRequired]="false"></app-select>
+          </td>
+          <td>
+            <app-input [control]="newTemplateForm.get([data.defaultValue])"  [inputGroupWidth]="'100%'" [isRequired]="false"></app-input>
+          </td>
+          <td>
+            <app-input [control]="newTemplateForm.get([data.maximumLength])" [type]="'text'" [inputGroupWidth]="'100%'" [isRequired]="false"></app-input>
+          </td>
+          <td>
+            <app-select [control]="newTemplateForm.get([data.textFormat])" [options]="textFormat" [isRequired]="false"></app-select>
+          </td>
+          <td>
+            <app-checkbox [control]="newTemplateForm.get([data.requiredYN])" [isRequired]="false"></app-checkbox>
+          </td>
+          <td>
+            <app-checkbox [control]="newTemplateForm.get([data.noDuplicate])" [isRequired]="false"></app-checkbox>
+          </td>
+          <td>
+            <app-input [control]="newTemplateForm.get([data.X])" [inputGroupWidth]="'100%'" [isRequired]="false"></app-input>
+          </td>
+          <td>
+            <app-input [control]="newTemplateForm.get([data.Y])" [inputGroupWidth]="'100%'" [isRequired]="false"></app-input>
+          </td>
+          <td>
+            <app-input [control]="newTemplateForm.get([data.W])" [inputGroupWidth]="'100%'" [isRequired]="false"></app-input>
+          </td>
+          <td>
+            <app-input [control]="newTemplateForm.get([data.H])" [inputGroupWidth]="'100%'" [isRequired]="false"></app-input>
+          </td>
+          <td>
+            <app-input [control]="newTemplateForm.get([data.page])" [isReadOnly]="true" [inputGroupWidth]="'100%'" [isRequired]="false">{{data.page}}</app-input>
+          </td>
+          <td>
+            <div (click)="addNewTemplateDetailsRow()" id="addNewRow"><img src="assets/images/add_icon.png"></div>
+            <div (click)="deleteNewTemplateDetailsRow([data.fieldId])" id="deleteRow"><img src="assets/images/delete_icon.png"></div>
+          </td>
+
+        </tr>
+      </app-table>
+
+    </div>
+  </div>
+
+
+  <div [style.margin-bottom]="'0px'" class="form-group">
+    <div class="col-sm-12">
+      <div class="">
+        <div class="btn-toolbar" id="cancelOkButtonGroup">
+          <button  (click)="closeModal()" class="btn-default btn" id="cancelButton">Cancel</button>
+          <button  class="btn-primary btn" id="okButton" type="submit">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+

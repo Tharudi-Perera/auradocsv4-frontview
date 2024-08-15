@@ -1,0 +1,15 @@
+<app-table [data]="['1']" [captionClass]="'captionClass'" [headings]="documentApprovalHistoryHeadings"
+           [isTableBoarded]="false">
+  <tr tabledata *ngFor="let data of documentApprovalHistory">
+    <td>{{data.status}}</td>
+    <td>{{data.documentId}}</td>
+    <td>{{data.documentName}}</td>
+    <td>{{data.requestedBy}}</td>
+    <td>{{data.requestedDate}}</td>
+    <td>{{data.remark}}</td>
+    <td>{{data.approvedBy}}</td>
+    <td>{{data.approvedDate}}</td>
+    <td>{{data.comment}}</td>
+  </tr>
+</app-table>
+

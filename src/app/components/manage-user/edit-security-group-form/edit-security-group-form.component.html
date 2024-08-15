@@ -1,0 +1,164 @@
+<form (submit)="onSubmit()" [formGroup]="editGroupForm">
+  <div class="">
+    <div class="col-sm-12 ">
+      <div class="input-group inputGroupClass new-form-group">
+        <span class="col-sm-6" style="padding-left: 0px">
+          <label for="">Group Name</label>
+          <app-input
+              [type]="'text'"
+              [isRequired]="false"
+              [control]="editGroupForm.get('groupName')"
+              [placeholder]="'Group Name'"
+              [inputGroupWidth]="'100%'"
+            >
+          </app-input>
+        </span>
+        <span class="col-sm-6" style="padding-right: 0px">
+          <label for="">Description</label>
+          <app-input
+            [type]="'text'"
+            [isRequired]="false"
+            [control]="editGroupForm.get('description')"
+            [placeholder]="'Description'"
+            [inputGroupWidth]="'100%'"
+          >
+          </app-input>
+        </span>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="col-sm-12 ">
+    <div class="panel">
+      <div class="panel-body" >
+        <div>User Roles</div>
+        <div class="new-form-group">
+
+          <app-accordion [title]="firstAccordionTitle"  [gray]="collapsedValFirstAccordion"
+                         (collapsedVal)="collapseValueFirstAccordion($event)"  [collapsed]="collapsedValFirstAccordion">
+              <app-table [data]="firstAccordionData" [maximumHeight]="'500px'"
+                         [headerClass]="'headerClass'"
+                         [captionClass]="'captionClass'">
+                <tr *ngFor="let data of firstAccordionData " tabledata>
+                  <td class="firstColumn">{{data}}</td>
+                  <td><app-checkbox [control]="editGroupForm.get([data])"
+                                            [isRequired]="false"></app-checkbox></td>
+                </tr>
+              </app-table>
+            </app-accordion>
+          <app-accordion [title]="secondAccordionTitle"  [gray]="collapsedValSecondAccordion"
+                         (collapsedVal)="collapseValueSecondAccordion($event)"  [collapsed]="collapsedValSecondAccordion">
+              <app-table [data]="secondAccordionData" [maximumHeight]="'500px'"
+                         [headerClass]="'headerClass'"
+                         [captionClass]="'captionClass'">
+                <tr *ngFor="let data of secondAccordionData " tabledata>
+                  <td class="firstColumn">{{data}}</td>
+                  <td><app-checkbox [control]="editGroupForm.get([data])"
+                                    [isRequired]="false"></app-checkbox></td>
+                </tr>
+              </app-table>
+            </app-accordion>
+          <app-accordion [title]="thirdAccordionTitle"  [gray]="collapsedValThirdAccordion"
+                         (collapsedVal)="collapseValueThirdAccordion($event)"  [collapsed]="collapsedValThirdAccordion">
+              <app-table [data]="thirdAccordionData" [maximumHeight]="'500px'"
+                         [headerClass]="'headerClass'"
+                         [captionClass]="'captionClass'"
+              >
+                <tr *ngFor="let data of thirdAccordionData" tabledata>
+                  <td class="firstColumn">{{data}}</td>
+                  <td><app-checkbox [control]="editGroupForm.get([data])"
+                                            [isRequired]="false"></app-checkbox></td>
+                </tr>
+              </app-table>
+            </app-accordion>
+          <app-accordion [title]="fourthAccordionTitle"  [gray]="collapsedValFourthAccordion"
+                         (collapsedVal)="collapseValueFourthAccordion($event)"  [collapsed]="collapsedValFourthAccordion">
+              <app-table [data]="fourthAccordionData" [maximumHeight]="'500px'"
+                         [headerClass]="'headerClass'"
+                         [captionClass]="'captionClass'"
+              >
+                <tr *ngFor="let data of fourthAccordionData" tabledata>
+                  <td class="firstColumn">{{data}}</td>
+                  <td><app-checkbox [control]="editGroupForm.get([data])"
+                                    [isRequired]="false"></app-checkbox></td>
+                </tr>
+              </app-table>
+            </app-accordion>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-12 ">
+    <div class="panel">
+      <div class="panel-body">
+
+        <div id="templateSecurityDiv">
+          <span>Template Security</span>
+          <label id="searchTemplates">
+            <input type="text" placeholder="Search Templates...">
+          </label>
+        </div>
+        <div class="new-form-group">
+
+            <app-table [data]="templateSecurityTableData" [headerClass]="'headerClass'"
+                       [headings]="tableHeadings" [captionClass]="'captionClass'">
+              <tr *ngFor="let tableData of templateSecurityTableData" tabledata>
+                <td>{{tableData.name}}(
+                  <app-checkbox [control]="editGroupForm.get([tableData.name])" [isRequired]="false"
+                                id="templateSecurityTableDataNameCheckBox"></app-checkbox>
+                  )
+                </td>
+                <td></td>
+                <td>
+                  <app-checkbox [control]="editGroupForm.get([tableData.view])"
+                                [isRequired]="false"></app-checkbox>
+                </td>
+                <td>
+                  <app-checkbox [control]="editGroupForm.get([tableData.index])"
+                                [isRequired]="false"></app-checkbox>
+                </td>
+                <td>
+                  <app-checkbox [control]="editGroupForm.get([tableData.edit])"
+                                [isRequired]="false"></app-checkbox>
+                </td>
+                <td>
+                  <app-checkbox [control]="editGroupForm.get([tableData.delete])"
+                                [isRequired]="false"></app-checkbox>
+                </td>
+                <td>
+                  <app-checkbox [control]="editGroupForm.get([tableData.accessLevel])"
+                                [isRequired]="false"></app-checkbox>
+                </td>
+                <td>
+                  <app-checkbox [control]="editGroupForm.get([tableData.email])"
+                                [isRequired]="false"></app-checkbox>
+                </td>
+                <td>
+                  <app-checkbox [control]="editGroupForm.get([tableData.download])"
+                                [isRequired]="false"></app-checkbox>
+                </td>
+                <td>
+                  <app-checkbox [control]="editGroupForm.get([tableData.autoIndex])"
+                                [isRequired]="false"></app-checkbox>
+                </td>
+                <td>
+                  <app-checkbox [control]="editGroupForm.get([tableData.print])"
+                                [isRequired]="false"></app-checkbox>
+                </td>
+                <td>
+                  <app-checkbox [control]="editGroupForm.get([tableData.otp])"
+                                [isRequired]="false"></app-checkbox>
+                </td>
+              </tr>
+            </app-table>
+
+        </div>
+        <div class="btn-toolbar" id="cancelSetPrivilegeButtonGroup">
+          <button class="btn-default btn" id="cancelButton"  (click)="closeForm()">Cancel</button>
+          <button class="btn-primary btn" type="submit" id="setPrivilegeButton">Set Privileges</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

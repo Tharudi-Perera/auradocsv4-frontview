@@ -1,0 +1,72 @@
+button{
+  padding:5px 10px;
+  color:white !important;
+  background-color: #595f69;
+  font-weight: normal;
+  margin:0 2px;
+}
+input{
+  width: 100%;
+  height: 34px;
+  margin:0 5px;
+  text-align: center;
+}
+#diskUsageSummaryButtons{
+  display: flex;
+  margin-bottom: 30px;
+}
+#diskUsageSummaryButtons :last-child{
+  background-color: #4f8edc;
+}
+h3{
+  font-size: 14px;
+  font-weight: normal;
+  color: #8691A2;
+}
+h5{
+  font-size: 14px;
+  font-weight: normal;
+
+}
+
+#documentArchiveUpperProgressBar{
+  height: 1px;
+
+}
+#documentArchiveBottomProgressBar{
+  height: 20px;
+
+}
+
+#auradocsArchiveUpperProgressBar{
+  height: 1px;
+
+}
+#auradocsArchiveBottomProgressBar{
+  height: 20px;
+
+}
+#infolderUpperProgressBar{
+  height: 1px;
+
+}
+#infolderBottomProgressBar{
+  height: 20px;
+
+}
+#userSummary{
+  padding-left: 0px;
+}
+.panel-heading{
+  font-size: 14px ;
+  font-weight: normal;
+  display: flex;
+  align-items: center;
+}
+.panel-gray .panel-body {
+  border-top: 1px solid #d2d3d6 !important;
+}
+
+#diskUsage{
+  background-color: #ff7b08;
+}

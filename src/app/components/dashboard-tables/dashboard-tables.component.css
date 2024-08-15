@@ -1,0 +1,147 @@
+.tableHeader{
+  font-size: 14px;
+  color: white;
+  font-weight: normal;
+  background-color: #595f69;
+  margin: 0;
+  padding-left: 10px;
+  line-height: 27px;
+  height: 30px;
+}
+
+#sharedWithMeInput{
+  display: flex;
+  justify-content: space-between;
+}
+#downloadHistoryInput{
+  display: flex;
+  justify-content: space-between;
+}
+#accessRequestInput{
+  display: flex;
+  justify-content: space-between;
+}
+#sharedWithMeInput select,
+#downloadHistoryInput select,
+#accessRequestInput select{
+  margin-right: 5px;
+}
+.operation-data{
+  font-size: 11px;
+  line-height: 10px;
+  padding: 5px;
+  font-weight: 600;
+  color:white;
+  border-radius: 2px;
+
+}
+.buttonClass{
+  padding:6px 15px;
+  line-height: 20px;
+  margin: 1px;
+}
+#accessTimeHistoryDataTable,#accessTimeIndexHistoryDataTable{
+  max-width: 170px;
+}
+#accountHistoryViewIcon{
+  color:#595F69;
+  padding: 5px;
+  cursor: pointer;
+}
+#indexHistoryViewIcon{
+  color:#595F69;
+  padding: 5px;
+  cursor: pointer;
+}
+/*toDoList*/
+#toDoList{
+  margin-bottom: 0;
+}
+#toDoList td{
+  border-top: 0;
+  border-bottom: 0;
+  background-color: #F2F3F5;
+}
+#toDoListTableItem{
+  margin-bottom: 10px;
+}
+#toDoListByRow{
+  font-weight: bolder;
+}
+#toDoListNoOfDays >span{
+  padding-left: 3px;
+  padding-right: 3px;
+  border-radius: 2px;
+  color: white;
+  font-size: 11px;
+  background-color: #4f8edc;
+}
+#toDoListItem{
+  border-left: 2px solid #4f8edc;
+  width: 60%;
+}
+
+#toDoListEyeDiv{
+  margin-bottom: 15px;
+  padding-top: 2px;
+  padding-bottom: 4px;
+  background-color: #F2F3F5;
+  border-left: 2px solid #4f8edc;
+  display: flex;
+  justify-content: end;
+  padding-right: 15px;
+}
+#toDoListEyeDiv i{
+  padding:3px
+}
+
+/*toDoHistory*/
+#toDoHistory{
+  margin-bottom: 0;
+}
+#toDoHistory td{
+  border-top: 0;
+  border-bottom: 0;
+  background-color: #F2F3F5;
+}
+#toDoHistoryTableItem{
+  margin-bottom: 10px;
+}
+#toDoHistoryByRow{
+  font-weight: bolder;
+}
+#toDoHistoryNoOfDays >span{
+  padding-left: 3px;
+  padding-right: 3px;
+  border-radius: 2px;
+  color: white;
+  font-size: 11px;
+  background-color: #4f8edc;
+}
+#toDoHistoryItem{
+  border-left: 2px solid #4f8edc;
+
+}
+
+#toDoHistoryEyeDiv{
+  margin-bottom: 15px;
+  padding-top: 2px;
+  padding-bottom: 4px;
+  background-color: #F2F3F5;
+  border-left: 2px solid #4f8edc;
+  display: flex;
+  justify-content: end;
+  padding-right: 15px;
+}
+#toDoHistoryEyeDiv i{
+  padding:3px
+}
+
+#toDoHistoryStatus span{
+  color: white;
+  padding-left: 3px;
+  padding-right: 3px;
+  float: right;
+  border-radius:2px;
+  font-size: 11px;
+}

@@ -1,0 +1,9 @@
+<app-modal [title]="'Are you sure you want to deactivate the group?'"
+           [isVisible]="isOpen" (modal)="toggleView()" [modalHeaderVisible]="true"
+           [modalFooterVisible]="false"
+           id="deactivate-group">
+  <div body>
+    <app-deactivate-security-group-form></app-deactivate-security-group-form>
+  </div>
+
+</app-modal>

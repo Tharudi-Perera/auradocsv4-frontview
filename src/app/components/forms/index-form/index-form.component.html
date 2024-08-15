@@ -1,0 +1,190 @@
+<form (submit)="onSubmit()" [formGroup]="indexForm"  class="form-horizontal">
+  <div class="form-group">
+    <div class="input-group input-group-class">
+      <select
+        (change)="onTemplateChange($event)"
+        class="form-control"
+        formControlName="template"
+        [(ngModel)]="optionValueOfTemplates"
+      >
+        <option disabled selected>
+          -Select Template Option-
+        </option>
+        <option *ngFor="let option of templates" [value]="getKey(option)" [title]="getValue(option)">
+          {{ getValue(option) }}
+        </option>
+      </select>
+      <span
+        (click)="onClickArrow(-1)"
+        class="input-group-addon clickable-arrows"
+      >
+        <i class="fa fa-arrow-left"></i>
+      </span>
+      <div *ngIf="this.dataLoaded">
+      <select
+        (change)="onFileNameChange($event) "
+        class="form-control"
+        formControlName="filenamesControl"
+        [title]="this.filepath.split('/').pop()"
+        [(ngModel)]="selectedFile"
+      >
+
+
+<!--        [attr.selected]="filepath.includes(file) ? true : null"-->
+<!--        [attr.Selected]="this.filepath.split('/').pop()===file"-->
+
+        <option
+          *ngFor="let file of folderFiles"
+          [value]="basepath + '/' + file"
+          [title]="file"
+          [selected]="filepath.includes(file) === true "
+        >
+          {{  file }}
+        </option>
+      </select>
+      </div>
+      <span
+        (click)="onClickArrow(+1)"
+        class="input-group-addon clickable-arrows"
+      ><i class="fa fa-arrow-right"></i
+      ></span>
+
+    </div>
+  </div>
+  <app-accordion *ngIf="formAttributes && formAttributes.length > 0" [panelstyle]="'panel-orange'"
+                 [title]="'Index Data'">
+    <div id="templateForm">
+      <div class="access-level-container" id="access-level-container">
+
+        <label class="access-level-class" for="access-level" >
+          Access Level :
+        </label>
+        <div>
+          <div class="btn-group d-flex justify-content-center align-items-center" id="access-level">
+            <button
+              id="publicButton"   #publicButton
+              (click)="onAccessLevelClick('P')"
+              [ngClass]="clickedButton=='P'? 'applyColor':'btn-default'"
+              class="btn btn-default"
+              type="button"
+            >
+              Public
+            </button>
+            <button
+              (click)="onAccessLevelClick('R')"
+              [ngClass]="clickedButton=='R'? 'applyColor':'btn-default'"
+              class="btn btn-default"
+              type="button"
+            >
+              Private
+            </button>
+            <button
+              id="groupButton"
+              (click)="onAccessLevelClick('G')"
+              [ngClass]="clickedButton=='G'? 'applyColor':'btn-default'"
+              class="btn btn-default"
+              type="button"
+            >
+              Group
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div *ngFor="let field of formAttributes" class="form-group" id="form-group-input">
+
+        <label class="control-label" for="{{ field.indexFieldName }}">
+          {{ field.indexFieldDisplayAs }} :
+        </label>
+        <div>
+          <app-input
+            *ngIf="
+          field.indexFieldType !== 'Check-Box' &&
+          field.indexFieldType !== 'Select' &&
+          field.indexFieldType !== 'Text-Area' &&
+          field.indexFieldType !== 'ImageArea' &&
+          field.indexFieldType !== 'Date'
+        "
+            [control]="indexForm.get([field.indexFieldName])"
+            [id]="field.indexFieldName"
+            [indexFieldType]="field.indexFieldType.toUpperCase()=='OCR'?'OCR': field.indexFieldType.charAt(0).toUpperCase()"
+            [isRequired]="field.indexFieldRequiredYN === 'Y'"
+            [name]="field.indexFieldDisplayAs"
+            [placeholder]="field.indexFieldDisplayAs"
+            [type]="'text'"
+            [value]="field.indexFieldDefaultValue"
+          ></app-input>
+        </div>
+
+        <div *ngIf="field.indexFieldType === 'Check-Box'" class="input-group checkbox-div  ">
+          <span
+            class="input-group-addon border-end rounded-end  checkbox-span font-weight-bold">{{field.indexFieldType.charAt(0).toUpperCase()}}</span>
+          <app-checkbox [control]="indexForm.get([field.indexFieldName])"
+                        [isRequired]="field.indexFieldRequiredYN === 'Y'"
+                        id="app-checkbox"
+          ></app-checkbox>
+        </div>
+
+        <div *ngIf="field.indexFieldType === 'Select'" class="input-group ">
+          <span class="input-group-addon font-weight-bold">{{field.indexFieldType.charAt(0).toUpperCase()}}</span>
+          <app-select
+            [showPredefinedDataAsValue]="true"
+            [control]="indexForm.get([field.indexFieldName])"
+            [isRequired]="field.indexFieldRequiredYN === 'Y'"
+            [options]="field.pd_data"
+          ></app-select>
+        </div>
+        <div *ngIf="field.indexFieldType === 'Text-Area'" class="input-group ">
+          <span class="input-group-addon font-weight-bold">{{field.indexFieldType.charAt(0).toUpperCase()}}</span>
+          <app-textarea
+            [control]="indexForm.get([field.indexFieldName])"
+          ></app-textarea>
+        </div>
+
+        <div *ngIf="field.indexFieldType === 'Date'" class="input-group ">
+          <span class="input-group-addon font-weight-bold">{{field.indexFieldType.charAt(0).toUpperCase()}}</span>
+          <app-date-input
+            [control]="indexForm.get([field.indexFieldName])"
+          ></app-date-input>
+        </div>
+        <div *ngIf="field.indexFieldType === 'ImageArea'" class="input-group ">
+          <span class="input-group-addon font-weight-bold">{{field.indexFieldType.charAt(0).toUpperCase()}}</span>
+          <input (click)="onImageAreaClick($event)" class="form-control" type="button" value="View Image Preview">
+        </div>
+      </div>
+
+
+      <div class="form-group" id="from-group-buttons">
+        <!--      col-sm-offset-1-->
+        <div [ngClass]="{ 'disabled-group': disableSaveButton,open: openSubmitOptions }" class="btn-group ">
+          <a (click)="onSubmit(true)" class="btn btn-primary">Save ></a>
+          <a
+            (click)="toggleSubmitOptions()"
+            *ngIf="folderFiles.length > 1"
+            class="btn btn-primary dropdown-toggle"
+            data-toggle="dropdown"
+          ><span class="caret"></span
+          ></a>
+          <ul *ngIf="folderFiles.length > 1" class="dropdown-menu">
+            <li (click)="onHoldNextClick()">
+              <a  class="hold-next"
+              >Hold and Next >></a
+              >
+            </li>
+          </ul>
+        </div>
+        <button
+          type="button"
+          (click)="skipToNextDocument()"
+          *ngIf="folderFiles.length > 1"
+          class="btn btn-info"
+        >
+          Skip
+        </button>
+        <button class="btn btn-warning" type="reset" (click)="reset()">Reset</button>
+      </div>
+    </div>
+  </app-accordion>
+</form>
+
+

@@ -1,0 +1,18 @@
+<div [style.width]="dateInputWidth">
+  <!--  class="col-sm-6"-->
+<!--  (focusin)="changeType()"-->
+  <input
+    #inputField
+    [class]="'form-control ' + class"
+    [formControl]="control"
+    [placeholder]="placeholder"
+    onfocus="(this.type='date')"
+    onblur="(this.type='text')"
+  />
+  <div
+    class="help-block list-unstyled parsley-error-list"
+    *ngIf="control.hasError('required') && (control.dirty || control.touched)"
+  >
+    This field is required.
+  </div>
+</div>

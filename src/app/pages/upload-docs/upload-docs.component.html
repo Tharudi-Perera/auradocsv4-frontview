@@ -1,0 +1,63 @@
+<app-accordion [title]="title" [checkMark]="true" panelstyle="panel-orange">
+  <div class="panel-body" style="border-top:none">
+    <div class="col-sm-3">
+      <app-carousel
+        [title]="'Pending Documents'"
+        [gray]="true"
+        [minHeight]="'728px'"
+
+      >
+        <app-pending-docs ></app-pending-docs>
+      </app-carousel>
+    </div>
+    <div class="col-md-9">
+      <app-carousel
+        [title]="'Upload Docs'"
+        [gray]="true"
+        [minHeight]="'728px'"
+      >
+
+        <div class="btn-group" id="buttonGroup" >
+          <button id="localButton" type="button" class="btn btn-sm" (click)="switchToTab('local')"  [ngClass]="{'orange' : toggle, 'gray': !toggle}">Local Documents</button>
+          <button id="scanButton" type="button" class="btn   btn-sm" (click)="switchToTab('scan')"  [ngClass]="{'orange' : !toggle, 'gray': toggle}">Scan Documents</button>
+        </div>
+
+        <div class="">
+          <div *ngIf="tabs==='local'" class="panel-body removeBorderTop">
+            <app-alert alerttype="alert-info">
+              Select files using below or drag and drop to upload!. Newly
+              upload files will be saved in <strong style="background-color: #85c744"> {{newFolder|async}} </strong>folder. Or
+              select required folder from left!
+            </app-alert>
+            <app-file-upload-form (booleanValueChange)="updateTreeAgain($event)"></app-file-upload-form>
+          </div>
+        </div>
+
+        <div class="">
+          <div *ngIf="tabs==='scan'" class="panel-body removeBorderTop">
+            <app-alert alerttype="alert-info">
+              Make sure the scanner is power on.Place the documents on the
+              scan tray and press "Start Scan " button below to start! Scan
+              documents will saved in <strong style="background-color: #85c744">1001</strong> folder after
+              upload.
+            </app-alert>
+            <button class="btn btn-warning btn-label" id="startScanButton">
+              <i class="fa-solid fa-camera"></i> Start scan
+            </button>
+            <p class="text-danger">
+              No Scan app application found in your machine. Please download,
+              install and open first then refresh the browser.
+              <a
+                href="https://auradot.auradocs.com/app/scan/Scan_App_SetUp.msi "
+              >Download app</a
+              >
+            </p>
+          </div>
+        </div>
+
+
+      </app-carousel>
+
+  </div>
+  </div>
+</app-accordion>

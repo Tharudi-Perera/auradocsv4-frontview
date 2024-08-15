@@ -1,0 +1,62 @@
+<app-accordion
+  panelstyle="panel-orange"
+  [title]="title"
+  [collapsed]="!isActive"
+  [checkMark]="true"
+  [gray]="!isActive"
+>
+  <div class="panel-body" style="border-top:none">
+    <div class="panel">
+      <div class="panel-body" style="border-top:1px solid #dddddd ">
+
+        <app-edit-security-group-form *ngIf="editGroup"  (cancelEditSecurityForm)="cancelEditSecurityForm($event)"></app-edit-security-group-form>
+        <div class="col-md-12">
+          <div id="noOfRecordsAndSearchDiv">
+            <label>
+              <select>
+                <option *ngFor="let opt of options">{{opt}}</option>
+              </select>
+              records per page
+            </label>
+            <label>
+              <input type="text" placeholder="Search here...">
+            </label>
+          </div>
+          <div>
+            <button class="btn btn-success btn-label " id="newGroupBtnId" (click)="toggleNewGroup()">
+              <i class="fa fa-plus-circle"></i> New Group
+            </button>
+          </div>
+          <app-table
+            [headings]="headings"
+            [isTableBoarded]="true"
+            [isStriped]="false"
+            [data]="tableData"
+            [headerClass]="'headerClass sorting'"
+          >
+            <tr tabledata *ngFor="let row of tableData">
+              <td>{{row.groupName}}</td>
+              <td>{{row.description}}</td>
+              <td id="buttonGroupColumn">
+                <div class="btn-group ">
+                  <button type="button" class="btn btn-info btn-label " id="editButton" (click)="editButtonClicked()"><i class="fa fa-edit"></i>Edit
+                  </button>
+                  <button type="button" class="btn btn-danger btn-label " id="deactivateButton" (click)="deactivateGroup()"><i
+                    class="fa fa-times"></i>Deactivate
+                  </button>
+                </div>
+              </td>
+
+
+            </tr>
+          </app-table>
+          <div>
+            Showing 1 to 10 of 33 entries
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</app-accordion>

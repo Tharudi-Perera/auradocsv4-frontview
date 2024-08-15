@@ -1,0 +1,16 @@
+button{
+  font-weight: normal;
+  padding: 7px 15px;
+}
+#buttonBar{
+  width: fit-content;
+  float: right;
+}
+#buttonBar button:first-of-type{
+  margin-right: 5px;
+}
+
+#buttonBarDiv{
+  width: 371px;
+  padding-right: 0px;
+}

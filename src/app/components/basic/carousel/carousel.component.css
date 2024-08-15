@@ -1,0 +1,30 @@
+.headerGray{
+  background-color: #595f69 !important;
+}
+.panel-heading{
+  height: 30px;
+  background-color: #FF7B08;
+
+}
+h4{
+  font-size: 14px;
+  color: white !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+}
+#innerHTMlSpan{
+  font-size: 14px;
+  font-weight: normal;
+  display: flex;
+
+  align-items: center;
+  text-align: center;
+  height: 100%;
+}
+.edit-document-class{
+  border: none;
+  padding: 0 !important;
+}

@@ -1,0 +1,46 @@
+div img {
+  height: 100%;
+  width: 100%;
+}
+
+#button-bar div {
+  background-color: #595f69;
+  height: 34px;
+  width: 34px;
+  border-radius: 5px;
+  margin-left: 2px;
+  margin-right: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+#button-bar div:hover{
+  cursor: pointer;
+}
+
+i {
+  color: white;
+  font-size: 20px;
+}
+
+#button-bar {
+  display: flex;
+}
+
+#document-details-group {
+  margin-top: 5px;
+}
+
+#button-bar  .buttonColor:hover {
+  background-color: #ff7b08;
+}
+
+#docImage {
+  width: 165px;
+  height: 200px;
+}
+
+#documentDetailsDataTableRow tr{
+  font-weight: bold;
+}

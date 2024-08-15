@@ -1,0 +1,27 @@
+<app-accordion [checkMark]="false"
+               [collapsed]="!isActive"
+               [gray]="!isActive"
+               [innerHTML]="documentDetailsAccordion"
+               id="document-details-accordion"
+               panelstyle="panel-orange"
+>
+  <div id="document-details-group">
+    <div id="button-bar">
+      <div  (click)="changeButtonColor($event.currentTarget)"><a  title="Add to doc cart"><i class="fa fa-shopping-cart"></i></a> </div>
+      <div  (click)="changeButtonColor($event.currentTarget);showEditTemplateDetails()"><a  title="Edit"><i class="fa fa-pencil-square-o"></i></a></div>
+      <div  (click)="changeButtonColor($event.currentTarget);printPDF()"><a  title="Print"><i class="fa fa-print"></i></a></div>
+      <div  (click)="changeButtonColor($event.currentTarget)"><a  title="Delete"><i class="fa fa-trash-o"></i></a></div>
+      <div  (click)="changeButtonColor($event.currentTarget)"><a  title="Update Document"><img src="assets/images/tag-doc.png"></a></div>
+      <div  (click)="changeButtonColor($event.currentTarget);addNoteAndSignButtonClicked()"><a  title="Add Note & Sign"><img src="assets/images/sticky-note-icon.png"></a> </div>
+      <div  (click)="changeButtonColor($event.currentTarget)"><a  title="Add to Favourite"><i class="fa fa-star-o"></i></a> </div>
+    </div>
+    <app-table [data]="documentDetailsData" [headings]="[templateName]" [headerClass]="'titleFont'" [isTableBoarded]="false" [marginBottomOfTable]="'0px'">
+      <tr id="documentDetailsDataTableRow" *ngFor="let data of documentDetailsData[0] | keyvalue" tabledata>
+        <td *ngIf="data.key==='Claim Picture' && data.value!=''">{{data.key}}</td>
+        <td *ngIf="data.key==='Claim Picture' && data.value!=''"><img id="docImage" src="data:image/jpg;base64,{{data.value}}"></td>
+        <td *ngIf="data.key!=='Claim Picture'">{{data.key}}</td>
+        <td *ngIf="data.key!=='Claim Picture'">{{data.value}}</td>
+      </tr>
+    </app-table>
+  </div>
+</app-accordion>

@@ -1,0 +1,63 @@
+
+.table>tbody>tr>td{
+  border: none;
+  padding: 5px !important;
+}
+#selectUser >div{
+  width: 200px;
+}
+#selectUser{
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+}
+#selectUser > app-select{
+  width: 200px;
+}
+button{
+  font-weight: normal;
+
+}
+#tableDiv{
+  display: flex;
+  justify-content: center;
+  max-height: 250px;
+  overflow-y: scroll;
+}
+
+table{
+  width: 400px !important;
+
+  overflow: auto;
+}
+
+.jstree-icon:empty {
+  width: 24px;
+  height: 24px;
+  line-height: 24px
+}
+.jstree-themeicon {
+  background-position: -260px -4px
+}
+.jstree-icon {
+  background-image:url("src/assets/images/32px.png");
+}
+ .jstree-icon {
+  background-repeat: no-repeat;
+  background-color: transparent
+}
+
+.jstree-icon:empty {
+  display: inline-block;
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+  vertical-align: top;
+  text-align: center
+}
+i {
+  font-style: italic;
+}
+

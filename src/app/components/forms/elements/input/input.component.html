@@ -1,0 +1,21 @@
+<div [style.width]="inputGroupWidth" class="input-group">
+  <span *ngIf="indexFieldType" class="input-group-addon font-weight-bold">{{ indexFieldType }}</span>
+  <input
+    [formControl]="control"
+    class="form-control"
+    placeholder="{{ placeholder }}"
+    readonly="{{isReadOnly}}"
+    required="{{ isRequired }}"
+    type="{{ type }}"
+    [style.text-align]="textAlign"
+    [class.centerPlaceholder]="centerPlaceholder"
+    [(ngModel)]="value"
+    [ngClass]="height"
+  />
+  <div
+    *ngIf="control.hasError('required') && (control.dirty || control.touched) && isRequiredMessageVisible"
+    class="help-block list-unstyled parsley-error-list"
+  >
+    This field is required.
+  </div>
+</div>

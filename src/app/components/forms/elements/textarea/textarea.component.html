@@ -1,0 +1,11 @@
+<div>
+  <!--  class="col-sm-6"-->
+  <textarea class="form-control" rows="3" [style.width]="width" [style.height]="height"
+     [(ngModel)]="value"  [style.background-color]="backgroundColor" [style.border]="border"   [formControl]="control" [placeholder]="placeholder" required="{{ isRequired }}" ></textarea>
+  <div
+    class="help-block list-unstyled parsley-error-list"
+    *ngIf="control.hasError('required') && (control.dirty || control.touched)"
+  >
+    This field is required.
+  </div>
+</div>

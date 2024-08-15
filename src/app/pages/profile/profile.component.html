@@ -1,0 +1,21 @@
+<div class="col-md-2"></div>
+<div class="col-md-8">
+  <app-carousel
+    cardclass="panel panel-grape"
+    [gray]="true"
+    title="User Details (Last edited by {{firstName}} on {{updatedTime | date:'MMM d, y h:mm:ss a'}})"
+    [headerHeight]="'38px'"
+  >
+    <user-profile-form (sendUpdatedTime)="getUpdatedTime($event)" (sendFirstName)="getFirstName($event)" ></user-profile-form>
+    <div footer class="panel-footer">
+      <div class="row">
+        <div class="col-sm-6 col-sm-offset-3" id="buttonBarDiv">
+          <div class="btn-toolbar" id="buttonBar">
+            <button (click)="cancel()" class="btn-default btn">Cancel</button>
+            <button (click)="OnSubmit()" class="btn-primary btn" >Save</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </app-carousel>
+</div>

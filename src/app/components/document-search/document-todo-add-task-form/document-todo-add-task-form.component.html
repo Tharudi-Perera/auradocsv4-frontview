@@ -1,0 +1,29 @@
+<form class="form-horizontal" [formGroup]="addTaskFormGroup" >
+  <div class="form-group" [style.margin-bottom]="'0px'" [style.margin-top]="'0px'">
+    <div class="col-sm-12">
+      <app-table [data]="['1']" [captionClass]="'captionClass'"
+                 [isTableBoarded]="false"  >
+        <tr tabledata >
+          <td>Type of users</td>
+          <td>User/Group List</td>
+        </tr>
+        <tr tabledata>
+          <td><app-select [control]="addTaskFormGroup.get('typeOfUsers')" [isRequired]="false" [options]="typeOfUsers"></app-select> </td>
+          <td><app-select [control]="addTaskFormGroup.get('userGroupList')" [isRequired]="false" [options]="userGroupList"> </app-select> </td>
+        </tr>
+        <tr tabledata>
+          <td colspan="2">
+            <div>Remark</div>
+            <app-textarea [control]="addTaskFormGroup.get('remark')"></app-textarea>
+          </td>
+        </tr>
+      </app-table>
+    </div>
+    <div class="col-sm-12">
+      <div class="">
+        <button class="btn btn-default"  id="cancelButton" (click)="closeModal()">Close</button>
+        <button class="btn btn-primary"  id="addTasksButton" (click)="addTasks()">Add Tasks</button>
+      </div>
+    </div>
+  </div>
+</form>

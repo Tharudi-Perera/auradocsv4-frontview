@@ -1,0 +1,19 @@
+<div [style.margin-bottom]="marginBottom" [style.margin-top]="marginTop">
+  <!--  class="col-sm-6"-->
+
+  <select class="form-control" [required]="isRequired" [formControl]="control"  [(ngModel)]="selectedOption">
+    <option disabled selected>
+      {{selectedOption}}
+    </option>
+    <option *ngFor="let opt of options" value="{{ showPredefinedDataAsValue?opt.predefinedData: opt.dataNumber }}">
+      {{ opt.predefinedData }}
+    </option>
+  </select>
+
+  <div
+    class="help-block list-unstyled parsley-error-list"
+    *ngIf="control.hasError('required') && (control.dirty || control.touched)"
+  >
+    This field is required.
+  </div>
+</div>

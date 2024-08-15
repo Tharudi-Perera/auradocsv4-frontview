@@ -1,0 +1,28 @@
+.panel-height div{
+  font-size: 14px;
+  color: white;
+}
+.panel-height{
+  display: flex;
+  align-items: center;
+  /*height: 30px;*/
+}
+
+.panel-heading {
+  height: 30px !important;
+  background-color: #FF7B08 ;
+  border-color: #FF7B08 ;
+
+}
+.grayColor{
+  border-color: #595f69;
+  background-color: #595f69 ;
+}
+.newPanelStyle{
+  margin: 0 0 10px;
+  border-radius: 1px
+}
+#panelHeading{
+  padding:0 10px;
+  cursor: pointer;
+}

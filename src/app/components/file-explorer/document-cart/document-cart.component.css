@@ -1,0 +1,13 @@
+.no-documents {
+  padding: 20px;
+  width: 740px;
+  border: 1px solid #d2d3d6;
+  text-align: center;
+}
+#no-document-parent-div{
+  display: flex;
+  justify-content: center;
+}
+.panel-orange .panel-body{
+  border-top: none;
+}

@@ -1,0 +1,21 @@
+.no-data-available {
+  text-align: center;
+  column-span: all;
+}
+
+.captionClass {
+  padding: 0px;
+}
+
+.headerClass {
+  font-size: 14px;
+  font-weight: normal;
+}
+
+#table {
+  margin-top: 0px !important;
+}
+
+.titleFont {
+  font-size: 20px;
+}

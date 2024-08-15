@@ -1,0 +1,47 @@
+<div
+  class="{{ klass }}"
+  [ngStyle]="(isModalVisible || isAddUserModalVisible) && { 'padding-right': '17px' }"
+>
+  <app-header
+    (togglesidebar)="toggleSidebar($event)"
+    (toggleModal)="toggleModalVisibility()"
+    (auraDocsLogo)="GetAuradocsLogoClickedStatus($event)"
+  ></app-header>
+  <div id="page-container">
+    <app-sidebar [activeRoute]="currentRoute" [togglewarningVal]="togglewarningVal" [auraDocsLogoClicked]="auraDocsLogoStatus" ></app-sidebar>
+    <div id="page-content" >
+      <div id="wrap">
+        <div class="container">
+          <app-document-search-modal [isOpen]="isModalVisible" (toggleActive)="toggleModalVisibility()"></app-document-search-modal>
+          <app-add-users-modal [isOpen]="isAddUserModalVisible"></app-add-users-modal>
+          <app-edit-user-account-modal [isOpen]="isEditUserAccountGroupModalVisible" ></app-edit-user-account-modal>
+          <app-deactivate-security-group-modal [isOpen]="isDeactivateSecurityGroupModalVisible"></app-deactivate-security-group-modal>
+          <app-user-account-template-table-modal [isOpen]="isTemplateTableModalVisible"></app-user-account-template-table-modal>
+          <app-new-template-modal [isOpen]="isNewTemplateTableModalVisible"></app-new-template-modal>
+          <app-edit-template-modal [isOpen]="isEditTemplateTableModalVisible"></app-edit-template-modal>
+          <app-delete-masking-modal [isOpen]="isDeleteMaskingModalVisible"></app-delete-masking-modal>
+          <app-document-file-metadata-modal [isOpen]="isDocumentFileMetadataModalVisible" [isViewSelectedOrViewAll]="isViewSelectedOrViewAll" [id]="docId"></app-document-file-metadata-modal>
+          <app-document-todo-add-task-modal [isOpen]="isDocumentSearchTodoListAddTaskModalVisible"></app-document-todo-add-task-modal>
+          <app-document-todo-see-all-task-modal [isOpen]="isDocumentSearchTodoListSeeAllTaskModalVisible"></app-document-todo-see-all-task-modal>
+          <app-forword-to-user-modal [isOpen]="isForwardToUserModalVisible"></app-forword-to-user-modal>
+          <app-add-note-and-sign  [isVisible]="isAddNoteSignModalVisible"></app-add-note-and-sign>
+          <app-add-note  [isVisible]="isAddNoteFormModalVisible"></app-add-note>
+          <app-add-sign  [isVisible]="isAddSignFormModalVisible"></app-add-sign>
+
+
+          <router-outlet ></router-outlet>
+        </div>
+      </div>
+    </div>
+    <footer role="contentinfo">
+      <div class="clearfix">
+        <ul class="list-unstyled list-inline">
+          <li>Copyright © {{currentYear}} Auradot Pvt Ltd.</li>
+          <li><b>v4</b></li>
+          <button (click)="scrollToTop()" class="pull-right btn btn-inverse-alt btn-xs hidden-print" id="back-to-top"><i class="fa fa-arrow-up"></i></button>
+        </ul>
+
+      </div>
+    </footer>
+  </div>
+</div>

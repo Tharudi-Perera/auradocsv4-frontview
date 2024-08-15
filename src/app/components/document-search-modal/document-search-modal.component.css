@@ -1,0 +1,13 @@
+label{
+  font-size: 13px;
+}
+button{
+  line-height: 20px;
+  padding:5px;
+  font-weight: 400;
+  margin-right: 5px;
+
+}
+.form-group{
+  margin-bottom: 10px;
+}

@@ -1,0 +1,25 @@
+<div class="{{ cardclass }}">
+  <div class="panel-body"
+  >
+    <div class="row">
+      <div class="{{ titleclass }}" >
+        <h4 [ngClass]="panelHeaderClass" class="pull-left" style="margin: 0 0 20px">
+          {{ title }} <small>{{ titlesmall }}</small>
+        </h4>
+        <div *ngIf="analysData?.length > 0" class="btn-group pull-right">
+          <a
+            *ngFor="let data of analysData"
+            class="btn btn-default btn-sm"
+            [ngClass]="{ active: selectedAnalys == data }"
+            (click)="getAnalysData(data)"
+          >
+            {{ data }}
+          </a>
+        </div>
+      </div>
+      <div class="{{ contentclass }}">
+        <ng-content></ng-content>
+      </div>
+    </div>
+  </div>
+</div>

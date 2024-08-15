@@ -1,0 +1,7 @@
+<app-modal [isVisible]="isOpen" (modal)="toggleView()" [modalHeaderVisible]="true"
+           [title]="'Request Task'"
+           [modalFooterVisible]="false" [modalTitleTextAlign]="'center'">
+  <div body>
+    <app-document-todo-add-task-form></app-document-todo-add-task-form>
+  </div>
+</app-modal>

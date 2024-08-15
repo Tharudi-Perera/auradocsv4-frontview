@@ -1,0 +1,9 @@
+#cancelButton,
+#addTasksButton{
+  font-weight: 400;
+  padding-left: 15px;
+  padding-right: 15px;
+  float: right;
+  margin-left: 5px;
+  margin-right: 5px;
+}

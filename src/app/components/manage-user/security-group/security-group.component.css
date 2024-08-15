@@ -1,0 +1,27 @@
+#noOfRecordsAndSearchDiv select{
+  width: 80px;
+  margin-right: 10px;
+}
+#newGroupBtnId{
+  margin-top: 20px;
+  margin-bottom: 0px;
+  font-weight:400;
+}
+#noOfRecordsAndSearchDiv{
+  display:flex;
+  justify-content: space-between;
+}
+#noOfRecordsAndSearchDiv select,
+#noOfRecordsAndSearchDiv input {
+  height: 30px;
+}
+#buttonGroupColumn > .btn-group{
+  float: right;
+}
+#editButton{
+  margin-right: 5px;
+  font-weight:400;
+}
+#deactivateButton{
+  font-weight:400;
+}

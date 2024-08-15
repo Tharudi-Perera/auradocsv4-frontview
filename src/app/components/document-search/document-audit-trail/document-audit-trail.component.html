@@ -1,0 +1,18 @@
+<app-accordion [checkMark]="false"
+               [collapsed]="!isActive"
+               [gray]="!isActive"
+               [innerHTML]="documentAuditTrailAccordion"
+               id="document-audit-trail-accordion"
+               panelstyle="panel-orange"
+>
+<div id="parentDiv">
+  <app-table [captionClass]="'captionClass'" [headerClass]="'headerClass'" [data]="auditTrailData" [headings]="auditTrailHeadings"
+             [isStriped]="true" [isTableBoarded]="false" [hoverEnabled]="true">
+    <tr *ngFor="let data of auditTrailData" tabledata>
+      <td>{{data.username}}</td>
+      <td>{{data.operation}}</td>
+      <td>{{data.accessTime|date:'MMMM d, y, h:mm a'}}</td>
+    </tr>
+  </app-table>
+</div>
+</app-accordion>

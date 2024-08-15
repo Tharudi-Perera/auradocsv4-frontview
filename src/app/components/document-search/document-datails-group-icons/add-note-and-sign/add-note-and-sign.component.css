@@ -1,0 +1,13 @@
+.modal-body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.modal-body div img{
+  background-color: #585f69;
+  height: 33px;
+  width: 33px;
+  border: 1px solid rgb(149, 144, 145);
+  border-radius: 5px;
+}

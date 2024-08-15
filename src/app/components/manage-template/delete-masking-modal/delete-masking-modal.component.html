@@ -1,0 +1,8 @@
+<app-modal [innerHTML]="'<i class=\'fa fa-ban\'></i> Cannot be deleted The mask has already assign to a user!'"
+           [isVisible]="isOpen" (modal)="toggleView()" [modalHeaderVisible]="true"
+           [modalFooterVisible]="false"
+           id="delete-masking">
+  <div body>
+    <app-delete-masking-form></app-delete-masking-form>
+  </div>
+</app-modal>

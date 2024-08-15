@@ -1,0 +1,64 @@
+#status{
+  float: right;
+}
+#status>span{
+  color: green;
+  padding: 0 4px;
+}
+.inputGroupClass{
+  width: 100%;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+#checkbox{
+  display: inline-block;
+}
+#changePasswordCheckBox{
+  display: inline-block;
+  margin-right: 5px;
+}
+#buttonGroup{
+  width:fit-content;
+}
+#userRoles{
+  margin: 0 5px;
+}
+#registrationButton{
+  background-color:#ff7b08;
+}
+button:not(#cancelButton,#saveButton){
+  padding:5px 10px;
+  color:white !important;
+  font-weight: normal;
+  margin-left: 4px;
+}
+button:not(#registrationButton,#cancelButton,#saveButton,#setButton){
+  background-color: #595f69;
+}
+.new-form-group{
+  margin-right: 0;
+  margin-left: 0;
+  margin-bottom: 20px;
+}
+#cancelSaveButtonGroup{
+  width: fit-content;
+  float: right;
+}
+#cancelButton{
+  margin-right: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+  color: black;
+  font-weight: 400;
+}
+#saveButton{
+  font-weight: 400;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+#templateSecurityTableDataNameCheckBox{
+  display :inline-block;
+}
+.firstColumn{
+  width: 85%;
+}

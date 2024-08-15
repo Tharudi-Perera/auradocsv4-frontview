@@ -1,0 +1,8 @@
+<app-modal title="Add or Remove Template Features" [modalWidth]="'85%'" [isVisible]="isOpen"
+           (modal)="toggleView()" [headerClass]="'modal-header-class'"
+           [modalFooterVisible]="false" [modalHeaderVisible]="true" id="edit-template">
+  <div body>
+    <app-edit-template-form></app-edit-template-form>
+  </div>
+</app-modal>
+

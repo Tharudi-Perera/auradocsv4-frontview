@@ -1,0 +1,95 @@
+<div *ngIf="isViewSelectedOrViewAll" [class.col-md-12]="true">
+  <app-pdf-viewer [base64]="base64Src"></app-pdf-viewer>
+</div>
+<div *ngIf="!isViewSelectedOrViewAll">
+  <div [class.col-md-12]="hidden" [class.col-md-8]="!hidden" [style.padding-right]="hidden? '40px':''" id="pdf-viewer">
+    <div *ngIf="!askAccessRequest" class="boundary">
+      <ng-template #StickyNoteTemplate></ng-template>
+      <app-pdf-viewer [base64]="base64Src" ></app-pdf-viewer>
+    </div>
+    <div *ngIf="askAccessRequest && fileRightsRequest==false" id="askAccessRequestDiv">
+      <img src="assets/images/access_denied.jpg" alt="">
+      <div id="redErrorMessage">Sorry. You don't have required access right to view this document!.</div>
+      <div>You can request rights from the owner by <a (click)="showFileRightsRequest()">click here</a></div>
+    </div>
+    <div *ngIf="fileRightsRequest" id="fileRightsRequestDiv">
+      <div>
+        <div id="fileRightsRequestTitle">File Rights Request</div>
+        <div id="originalFileName">Original file Name: {{originalFileName}}  </div>
+        <form (ngSubmit)="onFileRightsRequestFormSubmit()" [formGroup]="fileRightsRequestForm">
+
+          <div class="input-group" id="message-body">
+            <app-textarea [control]="fileRightsRequestForm.get('messageBody')" [height]="'150px'"
+                          [placeholder]="'Message Body'" [width]="'100%'"></app-textarea>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-12">
+              <div class="btn-toolbar" id="cancelSendButtonGroup">
+                <button (click)="closeFileRightsRequestForm()" class="btn-default btn" id="cancelButton">Cancel</button>
+                <button class=" btn" id="sendButton"  type="submit">Request Access</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div [style.display]="hidden ? 'none' : 'block'" class="col-md-4" id="document-search-view-form">
+    <div>
+      <app-document-search-view-form
+        [documentNos]="documentNos"
+        (sendFileName)="getFileName($event)"
+        [id]="id"
+        [isViewSelectedOrViewAll]="isViewSelectedOrViewAll"
+        [base64Src]="base64Src"
+      ></app-document-search-view-form>
+    </div>
+  </div>
+  <button (click)="hideViewDataForm()" id="fullViewButton">
+    <i class="fa fa-bars" id="context-menu-toggle"></i>
+  </button>
+
+  <div *ngIf="hidden" id="sideBarButtonBar">
+    <button  (click)="changeButtonColor($event.currentTarget)" class="viewFormSideBarButton " title="Document Details">
+      <i class="fa fa-file-text-o"></i>
+    </button>
+    <button  (click)="changeButtonColor($event.currentTarget)" class="viewFormSideBarButton" title="Versions">
+      <i class="fa fa-refresh"></i>
+    </button>
+    <button (click)="changeButtonColor($event.currentTarget)" class="viewFormSideBarButton" title="Share">
+      <i class="fa fa-share"></i>
+    </button>
+    <button (click)="changeButtonColor($event.currentTarget)" class="viewFormSideBarButton" title="Minutes">
+      <i class="fa fa-comment"></i>
+    </button>
+    <button (click)="changeButtonColor($event.currentTarget)" class="viewFormSideBarButton" title="Tags">
+      <i class="fa fa-tags"></i>
+    </button>
+    <button (click)="changeButtonColor($event.currentTarget)" class="viewFormSideBarButton" title="File Metadata">
+      <i class="fa fa-info-circle"></i>
+    </button>
+    <button (click)="changeButtonColor($event.currentTarget)" class="viewFormSideBarButton" title="Audit Trail">
+      <i class="fa fa-cloud"></i>
+    </button>
+    <button (click)="changeButtonColor($event.currentTarget)" class="viewFormSideBarButton" title="Workflow">
+      <i class="fa fa-briefcase"></i>
+    </button>
+    <button (click)="changeButtonColor($event.currentTarget)" class="viewFormSideBarButton" title="Document Request">
+      <i class="fa fa-files-o"></i>
+    </button>
+    <button (click)="changeButtonColor($event.currentTarget)" class="viewFormSideBarButton" title="Blockchain">
+      <i class="fa fa-bitcoin"></i>
+    </button>
+    <button (click)="changeButtonColor($event.currentTarget)" class="viewFormSideBarButton" title="Private Folder Tree">
+      <i class="fa fa-sitemap"></i>
+    </button>
+    <button (click)="changeButtonColor($event.currentTarget)" class=" viewFormSideBarButton" title="To-do List">
+      <i class="fa fa-thumbs-up"></i>
+    </button>
+    <button (click)="changeButtonColor($event.currentTarget)" class="viewFormSideBarButton" title="Add Signature">
+      <i class="fa fa-pencil"></i>
+    </button>
+  </div>
+</div>
+
+

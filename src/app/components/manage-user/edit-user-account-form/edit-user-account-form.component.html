@@ -1,0 +1,211 @@
+<form class="form-horizontal" [formGroup]="docNewGroupForm" (submit)="onSubmit()">
+  <div class="form-group">
+    <div class="col-sm-12 ">
+      <div class="inputGroupClass">
+        <div id="status">Status:<span> Active</span>
+          <app-checkbox id="checkbox" [isRequired]="false" [control]="docNewGroupForm.get('status')"></app-checkbox>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="form-group">
+    <div class="col-sm-12 ">
+      <div class="btn-toolbar" id="buttonGroup">
+        <button class="editUserAccountModalButtonColor btn btn-default" id="registrationButton"
+                (click)="registrationButtonClicked()">Registration
+        </button>
+        <button class="editUserAccountModalButtonColor btn btn-default" id="userRoles" (click)="userRolesButtonClicked()">User
+          Roles
+        </button>
+        <button class="editUserAccountModalButtonColor btn btn-default"  (click)="templateSecurityButtonClicked()">Template Security</button>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-12 " *ngIf="registration">
+      <div class="panel">
+        <div class="panel-body">
+          <div class="new-form-group">
+            <div class="input-group inputGroupClass">
+            <span class="col-sm-6" style="padding-left: 0px">
+              <app-input
+                [type]="'text'"
+                [isRequired]="false"
+                [control]="docNewGroupForm.get('userId')"
+                [placeholder]="'Password'"
+                [inputGroupWidth]="'100%'"
+              >
+              </app-input>
+            </span>
+              <span class="col-sm-6" style="padding-right: 0px">
+                <app-input
+                  [type]="'text'"
+                  [isRequired]="false"
+                  [control]="docNewGroupForm.get('fullName')"
+                  [placeholder]="'fullName'"
+                  [inputGroupWidth]="'100%'"
+                >
+                </app-input>
+            </span>
+            </div>
+          </div>
+          <div class="new-form-group">
+            <div class="input-group inputGroupClass">
+            <span class="col-sm-6" style="padding-left: 0px">
+              <app-input
+                [type]="'text'"
+                [isRequired]="false"
+                [control]="docNewGroupForm.get('emailAddress')"
+                [placeholder]="'Email Address'"
+                [inputGroupWidth]="'100%'"
+              >
+              </app-input>
+            </span>
+              <span class="col-sm-6" style="padding-right: 0px">
+                <app-input
+                  [type]="'text'"
+                  [isRequired]="false"
+                  [control]="docNewGroupForm.get('mobileNumber')"
+                  [placeholder]="'Mobile Number'"
+                  [inputGroupWidth]="'100%'"
+                >
+                </app-input>
+            </span>
+            </div>
+          </div>
+          <div class="new-form-group">
+            <div class="inputGroupClass">
+              <app-checkbox id="changePasswordCheckBox" [isRequired]="false"
+                            [control]="docNewGroupForm.get('changePassword')"></app-checkbox>
+              <span>change password</span>
+            </div>
+          </div>
+          <div class="new-form-group">
+            <div class="inputGroupClass">
+              <app-accordion [title]="firstAccordionTitleRegistration" [gray]="collapsedValFirstAccordion"
+                             (collapsedVal)="collapseValueFirstAccordion($event)"  [collapsed]="collapsedValFirstAccordion">
+                <app-table [data]="firstAccordionDataRegistration" [maximumHeight]="'500px'"
+                           [headerClass]="'headerClass'" [captionClass]="'captionClass'" [marginBottomOfTable]="'0px'">
+                  <tr tabledata *ngFor="let data of firstAccordionDataRegistration ">
+                    <td class="firstColumn">{{data}}</td>
+                    <td><app-checkbox [isRequired]="false"
+                                      [control]="docNewGroupForm.get([data])"></app-checkbox></td>
+                  </tr>
+                </app-table>
+              </app-accordion>
+              <app-accordion [title]="secondAccordionTitleRegistration"  [gray]="collapsedValSecondAccordion"
+                             (collapsedVal)="collapseValueSecondAccordion($event)"  [collapsed]="collapsedValSecondAccordion">
+                <app-table [data]="secondAccordionDataRegistration" [maximumHeight]="'500px'"
+                           [headerClass]="'headerClass'" [captionClass]="'captionClass'" [marginBottomOfTable]="'0px'">
+                  <tr tabledata *ngFor="let data of secondAccordionDataRegistration">
+                    <td class="firstColumn">{{data}}</td>
+                    <td><app-checkbox [isRequired]="false"
+                                      [control]="docNewGroupForm.get([data])"></app-checkbox></td>
+                  </tr>
+                </app-table>
+              </app-accordion>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-sm-12 " *ngIf="userRoles">
+      <div class="panel">
+        <div class="panel-body">
+
+          <div class="alert alert-warning" role="alert" style="margin-left:10px; margin-right: 10px;">
+            ⚠ To occur these changes You will need to logout and login again.
+          </div>
+          <div>User Roles</div>
+          <div class="new-form-group">
+            <div class="inputGroupClass">
+              <app-accordion [title]="firstAccordionTitleUserRoles" [gray]="collapsedValFirstAccordion"
+                             (collapsedVal)="collapseValueFirstAccordion($event)"  [collapsed]="collapsedValFirstAccordion">
+                <app-table [data]="firstAccordionDataUserRoles" [maximumHeight]="'500px'"
+                           [headerClass]="'headerClass'" [captionClass]="'captionClass'" [marginBottomOfTable]="'0px'">
+                  <tr tabledata *ngFor="let data of firstAccordionDataUserRoles ">
+                    <td class="firstColumn">{{data}}</td>
+                    <td><app-checkbox [isRequired]="false"
+                                      [control]="docNewGroupForm.get([data])"></app-checkbox></td>
+                  </tr>
+                </app-table>
+              </app-accordion>
+              <app-accordion [title]="secondAccordionTitleUserRoles"  [gray]="collapsedValSecondAccordion"
+                             (collapsedVal)="collapseValueSecondAccordion($event)"  [collapsed]="collapsedValSecondAccordion">
+                <app-table [data]="secondAccordionDataUserRoles" [maximumHeight]="'500px'"
+                           [headerClass]="'headerClass'" [captionClass]="'captionClass'" [marginBottomOfTable]="'0px'">
+                    <tr tabledata *ngFor="let data of secondAccordionDataUserRoles">
+                    <td class="firstColumn">{{data}}</td>
+                    <td><app-checkbox [isRequired]="false"
+                                      [control]="docNewGroupForm.get([data])"></app-checkbox></td>
+                  </tr>
+                </app-table>
+              </app-accordion>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-12 " *ngIf="templateSecurity">
+      <div class="panel">
+        <div class="panel-body">
+          <div>Template Security</div>
+          <div class="new-form-group">
+            <div class="inputGroupClass">
+              <app-table [headings]="tableHeadings" [data]="templateSecurityTableData" [headerClass]="'headerClass'">
+                <tr tabledata *ngFor="let tableData of templateSecurityTableData">
+                  <td>{{tableData.name}}(<app-checkbox id="templateSecurityTableDataNameCheckBox" [isRequired]="false"
+                                                       [control]="docNewGroupForm.get([tableData.name])"></app-checkbox>)</td>
+                  <td>
+                    <button id="setButton" class="btn btn-info " *ngIf="tableData.setValue" (click)="viewTemplateTable()">Set</button></td>
+                  <td style="text-align: center">
+                    <app-checkbox [isRequired]="false"
+                                    [control]="docNewGroupForm.get([tableData.view])"></app-checkbox></td>
+                  <td style="text-align: center">
+                    <app-checkbox [isRequired]="false"
+                                    [control]="docNewGroupForm.get([tableData.index])"></app-checkbox></td>
+                  <td style="text-align: center">
+                    <app-checkbox [isRequired]="false"
+                                    [control]="docNewGroupForm.get([tableData.edit])"></app-checkbox></td>
+                  <td style="text-align: center">
+                    <app-checkbox [isRequired]="false"
+                                    [control]="docNewGroupForm.get([tableData.delete])"></app-checkbox></td>
+                  <td style="text-align: center">
+                    <app-checkbox [isRequired]="false"
+                                    [control]="docNewGroupForm.get([tableData.accessLevel])"></app-checkbox></td>
+                  <td style="text-align: center">
+                    <app-checkbox [isRequired]="false"
+                                    [control]="docNewGroupForm.get([tableData.email])"></app-checkbox></td>
+                  <td style="text-align: center">
+                    <app-checkbox [isRequired]="false"
+                                    [control]="docNewGroupForm.get([tableData.download])"></app-checkbox></td>
+                  <td style="text-align: center">
+                    <app-checkbox [isRequired]="false"
+                                    [control]="docNewGroupForm.get([tableData.autoIndex])"></app-checkbox></td>
+                  <td style="text-align: center">
+                    <app-checkbox [isRequired]="false"
+                                    [control]="docNewGroupForm.get([tableData.print])"></app-checkbox></td>
+                  <td style="text-align: center">
+                    <app-checkbox [isRequired]="false"
+                                    [control]="docNewGroupForm.get([tableData.otp])"></app-checkbox></td>
+                </tr>
+              </app-table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr/>
+    <div class="col-sm-12">
+      <div class="">
+        <div class="btn-toolbar" id="cancelSaveButtonGroup">
+          <button class="btn-default btn" id="cancelButton"  (click)="closeModal()">Cancel</button>
+          <button class="btn-primary btn" type="submit" id="saveButton">Save Changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

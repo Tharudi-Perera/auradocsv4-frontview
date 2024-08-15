@@ -1,0 +1,46 @@
+<form (submit)="onSubmit()" [formGroup]="forwardToUserForm" class="form-horizontal">
+
+  <div class="form-group" style="margin-bottom: 0">
+    <div class="col-sm-12 ">
+      <div id="tableDiv">
+        <table class="table">
+          <tbody>
+          <tr>
+            <td colspan="2">Folder Name</td>
+            <td>Move Y/N</td>
+          </tr>
+          <tr *ngFor="let folderName of folderNamesList">
+            <td [width]="46">
+<!--              <div><img src="../../../../assets/images/folder.png"></div>-->
+              <div><i class="jstree-icon jstree-themeicon" role="presentation"></i></div>
+            </td>
+            <td [width]="180" [align]="'left'" title="Select To Move">
+              <div>{{folderName}}</div>
+            </td>
+            <td [width]="20" [align]="'left'" title="Select To Move">
+              <app-checkbox [control]="forwardToUserForm.get('selectedCheckBox')"
+                            (change)="onCheckboxChange($event, folderName)">
+              ></app-checkbox>
+            </td>
+          </tr>
+          </tbody>
+
+        </table>
+      </div>
+      <div id="selectUser">
+        <app-select [control]="forwardToUserForm.get('user')" [selectedOption]="'-Select user from list-'" [options]="users"
+                    [showPredefinedDataAsValue]="true"></app-select>
+      </div>
+
+      <div style="margin-top: 30px">
+        <hr>
+        <div style="display: flex; justify-content: end; margin-top: 20px;margin-bottom: 20px">
+          <div class="btn-toolbar" style="width: fit-content">
+            <button class="btn-default btn" style="margin-right: 5px" type="reset" (click)="closeForm()">Close</button>
+            <button class="btn-primary btn" type="submit" [disabled]="!forwardToUserForm.valid">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

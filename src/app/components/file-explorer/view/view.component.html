@@ -1,0 +1,17 @@
+<app-accordion
+  panelstyle="panel-orange"
+  [title]="title"
+  [collapsed]="!isActive"
+  [checkMark]="true"
+  [gray]="!isActive"
+>
+  <div class="panel-body" style="border-top:none">
+    <div class="col-md-8">
+      <app-card>
+        <div class="pdf-container">
+          <app-pdf-viewer [base64]="base64Src"></app-pdf-viewer>
+        </div>
+      </app-card>
+    </div>
+  </div>
+</app-accordion>

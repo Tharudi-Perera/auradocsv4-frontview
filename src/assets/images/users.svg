@@ -1,0 +1,40 @@
+<svg height="342" version="1.1" width="291" xmlns="http://www.w3.org/2000/svg"
+     style="overflow: hidden; position: relative;">
+  <desc style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Created with Raphaël 2.1.0</desc>
+  <defs style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></defs>
+  <path fill="none" stroke="#0b62a4"
+        d="M145.5,261.3333333333333A90.33333333333333,90.33333333333333,0,0,0,169.9738476827767,84.04517327536466"
+        stroke-width="2" opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); opacity: 1;"></path>
+  <path fill="#0b62a4" stroke="#ffffff"
+        d="M145.5,264.3333333333333A93.33333333333333,93.33333333333333,0,0,0,170.7866322921678,81.15737460185278L182.21077152416504,40.567759913046984A135.5,135.5,0,0,1,145.5,306.5Z"
+        stroke-width="3" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
+  <path fill="none" stroke="#3980b5"
+        d="M169.9738476827767,84.04517327536466A90.33333333333333,90.33333333333333,0,0,0,61.299275328314636,138.2838101870932"
+        stroke-width="2" opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); opacity: 0;"></path>
+  <path fill="#3980b5" stroke="#ffffff"
+        d="M170.7866322921678,81.15737460185278A93.33333333333333,93.33333333333333,0,0,0,58.502941298627675,137.19729465825128L23.8594697086169,123.73657449537635A130.5,130.5,0,0,1,180.8561305085132,45.38075770223344Z"
+        stroke-width="3" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
+  <path fill="none" stroke="#679dc6"
+        d="M61.299275328314636,138.2838101870932A90.33333333333333,90.33333333333333,0,0,0,102.71892865150414,250.560612399516"
+        stroke-width="2" opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); opacity: 0;"></path>
+  <path fill="#679dc6" stroke="#ffffff"
+        d="M58.502941298627675,137.19729465825128A93.33333333333333,93.33333333333333,0,0,0,101.29815506428471,253.2028467596475L83.69634895595524,285.93719466572145A130.5,130.5,0,0,1,23.8594697086169,123.73657449537635Z"
+        stroke-width="3" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
+  <path fill="none" stroke="#95bbd7"
+        d="M102.71892865150414,250.560612399516A90.33333333333333,90.33333333333333,0,0,0,145.4716209468295,261.3333288755621"
+        stroke-width="2" opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); opacity: 0;"></path>
+  <path fill="#95bbd7" stroke="#ffffff"
+        d="M101.29815506428471,253.2028467596475A93.33333333333333,93.33333333333333,0,0,0,145.47067846904892,264.333328727518L145.45900221654517,301.4999935600832A130.5,130.5,0,0,1,83.69634895595524,285.93719466572145Z"
+        stroke-width="3" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
+  <text x="145.5" y="161" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#000000"
+        style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font: 800 15px Arial;"
+        font-size="15px" font-weight="800" transform="matrix(2.6569,0,0,2.6569,-241.0735,-280.8382)"
+        stroke-width="0.3763837638376384">
+    <tspan style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" dy="5.5">Users</tspan>
+  </text>
+  <text x="145.5" y="181" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#000000"
+        style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font: 14px Arial;" font-size="14px"
+        transform="matrix(1.8819,0,0,1.8819,-128.4168,-152.5764)" stroke-width="0.5313653136531366">
+    <tspan  id="noOfUsers" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" dy="5">212</tspan>
+  </text>
+</svg>

@@ -1,0 +1,50 @@
+<form (submit)="onSubmit()" [formGroup]="addUsersGroupForm">
+  <div class="col-sm-12 ">
+    <div class="panel">
+      <div class="panel-body">
+        <div id="form-group" id="selectUserDivParentDiv">
+          <div class="col-sm-12 " id="selectUserDiv">
+            <label class="control-label">Select User</label>
+            <app-select [control]="addUsersGroupForm.get('selectedUser')" [isRequired]="false"
+                        [options]="users"
+                        id="selectUser"
+            ></app-select>
+            <button class="btn btn-success btn-label " id="addButton">Add</button>
+          </div>
+        </div>
+        <div class="col-sm-12 " id="noOfRecordsAndSearchDiv">
+          <label>
+            <select>
+              <option *ngFor="let opt of options">{{opt}}</option>
+            </select>
+            records per page
+          </label>
+          <label>
+            <input placeholder="Search here..." type="text">
+          </label>
+        </div>
+
+        <div>User List of {{groupName}} </div>
+        <div class="new-form-group">
+          <app-table [captionClass]="'captionClass'" [data]="userList"
+                     [headerClass]="'headerClass'" [headings]="tableHeadings"
+                     [isTableBoarded]="true" [maximumHeight]="'800px'">
+            <tr *ngFor="let userListData of userList " tabledata>
+              <td>{{userListData.userId}}</td>
+              <td>{{userListData.userName}}</td>
+              <td>{{userListData.email}}</td>
+              <td>
+                <div [style.float]="'right'">
+                  <button (click)="removeUser()" class="btn btn-danger btn-label " id="removeButton" type="button"><i
+                    class="fa fa-times"></i>Remove
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </app-table>
+        </div>
+        <button (click)="closeForm()" class="btn-default btn" id="cancelButton">Cancel</button>
+      </div>
+    </div>
+  </div>
+</form>

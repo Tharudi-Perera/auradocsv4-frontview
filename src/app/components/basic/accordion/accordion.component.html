@@ -1,0 +1,24 @@
+<div class="panel" [ngClass]="panelstyle" [style.margin-bottom]="'6px'">
+  <a
+    style="text-decoration: none;"
+    data-toggle="collapse"
+    data-parent="#accordion"
+    [ngClass]="{ collapsed: collapsed }"
+    (click)="toggleCollapsed()"
+  >
+    <div class="panel-heading panel-height" [class.grayColor]="gray" id="panelHeading">
+      <div><span *ngIf="checkMark"><i class="fa-solid fa-check"></i>&nbsp;&nbsp;&nbsp;</span>{{ title }}<span [innerHTML]="innerHTML"></span></div>
+    </div>
+  </a>
+  <div
+    id="collapseOne"
+    class="panel-collapse collapse"
+    [ngClass]="{ in: !collapsed }"
+    [ngStyle]="{ height: collapsed ? '0px' : '' }"
+    [style.min-height]="minHeight"
+  >
+    <ng-content></ng-content>
+  </div>
+</div>
+
+

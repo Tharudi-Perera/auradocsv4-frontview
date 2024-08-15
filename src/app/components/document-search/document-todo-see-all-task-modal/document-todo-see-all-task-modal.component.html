@@ -1,0 +1,14 @@
+<app-modal [isVisible]="isOpen" (modal)="toggleView()" [modalHeaderVisible]="true"
+           [title]="'Document Approval History'" [modalWidth]="'85%'"
+           [modalFooterVisible]="true" [modalTitleTextAlign]="'center'">
+  <div body>
+    <app-document-todo-see-all-task-form></app-document-todo-see-all-task-form>
+  </div>
+  <div footer>
+    <div class="col-sm-12">
+      <div class="">
+        <button class="btn btn-default"  id="cancelButton" (click)="closeModal()">Close</button>
+      </div>
+    </div>
+  </div>
+</app-modal>

@@ -1,0 +1,22 @@
+<div
+  class="modal fade in"
+  id="auradocs-modal"
+  [ngClass]="{ in: isVisible }"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="auradocsModalLabel"
+  aria-hidden="false"
+  [ngStyle]="{ display: isVisible ? 'block' : 'none' }"
+>
+  <div class="modal-dialog" [style.width]="'351px'" role="document">
+    <div  class="modal-content" id="addNoteAndSignDiv">
+        <div class="modal-header" style="text-align: center">
+          <h5>Note & Sign</h5>
+        </div>
+        <div class="modal-body" style="text-align: center">
+            <div (click)="openAddNotModal()" ><img  src="assets/images/add-note.png" alt=""></div>
+            <div (click)="openAddSignModal()"><img  src="assets/images/add-sign.png" alt=""></div>
+        </div>
+    </div>
+  </div>
+</div>

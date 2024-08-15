@@ -1,0 +1,73 @@
+<app-admin-panel-buttons></app-admin-panel-buttons>
+<div class="panel">
+  <div class="panel-body">
+    <div id="diskUsageSummaryButtons">
+    <button class="btn btn-default buttonColorChange" id="diskUsage">Disk Usage</button>
+    <button class="btn btn-default buttonColorChange">Summary</button>
+    <input value="Disk Full Alert" class="alert-warning alert" disabled>
+    <button class="btn btn-default" >Add Disk</button>
+    </div>
+    <div class="panel">
+      <div class="panel-body">
+        <div class="col-md-6">
+          <div id="documentArchive">
+          <h3>Document Archive</h3>
+          <h5><b>84.0GB</b>  used out of <b>983.0GB</b> (<b>899.0GB</b>  Free space available)</h5>
+          <div class="progress" id="documentArchiveUpperProgressBar">
+            <div  class="progress-bar progress-bar-primary" style="width: 20%"></div>
+          </div>
+          <div class="progress " id="documentArchiveBottomProgressBar">
+            <div class="progress-bar  progress-bar-primary" style="width: 20%">20%</div>
+          </div>
+          </div>
+
+          <div id="auradocsArchive">
+            <h3>AuraDOCS Application</h3>
+            <h5><b>31.0GB</b>  used out of <b>31.0GB</b> (<b>0.0GB</b>  Free space available)</h5>
+            <div class="progress" id="auradocsArchiveUpperProgressBar">
+              <div  class="progress-bar progress-bar-primary" style="width: 100%"></div>
+            </div>
+            <div class="progress " id="auradocsArchiveBottomProgressBar">
+              <div class="progress-bar  progress-bar-primary" style="width: 100%">100%</div>
+            </div>
+          </div>
+        </div >
+        <div class="col-md-6">
+          <div id="inFolder">
+            <h3>InFolder</h3>
+            <h5><b>84.0GB</b>  used out of <b>983.0GB</b> (<b>899.0GB</b>  Free space available)</h5>
+            <div class="progress" id="infolderUpperProgressBar">
+              <div  class="progress-bar progress-bar-primary" style="width: 8.5%"></div>
+            </div>
+            <div class="progress " id="infolderBottomProgressBar">
+              <div class="progress-bar  progress-bar-primary" style="width: 8.5%">8.5%</div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+    <div class="panel panel-gray col-md-4" id="userSummary">
+      <div class="panel-heading"  >User Summary (Total Users : 212)</div>
+      <div class="panel-body">
+        <object id="users" data="assets/images/users.svg"></object>
+      </div>
+    </div>
+
+    <div class="panel panel-gray col-md-4">
+      <div class="panel-heading" id="backendProcessStatus">Back-end Process Status</div>
+      <div class="panel-body">
+        <object id="ocrProcess" data="assets/images/ocrProcess.svg"></object>
+      </div>
+    </div>
+
+    <div class="panel panel-gray col-md-4">
+      <div class="panel-heading" id="onlineUsers">Online Users</div>
+      <div class="panel-body">
+
+      </div>
+    </div>
+  </div>
+
+</div>

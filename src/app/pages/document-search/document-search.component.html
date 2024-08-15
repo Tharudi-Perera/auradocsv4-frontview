@@ -1,0 +1,44 @@
+<app-accordion #searchResultAccordion
+               [checkMark]="true"
+               [collapsed]="show "
+               [gray]="show "
+               (collapsedVal)="searchResultAccordionClicked($event)"
+               [title]="'Search Result'"
+               panelstyle="panel-orange">
+  <div class="panel-body" style="border-top:none">
+    <app-search-result (isShowViewButtonClicked)="isShowViewButtonClicked($event)"
+                       (sendDocumentNos)="getDocumentData($event)"
+                       (isViewSelectedOrViewAllButtonsClicked)="isViewSelectedOrViewAllButtonsClicked($event)"
+                       (sendId)="getDocId($event)"
+                       (sendViewAllStatus)="getViewAllStatus($event)"
+                       (sendViewSelectedStatus)="getViewSelectedStatus($event)"
+                       (sendCurrentPage)="getCurrentPage($event)"
+                       (sendSize)="getSize($event)"
+                       (sendsSelectedIdsArray)="getSelectedIdsArray($event)"
+    >
+    </app-search-result>
+
+  </div>
+</app-accordion>
+
+<app-accordion #viewAccordion
+               [checkMark]="true"
+               [collapsed]="!show "
+               [gray]="!show "
+               [title]="'View'"
+               (collapsedVal)="searchViewAccordionClicked($event)"
+               panelstyle="panel-orange"
+>
+  <div class="panel-body" style="border-top:none">
+
+    <app-document-search-view [documentNos]="documentNos"
+                              [id]="docId"
+                              [viewSelected]="viewSelectedStatus"
+                              [viewAll]="viewAllStatus"
+                              [currentPage]="currentPage"
+                              [size]="size"
+                              [selectedIdsArray]="selectedIdsArray"
+    ></app-document-search-view>
+  </div>
+</app-accordion>
+

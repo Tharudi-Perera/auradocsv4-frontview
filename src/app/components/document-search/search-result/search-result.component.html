@@ -1,0 +1,149 @@
+<div *ngIf="loadingIconVisible">
+  <img
+    class="animation"
+    src="../../../../assets/images/loding_v2.gif"
+  />
+</div>
+<div *ngIf="!loadingIconVisible">
+  <div id="topButtonGroup">
+    <p *ngIf="!isAdvanced">About {{totalResults }} results ({{loadingTime / 1000 | number:'1.2-2'}} seconds)</p>
+    <p *ngIf="isAdvanced">About {{totalResults }} results ({{loadingTimeAdvanced / 1000 | number:'1.2-2'}} seconds)</p>
+    <div class="btn-group">
+      <button (click)="viewAll()" class="btn "><i class="fa fa-eye" id="viewAll"></i>View All</button>
+      <button (click)="viewSelected()" class="btn"><i class="fa fa-eye" id="viewSelected"></i>View Selected</button>
+      <button #showGridTableButton (click)="showGridTableButtonClicked()" class="btn"><i class="fa fa-th"></i></button>
+      <button #showTableButton [style.background-color]="'#FF7B08'" (click)="showTableButtonClicked()" class="btn "><i
+        class="fa fa-th-list"></i></button>
+    </div>
+  </div>
+
+  <div id="outerBorderTable" *ngIf="showNormalTable">
+    <table class="table"
+           [ngClass]="{
+      'table-bordered': true,
+      'table-striped': true,
+      'table-condensed': true
+    }">
+      <thead>
+      <tr>
+        <th class="large-checkbox-column"> <input class="large-checkbox" type="checkbox" (change)="selectAllDocs()"></th>
+        <th class="headerClass sorting">Doc No</th>
+        <th class="headerClass sorting">Document Type</th>
+        <th class="headerClass sorting">Indexed Data</th>
+        <th class="headerClass sorting">Preview</th>
+        <th class="headerClass sorting">Indexed Date</th>
+        <th class="headerClass sorting">Action</th>
+      </tr>
+
+      </thead>
+      <tbody *ngIf="documentData.length > 0 ; else notabledata">
+        <tr *ngFor="let document of documentData" tabledata [ngClass]="{'light-red-row': document.selected}">
+        <td class="large-checkbox-column"><input class="large-checkbox" type="checkbox"  [(ngModel)]="document.selected" (change)="toggleSelection(document.id_l)"></td>
+        <td>{{ document.id_l }}</td>
+        <td id="templateColumn">{{ document.template_s}}</td>
+        <td>
+          <div>
+            <table>
+              <tbody>
+              <ng-container *ngFor="let indexValueJson of document.indexValues">
+                <tr *ngFor="let json of indexValueJson | keyvalue">
+                  <td class="col-md-4">
+                  <span *ngIf="json.key!='Claim Picture' && json.value!=null && json.value!=''">
+                  <span id="indexDataWithoutKeyword" *ngIf="(!json.value.includes(keyword)||isAdvanced)"
+                        style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{json.key}}
+                  </span>
+                  </span>
+                    <span *ngIf="json.key!='Claim Picture'&& json.value!=null  && json.value!=''">
+                    <span id="indexDataWithKeyword" *ngIf="(json.value.includes(keyword) && !isAdvanced)"
+                          style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{json.key}}
+                  </span>
+                  </span>
+                  </td>
+                  <td class="col-md-8" >
+
+                    <div class="jsonValueDiv" *ngIf="json.key!='Claim Picture' && json.value!=''">{{json.value}}</div>
+                  </td>
+                </tr>
+              </ng-container>
+              </tbody>
+            </table>
+          </div>
+        </td>
+        <td id="imagePreviewColumn">
+          <div id="imagePreview" (click)="showView(document.id_l)" style="cursor: pointer">
+            <!--            <img *ngIf="document?.imageValue?.metadata !== ''"-->
+            <!--                 src="data:image/jpg;base64,{{document?.imageValue?.metadata}} ">-->
+            <!--            <img *ngIf="document?.imageValue?.metadata === ''" src="assets/images/noimage.png">-->
+            <img  src="assets/images/noimage.png">
+          </div>
+
+        </td>
+        <td id="dateColumn">{{ document.addDate_dt | date:'dd-MM-yyyy hh:mm a' }}</td>
+        <td id="actionColumn">
+          <div class="btn-group" id="actionButtonGroup">
+            <div>
+              <a (click)="showView(document.id_l)" class="btn btn-label btnSize">
+                <i class="fa fa-desktop"></i> View
+              </a>
+            </div>
+            <div>
+              <a class="btn btn-label btnSize">
+                <i class="fa fa-bookmark"></i> Bookmark
+              </a>
+            </div>
+            <div>
+              <a class="btn btn-label btnSize">
+                <i class="fa fa-shopping-cart"></i> Add to Cart
+              </a>
+            </div>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+      <ng-template #notabledata>
+        <tbody>
+          <tr >
+            <td [colSpan]="headingColumns.length" class="no-data-available">
+              No data available in table
+            </td>
+          </tr>
+        </tbody>
+      </ng-template>
+    </table>
+  </div>
+
+  <div class="grid-container" id="gridTable" *ngIf="showGridTable">
+    <div *ngFor="let document of documentData" class="grid-item  " id="gridTableItem" [ngClass]="{'light-red-row': document.selected}">
+      <input type="checkbox" class="large-checkbox" [(ngModel)]="document.selected" (change)="toggleSelection(document.id_l)">
+      <div id="imagePreviewGridTable" (click)="showView(document.id_l)" style="cursor: pointer">
+<!--        <img *ngIf="document?.imageValue?.metadata !== ''"-->
+<!--             src="data:image/jpg;base64,{{document.imageValue.metadata}} ">-->
+<!--        <img *ngIf="document?.imageValue?.metadata === ''" src="assets/images/noimage.png">-->
+        <img  src="assets/images/noimage.png">
+      </div>
+      <div>{{ document.id_l }}</div>
+      <div style="text-wrap: normal">{{ document.template_s }}</div>
+      <div>{{ document.addDate_dt| date:'dd-MM-yyyy hh:mm a'  }}</div>
+      <div class="btn-group">
+        <div>
+          <a (click)="showView(document.id_l)" class="btn btn-label btnSize">
+            <i class="fa fa-desktop"></i> View
+          </a>
+        </div>
+        <div>
+          <a class="btn btn-label btnSize">
+            <i class="fa fa-bookmark"></i> Bookmark
+          </a>
+        </div>
+        <div>
+          <a class="btn btn-label btnSize">
+            <i class="fa fa-shopping-cart"></i> Add to Cart
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--      pagination-->
+  <app-pagination [currentPage]="currentPage" [pageSize]="size" [totalPages]="totalPages" [totalResults]="totalResults"></app-pagination>
+</div>
+

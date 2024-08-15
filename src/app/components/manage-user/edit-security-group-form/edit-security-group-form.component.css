@@ -1,0 +1,37 @@
+#templateSecurityTableDataNameCheckBox{
+  display :inline-block;
+}
+.inputGroupClass{
+  width: 100%;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+.new-form-group{
+  margin-right: 0;
+  margin-left: 0;
+  margin-bottom: 20px;
+}
+#cancelSetPrivilegeButtonGroup{
+  width: fit-content;
+  float: right;
+}
+#cancelButton{
+  margin-right: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+  color: black;
+  font-weight: 400;
+}
+#setPrivilegeButton{
+  font-weight: 400;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+#templateSecurityDiv{
+  display: flex;
+  justify-content: space-between;
+}
+.firstColumn{
+  width: 85%;
+}

@@ -1,0 +1,34 @@
+<div
+  class="modal fade in"
+  id="auradocs-modal"
+  [ngClass]="{ in: isVisible }"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="auradocsModalLabel"
+  aria-hidden="false"
+  [ngStyle]="{ display: isVisible ? 'block' : 'none' }"
+>
+  <form (ngSubmit)="addNoteFormSubmit()" [formGroup]="addSignForm">
+    <div class="modal-dialog" [style.width]="'250px'">
+      <div class="modal-content" id="addNoteDiv">
+        <div  id="addSign">
+          <img src="assets/images/billed.png" alt=""><input [type]="'radio'" [formControl]="addSignForm.get('billed')">
+          <img src="assets/images/canceled.png" alt=""><input [type]="'radio'" [formControl]="addSignForm.get('canceled')">
+          <img src="assets/images/delivered.png" alt=""><input [type]="'radio'" [formControl]="addSignForm.get('delivered')">
+        </div>
+        <div>
+          <div id="colorPlate">
+            <div id="yellowDiv" (click)="changeBackgroundColor('#fdfbbc')"></div>
+            <div id="blueDiv" (click)="changeBackgroundColor('#A6E3FC')"></div>
+            <div id="greenDiv" (click)="changeBackgroundColor('#A5F88B')"></div>
+            <div id="redDiv" (click)="changeBackgroundColor('#ffa07a')"></div>
+          </div>
+          <div id="submitButtonBarDiv">
+            <button class="btn" type="submit" id="saveButton">Save</button>
+            <button class="btn" (click)="closeModal()">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

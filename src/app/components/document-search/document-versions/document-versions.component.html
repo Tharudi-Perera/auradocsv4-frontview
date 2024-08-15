@@ -1,0 +1,23 @@
+<app-accordion [checkMark]="false"
+               [collapsed]="!isActive"
+               [gray]="!isActive"
+               [innerHTML]="documentVersionAccordion"
+               id="document-version-accordion"
+               panelstyle="panel-orange"
+>
+  <div id="document-version-group">
+    <div id="button-bar">
+      <div  (click)="changeButtonColor($event.currentTarget)"><a title="Update Document"><img src="assets/images/tag-doc.png"></a> </div>
+      <div  (click)="changeButtonColor($event.currentTarget)"><a title="View All"><i class="fa fa-tasks"></i></a> </div>
+    </div>
+    <div>{{title}}</div>
+    <app-table [data]="documentVersionData" [headerClass]="'headerClass'" [headings]="['File Name','Version','Update by']"
+               [isTableBoarded]="true" [marginBottomOfTable]="'0px'">
+      <tr *ngFor="let data of documentVersionData" tabledata>
+        <td>{{data.fileName}}</td>
+        <td>{{data.version}}</td>
+        <td>{{data.updateBy}}</td>
+      </tr>
+    </app-table>
+  </div>
+</app-accordion>

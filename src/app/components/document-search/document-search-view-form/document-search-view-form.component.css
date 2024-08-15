@@ -1,0 +1,29 @@
+#selectDocumentDiv{
+  display:flex;
+  margin-bottom: 5px;
+  width: 350px;
+}
+#selectDocumentDiv select{
+  width: 150px;
+}
+#backwardArrow,
+#forwardArrow{
+  height: fit-content;
+  color: white;
+}
+#backwardArrowParent,
+#forwardArrowParent{
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #595f69;
+  border: 1px solid black;
+  border-radius:5px  ;
+  margin-left: 4px;
+  margin-right: 4px;
+}
+#document-details-group-form{
+  margin-top: 5px;
+}
+
