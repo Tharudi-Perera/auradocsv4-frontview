@@ -1,0 +1,62 @@
+{
+  "name": "aura-docs-frontend",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "^15.2.10",
+    "@angular/common": "^15.2.10",
+    "@angular/compiler": "^15.2.10",
+    "@angular/core": "^15.2.10",
+    "@angular/forms": "^15.2.10",
+    "@angular/material": "^7.0.0",
+    "@angular/platform-browser": "^15.2.10",
+    "@angular/platform-browser-dynamic": "^15.2.10",
+    "@angular/router": "^15.2.10",
+    "@fortawesome/angular-fontawesome": "^0.10.0",
+    "@fortawesome/fontawesome-svg-core": "^1.2.36",
+    "@fortawesome/free-solid-svg-icons": "^5.13.0",
+    "@types/jquery": "^3.5.16",
+    "@types/jstree": "^3.3.41",
+    "angular2-draggable": "^16.0.0",
+    "aura-docs-frontend": "file:",
+    "base64-js": "^1.5.1",
+    "bootstrap": "^5.2.3",
+    "crypto-browserify": "^3.12.0",
+    "jquery": "^3.6.4",
+    "jstree": "^3.3.15",
+    "jszip": "^3.10.1",
+    "jwt-decode": "^3.1.2",
+    "keycloak-angular": "^12.0.0",
+    "keycloak-js": "^18.0.0",
+    "ngx-extended-pdf-viewer": "^17.3.0",
+    "pnotify": "^5.2.0",
+    "rxjs": "~7.5.0",
+    "stream": "^0.0.2",
+    "tslib": "^2.5.0",
+    "util": "^0.12.5",
+    "zone.js": "~0.11.4"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^15.2.11",
+    "@angular/cli": "~15.2.11",
+    "@angular/compiler-cli": "^15.2.10",
+    "@types/jasmine": "~4.0.0",
+    "jasmine-core": "~4.3.0",
+    "karma": "~6.4.0",
+    "karma-chrome-launcher": "~3.1.0",
+    "karma-coverage": "~2.2.0",
+    "karma-jasmine": "~5.1.0",
+    "karma-jasmine-html-reporter": "~2.0.0",
+    "typescript": "~4.9.5"
+  },
+  "browser": {
+    "crypto": false
+  }
+}

@@ -1,0 +1,149 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "auraDOCS-frontend": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/aura-docs-frontend",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "tsconfig.app.json",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets",
+              {
+                "glob": "**/*",
+                "input": "node_modules/ngx-extended-pdf-viewer/assets/",
+                "output": "/assets/"
+              }
+            ],
+            "styles": [
+              "src/styles.css",
+              "node_modules/jstree/dist/themes/default/style.min.css",
+              "src/assets/css/blueimp-gallery.min.css",
+              "src/assets/css/file-upload.css",
+              "src/assets/css/jquery.fileupload-ui.css",
+              "node_modules/@pnotify/core/dist/BrightTheme.css",
+              "node_modules/@pnotify/confirm/dist/PNotifyConfirm.css",
+              "node_modules/@pnotify/core/dist/PNotify.css",
+              "node_modules/@pnotify/mobile/dist/PNotifyMobile.css"
+            ],
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/jstree/dist/jstree.min.js",
+              "src/assets/js/jquery.ui.widget.js",
+              "src/assets/js/tmpl.min.js",
+              "src/assets/js/load-image.all.min.js",
+              "src/assets/js/canvas-to-blob.min.js",
+              "src/assets/js/jquery.blueimp-gallery.min.js",
+              "src/assets/js/jquery.iframe-transport.js",
+              "src/assets/js/jquery.fileupload.js",
+              "src/assets/js/jquery.fileupload-process.js",
+              "src/assets/js/jquery.fileupload-image.js",
+              "src/assets/js/jquery.fileupload-audio.js",
+              "src/assets/js/jquery.fileupload-video.js",
+              "src/assets/js/jquery.fileupload-validate.js",
+              "src/assets/js/jquery.fileupload-ui.js",
+              "src/assets/js/demo.js"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "4mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "dev": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.dev.ts"
+                }
+              ]
+            },
+            "qa": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.qa.ts"
+                }
+              ]
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "auraDOCS-frontend:build:production"
+            },
+            "dev": {
+              "browserTarget": "auraDOCS-frontend:build:dev"
+            },
+            "qa": {
+              "browserTarget": "auraDOCS-frontend:build:qa"
+            }
+          },
+          "defaultConfiguration": "dev"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "auraDOCS-frontend:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "src/test.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "tsconfig.spec.json",
+            "karmaConfig": "karma.conf.js",
+            "assets": ["src/favicon.ico", "src/assets"],
+            "styles": ["src/styles.css"],
+            "scripts": []
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "analytics": "1fbd333d-e56a-4562-aca2-3ab6847787ab"
+  }
+}
