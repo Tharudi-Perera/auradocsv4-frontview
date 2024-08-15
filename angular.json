@@ -40,7 +40,6 @@
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
-              "node_modules/jquery/dist/jquery.min.js",
               "node_modules/jstree/dist/jstree.min.js",
               "src/assets/js/jquery.ui.widget.js",
               "src/assets/js/tmpl.min.js",
@@ -105,7 +104,7 @@
               "namedChunks": true
             }
           },
-          "defaultConfiguration": "production"
+          "defaultConfiguration": "dev"
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
